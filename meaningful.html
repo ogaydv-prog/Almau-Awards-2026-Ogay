@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meaningful — AlmaU Awards 2026 | Огай Д.В.</title>
+    <style>
+        :root {
+            --almau-navy: #001e50;
+            --almau-blue: #00338D;
+            --almau-blue-soft: #f0f4fa;
+            --almau-red: #C8102E;
+            --bg-page: #ffffff;
+            --bg-subtle: #f8fafd;
+            --bg-card-hover: #eef3fb;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 12px 28px rgba(0, 30, 80, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.55;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Верхняя сплошная красная полоса */
+        .top-red-bar {
+            height: 6px;
+            background-color: var(--almau-red);
+            width: 100%;
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 22px 20px 40px;
+            flex: 1;
+        }
+
+        /* Шапка в едином стиле с index.html */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 28px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .brand-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        .brand-title-tag {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--almau-red);
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            border-left: 2px solid var(--border-light);
+            padding-left: 14px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
+            flex-wrap: wrap;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 13px;
+            border-radius: 8px;
+            background: var(--almau-blue-soft);
+            color: var(--almau-navy);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #d0dcf0;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--almau-navy);
+            color: #ffffff;
+            border-color: var(--almau-navy);
+        }
+
+        /* Переключатель языков: ҚАЗ | РУС | ENG */
+        .lang-switcher {
+            display: inline-flex;
+            background: #f4f7fb;
+            padding: 3px;
+            border-radius: 9px;
+            border: 1px solid #dce5f2;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #526480;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--almau-navy);
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 30, 80, 0.2);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--almau-navy);
+        }
+
+        /* Заголовок раздела */
+        .hero-section {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 820px;
+            line-height: 1.5;
+        }
+
+        .mission-quote-strip {
+            margin-top: 14px;
+            padding: 10px 16px;
+            background: var(--bg-subtle);
+            border-left: 3px solid var(--almau-red);
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: var(--almau-navy);
+            font-weight: 500;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hint-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .toggle-all-btn {
+            background: #ffffff;
+            border: 1px solid #d0dcf0;
+            color: var(--almau-navy);
+            padding: 6px 13px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-all-btn:hover {
+            background: var(--almau-blue-soft);
+            border-color: var(--almau-navy);
+        }
+
+        /* Стек 5 карточек со стрелками */
+        .cards-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            color: var(--almau-navy);
+            opacity: 0.55;
+            user-select: none;
+        }
+
+        .flow-arrow svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2.3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .flip-card {
+            perspective: 1400px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+            display: grid;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateX(180deg);
+        }
+
+        .card-front, .card-back {
+            grid-area: 1 / 1;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 14px;
+            padding: 16px 22px;
+            border: 2px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s ease;
+        }
+
+        .card-front {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 78px;
+        }
+
+        .flip-card:hover .card-front {
+            background: var(--bg-subtle);
+            border-color: var(--almau-navy);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .front-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Красные кружочки 1-5 */
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background: var(--almau-red);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(200, 16, 46, 0.25);
+        }
+
+        .step-info h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 2px;
+        }
+
+        .step-info p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        .flip-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--almau-navy);
+            background: var(--almau-blue-soft);
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 1px solid #d0dcf0;
+            white-space: nowrap;
+        }
+
+        /* Обратная сторона карточки */
+        .card-back {
+            background: #ffffff;
+            border: 2px solid var(--almau-navy);
+            transform: rotateX(180deg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .back-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 8px;
+            gap: 10px;
+        }
+
+        .back-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-circle-sm {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            background: var(--almau-red);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-header h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .flip-back-tag {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--almau-navy);
+            background: var(--almau-blue-soft);
+            padding: 4px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .back-body {
+            font-size: 14px;
+            color: var(--text-main);
+            line-height: 1.55;
+        }
+
+        .back-body ul {
+            padding-left: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .back-body li strong {
+            color: var(--almau-navy);
+        }
+
+        .highlight-pill {
+            display: inline-block;
+            background: var(--almau-blue-soft);
+            color: var(--almau-navy);
+            font-weight: 600;
+            padding: 1px 7px;
+            border-radius: 5px;
+            font-size: 13.5px;
+        }
+
+        /* Благородное академическое письмо внизу (классический курсив с засечками) */
+        .mentorship-note-section {
+            margin-top: 38px;
+            background: #fafbfd;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--almau-red);
+            border-radius: 14px;
+            padding: 26px 32px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mentorship-label {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--almau-red);
+            margin-bottom: 12px;
+        }
+
+        .letter-text {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 16.5px;
+            line-height: 1.68;
+            color: #1e293b;
+        }
+
+        .letter-text p + p {
+            margin-top: 12px;
+        }
+
+        .letter-signature {
+            margin-top: 16px;
+            text-align: right;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            margin-top: auto;
+            font-size: 13.5px;
+            color: #8a94a6;
+            padding-top: 28px;
+            padding-bottom: 18px;
+            text-align: center;
+            line-height: 1.6;
+            width: 100%;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @media (max-width: 680px) {
+            .card-front {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .flip-indicator {
+                align-self: flex-end;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .mentorship-note-section {
+                padding: 20px 18px;
+            }
+            .letter-text {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-red-bar"></div>
+
+<div class="container">
+    <!-- Шапка в едином стиле с index.html -->
+    <header>
+        <div class="brand-left">
+            <img src="almau.jpg" alt="AlmaU Logo" class="brand-logo">
+            <span class="brand-title-tag">ALMAU AWARDS 2026</span>
+        </div>
+
+        <div class="header-right">
+            <a href="index.html" class="back-btn" data-i18n="backBtn">← К начальной странице</a>
+            <div class="lang-switcher" role="group" aria-label="Language switcher">
+                <button type="button" class="lang-btn" data-lang="kz">ҚАЗ</button>
+                <button type="button" class="lang-btn active" data-lang="ru">РУС</button>
+                <button type="button" class="lang-btn" data-lang="en">ENG</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Заголовок раздела -->
+    <section class="hero-section">
+        <h1 data-i18n="pageTitle">Meaningful — Ценность и связь с миссией</h1>
+        <p class="subtitle" data-i18n="pageSubtitle">
+            Личный профессиональный и академический вклад в реализацию миссии AlmaU через модернизацию экономического образования, формирование развивающей среды и наставничество.
+        </p>
+        <div class="mission-quote-strip" data-i18n="missionQuote">
+            Миссия AlmaU: «Мы делаем мир лучше через развитие образования, исследований и предпринимательства» — воплощённая через инновации в аудитории и раскрытие потенциала студентов.
+        </div>
+    </section>
+
+    <!-- Панель управления карточками -->
+    <div class="toolbar">
+        <span class="hint-text" data-i18n="hintText">Нажмите на любую карточку ниже, чтобы перевернуть её и раскрыть содержание</span>
+        <button type="button" class="toggle-all-btn" id="toggleAllBtn" data-i18n="toggleAllOpen">Раскрыть все карточки</button>
+    </div>
+
+    <!-- 5 переворачивающихся карточек с красными кружочками и стрелками -->
+    <main class="cards-stack">
+
+        <!-- Карточка 1: ПРОБЛЕМА -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">1</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c1Title">Проблема</h2>
+                            <p data-i18n="c1Question">Что не работало или требовало изменения?</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">1</div>
+                            <h3 data-i18n="c1Title">Проблема</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c1Body">
+                        <ul>
+                            <li><strong>Устаревание статичных подходов:</strong> традиционное преподавание экономики часто сводится к заучиванию сухих формул и рисованию статичных графиков на доске, где студенты не видят живой динамики процессов и не могут сами смоделировать рыночную ситуацию.</li>
+                            <li><strong>Недоиспользование потенциала ИИ и вайб-кодинга:</strong> в условиях технологического рывка было бы ошибочно не использовать современные возможности генеративного ИИ для создания интерактивной развивающей среды.</li>
+                            <li><strong>Бумажная и временная рутина:</strong> традиционные задания на бумаге, множественные распечатки тестов и ручная проверка работ отнимают значительное время преподавателя и ресурсы университета.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Стрелка 1 -> 2 -->
+        <div class="flow-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="6 14 12 20 18 14"></polyline></svg>
+        </div>
+
+        <!-- Карточка 2: ВАШ ВКЛАД -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">2</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c2Title">Ваш вклад</h2>
+                            <p data-i18n="c2Question">Что именно вы предложили и реализовали?</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">2</div>
+                            <h3 data-i18n="c2Title">Ваш вклад</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c2Body">
+                        <ul>
+                            <li><strong>7 цифровых образовательных платформ:</strong> в русле миссии AlmaU (<em>образование, исследования и предпринимательство</em>) с помощью ИИ созданы и развёрнуты в открытом доступе веб-хабы для <span class="highlight-pill">6 курсов бакалавриата</span> и <span class="highlight-pill">1 курса MBA</span> («Управленческая экономика»).</li>
+                            <li><strong>Полная замена классического УМКД:</strong> каждая платформа объединяет интерактивный глоссарий, разбор кейсов, видеоматериалы, ленту актуальных экономических новостей и библиотеку для чтения.</li>
+                            <li><strong>Симуляторы, контроль и аналитика:</strong> внедрены живые экономические симуляторы (исследовательский подход в обучении), практические задания, рубежные контроли, экзамены и инструмент построения <strong>кривой нормального распределения (кривой Гаусса / Bell Curve)</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Стрелка 2 -> 3 -->
+        <div class="flow-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="6 14 12 20 18 14"></polyline></svg>
+        </div>
+
+        <!-- Карточка 3: РЕЗУЛЬТАТ -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">3</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c3Title">Результат</h2>
+                            <p data-i18n="c3Question">Что изменилось: до / после, цифры, качество, эффект?</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">3</div>
+                            <h3 data-i18n="c3Title">Результат</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c3Body">
+                        <ul>
+                            <li><strong>Свободный доступ 24/7 для 188 обучающихся:</strong> <span class="highlight-pill">135 студентов бакалавриата</span> и <span class="highlight-pill">53 слушателя программы MBA</span> получили круглосуточный доступ к обучающим платформам с любого устройства, включая смартфоны.</li>
+                            <li><strong>Полный отказ от бумажных распечаток:</strong> за весь учебный период по этим 7 курсам не было распечатано ни одного бумажного задания или теста (за исключением обязательного силлабуса).</li>
+                            <li><strong>Автоматизация оценки и академическая честность:</strong> апробирована система автоматической проверки, цифрового аудита и соблюдения Кодекса академической честности AlmaU.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Стрелка 3 -> 4 -->
+        <div class="flow-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="6 14 12 20 18 14"></polyline></svg>
+        </div>
+
+        <!-- Карточка 4: ДОКАЗАТЕЛЬСТВА -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">4</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c4Title">Доказательства</h2>
+                            <p data-i18n="c4Question">Данные, отчёты, обратная связь, документы, ссылки</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">4</div>
+                            <h3 data-i18n="c4Title">Доказательства</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c4Body">
+                        <ul>
+                            <li><strong>Сама платформа как открытое доказательство:</strong> все 7 рабочих образовательных хабов, симуляторов и оценочных модулей размещены в открытых репозиториях GitHub Pages и доступны для прямой проверки комиссией.</li>
+                            <li><strong>Верифицируемые артефакты в соседних блоках:</strong> в других разделах заявки представлены прямые ссылки на каждый курс, скриншоты мобильной адаптации, графики кривой Белла, дипломы международных олимпиад студентов и точный расчёт экономии ресурсов.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Стрелка 4 -> 5 -->
+        <div class="flow-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="6 14 12 20 18 14"></polyline></svg>
+        </div>
+
+        <!-- Карточка 5: ЗНАЧИМОСТЬ -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">5</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c5Title">Значимость</h2>
+                            <p data-i18n="c5Question">Кому стало лучше и почему эффект важен для AlmaU?</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">5</div>
+                            <h3 data-i18n="c5Title">Значимость</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c5Body">
+                        <ul>
+                            <li><strong>Фундамент для полноценных онлайн-курсов AlmaU:</strong> созданная архитектура служит практическим ориентиром для коллег и позволяет со временем перевести большинство дисциплин в современный интерактивный онлайн-формат.</li>
+                            <li><strong>Ценность для студентов и преподавателей:</strong> студентам больше не нужна бумага и сухие конспекты, а преподаватели существенно экономят время на рутинной проверке и подготовке материалов.</li>
+                            <li><strong>Устойчивое развитие (ESG):</strong> отказ от распечаток формирует экологическую ответственность внутри вуза (детальный расчёт экономии бумаги приведён в заключительном блоке <em>Financial Sustainability</em>).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Благородное академическое письмо внизу -->
+    <section class="mentorship-note-section" aria-label="Слово о наставничестве">
+        <span class="mentorship-label" data-i18n="mentorLabel">Слово о наставничестве • Опыт и преемственность</span>
+        <div class="letter-text" data-i18n="mentorText">
+            <p>
+                «За более чем двадцать два года работы в университете я убедился: ни одна технология не заменит живого участия преподавателя в судьбе студента. Цифровые платформы снимают рутину, но главный смысл нашей профессии остаётся неизменным — вовремя заметить в молодом человеке искру и помочь ей разгореться.
+            </p>
+            <p>
+                В этом году мне посчастливилось пройти такой путь вместе с двумя замечательными студентками — А. Сапаровой и А. Мустапа, чей интерес к экономике проявился ещё на моих лекциях. Шаг за шагом мы готовились к серьёзным испытаниям: сначала пришла победа на Международной олимпиаде по макроэкономике в Туркменском государственном институте экономики и финансов, а следом — приглашение очно представить AlmaU на Международной экономической олимпиаде в Институте экономики Университета Ульма. Пусть там мы не поднялись на пьедестал, но выступили с большим достоинством и получили искреннее признание организаторов за смелость и упорство. Для меня это лучшая награда: ребята увидели настоящий масштаб мировой академической среды и поверили, что наш университет способен открыть перед ними любые двери».
+            </p>
+        </div>
+        <div class="letter-signature" data-i18n="mentorSign">— Д. Огай</div>
+    </section>
+
+</div>
+
+<footer>
+    <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
+</footer>
+
+<script>
+    const translations = {
+        ru: {
+            backBtn: "← К начальной странице",
+            pageTitle: "Meaningful — Ценность и связь с миссией",
+            pageSubtitle: "Личный профессиональный и академический вклад в реализацию миссии AlmaU через модернизацию экономического образования, формирование развивающей среды и наставничество.",
+            missionQuote: "Миссия AlmaU: «Мы делаем мир лучше через развитие образования, исследований и предпринимательства» — воплощённая через инновации в аудитории и раскрытие потенциала студентов.",
+            hintText: "Нажмите на любую карточку ниже, чтобы перевернуть её и раскрыть содержание",
+            toggleAllOpen: "Раскрыть все карточки",
+            toggleAllClose: "Свернуть все карточки",
+            flipOpen: "Перевернуть ↻",
+            flipClose: "Свернуть ↺",
+            footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
+
+            c1Title: "Проблема",
+            c1Question: "Что не работало или требовало изменения?",
+            c1Body: `<ul>
+                <li><strong>Устаревание статичных подходов:</strong> традиционное преподавание экономики часто сводится к заучиванию сухих формул и рисованию статичных графиков на доске, где студенты не видят живой динамики процессов и не могут сами смоделировать рыночную ситуацию.</li>
+                <li><strong>Недоиспользование потенциала ИИ и вайб-кодинга:</strong> в условиях технологического рывка было бы ошибочно не использовать современные возможности генеративного ИИ для создания интерактивной развивающей среды.</li>
+                <li><strong>Бумажная и временная рутина:</strong> традиционные задания на бумаге, множественные распечатки тестов и ручная проверка работ отнимают значительное время преподавателя и ресурсы университета.</li>
+            </ul>`,
+
+            c2Title: "Ваш вклад",
+            c2Question: "Что именно вы предложили и реализовали?",
+            c2Body: `<ul>
+                <li><strong>7 цифровых образовательных платформ:</strong> в русле миссии AlmaU (<em>образование, исследования и предпринимательство</em>) с помощью ИИ созданы и развёрнуты в открытом доступе веб-хабы для <span class="highlight-pill">6 курсов бакалавриата</span> и <span class="highlight-pill">1 курса MBA</span> («Управленческая экономика»).</li>
+                <li><strong>Полная замена классического УМКД:</strong> каждая платформа объединяет интерактивный глоссарий, разбор кейсов, видеоматериалы, ленту актуальных экономических новостей и библиотеку для чтения.</li>
+                <li><strong>Симуляторы, контроль и аналитика:</strong> внедрены живые экономические симуляторы (исследовательский подход в обучении), практические задания, рубежные контроли, экзамены и инструмент построения <strong>кривой нормального распределения (кривой Гаусса / Bell Curve)</strong>.</li>
+            </ul>`,
+
+            c3Title: "Результат",
+            c3Question: "Что изменилось: до / после, цифры, качество, эффект?",
+            c3Body: `<ul>
+                <li><strong>Свободный доступ 24/7 для 188 обучающихся:</strong> <span class="highlight-pill">135 студентов бакалавриата</span> и <span class="highlight-pill">53 слушателя программы MBA</span> получили круглосуточный доступ к обучающим платформам с любого устройства, включая смартфоны.</li>
+                <li><strong>Полный отказ от бумажных распечаток:</strong> за весь учебный период по этим 7 курсам не было распечатано ни одного бумажного задания или теста (за исключением обязательного силлабуса).</li>
+                <li><strong>Автоматизация оценки и академическая честность:</strong> апробирована система автоматической проверки, цифрового аудита и соблюдения Кодекса академической честности AlmaU.</li>
+            </ul>`,
+
+            c4Title: "Доказательства",
+            c4Question: "Данные, отчёты, обратная связь, документы, ссылки",
+            c4Body: `<ul>
+                <li><strong>Сама платформа как открытое доказательство:</strong> все 7 рабочих образовательных хабов, симуляторов и оценочных модулей размещены в открытых репозиториях GitHub Pages и доступны для прямой проверки комиссией.</li>
+                <li><strong>Верифицируемые артефакты в соседних блоках:</strong> в других разделах заявки представлены прямые ссылки на каждый курс, скриншоты мобильной адаптации, графики кривой Белла, дипломы международных олимпиад студентов и точный расчёт экономии ресурсов.</li>
+            </ul>`,
+
+            c5Title: "Значимость",
+            c5Question: "Кому стало лучше и почему эффект важен для AlmaU?",
+            c5Body: `<ul>
+                <li><strong>Фундамент для полноценных онлайн-курсов AlmaU:</strong> созданная архитектура служит практическим ориентиром для коллег и позволяет со временем перевести большинство дисциплин в современный интерактивный онлайн-формат.</li>
+                <li><strong>Ценность для студентов и преподавателей:</strong> студентам больше не нужна бумага и сухие конспекты, а преподаватели существенно экономят время на рутинной проверке и подготовке материалов.</li>
+                <li><strong>Устойчивое развитие (ESG):</strong> отказ от распечаток формирует экологическую ответственность внутри вуза (детальный расчёт экономии бумаги приведён в заключительном блоке <em>Financial Sustainability</em>).</li>
+            </ul>`,
+
+            mentorLabel: "Слово о наставничестве • Опыт и преемственность",
+            mentorText: `<p>
+                «За более чем двадцать два года работы в университете я убедился: ни одна технология не заменит живого участия преподавателя в судьбе студента. Цифровые платформы снимают рутину, но главный смысл нашей профессии остаётся неизменным — вовремя заметить в молодом человеке искру и помочь ей разгореться.
+            </p>
+            <p>
+                В этом году мне посчастливилось пройти такой путь вместе с двумя замечательными студентками — А. Сапаровой и А. Мустапа, чей интерес к экономике проявился ещё на моих лекциях. Шаг за шагом мы готовились к серьёзным испытаниям: сначала пришла победа на Международной олимпиаде по макроэкономике в Туркменском государственном институте экономики и финансов, а следом — приглашение очно представить AlmaU на Международной экономической олимпиаде в Институте экономики Университета Ульма. Пусть там мы не поднялись на пьедестал, но выступили с большим достоинством и получили искреннее признание организаторов за смелость и упорство. Для меня это лучшая награда: ребята увидели настоящий масштаб мировой академической среды и поверили, что наш университет способен открыть перед ними любые двери».
+            </p>`,
+            mentorSign: "— Д. Огай"
+        },
+
+        kz: {
+            backBtn: "← Бастапқы бетке",
+            pageTitle: "Meaningful — Құндылық және миссиямен байланыс",
+            pageSubtitle: "Экономикалық білім беруді жаңғырту, дамытушы ортаны қалыптастыру және тәлімгерлік арқылы AlmaU миссиясын іске асыруға қосылған жеке кәсіби және академиялық үлес.",
+            missionQuote: "AlmaU миссиясы: «Біз білім беруді, зерттеулерді және кәсіпкерлікті дамыту арқылы әлемді жақсартамыз» — аудиториядағы инновациялар мен студенттердің әлеуетін ашу арқылы жүзеге асырылды.",
+            hintText: "Мазмұнын ашу үшін төмендегі кез келген карточканы басыңыз",
+            toggleAllOpen: "Барлық карточкаларды ашу",
+            toggleAllClose: "Барлық карточкаларды жабу",
+            flipOpen: "Аудару ↻",
+            flipClose: "Жабу ↺",
+            footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
+
+            c1Title: "Мәселе",
+            c1Question: "Не жұмыс істемеді немесе өзгерісті талап етті?",
+            c1Body: `<ul>
+                <li><strong>Статикалық тәсілдердің ескіруі:</strong> экономиканы дәстүрлі оқыту көбіне құрғақ формулаларды жаттауға және тақтаға статикалық графиктер салуға тіреледі, онда студенттер үдерістердің тірі динамикасын көрмейді және нарықтық жағдайды өздері модельдей алмайды.</li>
+                <li><strong>ЖИ мен вайб-кодинг әлеуетін пайдаланбау:</strong> технологиялық серпіліс жағдайында интерактивті дамытушы орта құру үшін генеративті ЖИ-дің заманауи мүмкіндіктерін қолданбау қателік болар еді.</li>
+                <li><strong>Қағаз және уақыт шығындары:</strong> дәстүрлі қағаз тапсырмалары, тесттерді көптеп басып шығару және жұмыстарды қолмен тексеру оқытушының уақыты мен университет ресурстарын көп алады.</li>
+            </ul>`,
+
+            c2Title: "Сіздің үлесіңіз",
+            c2Question: "Сіз нақты не ұсындыңыз және нені жүзеге асырдыңыз?",
+            c2Body: `<ul>
+                <li><strong>7 цифрлық білім беру платформасы:</strong> AlmaU миссиясы аясында (<em>білім беру, зерттеулер және кәсіпкерлік</em>) ЖИ көмегімен <span class="highlight-pill">бакалавриаттың 6 курсы</span> және <span class="highlight-pill">MBA-дің 1 курсы</span> («Басқару экономикасы») үшін ашық веб-хабтар құрылды.</li>
+                <li><strong>Классикалық ОӘК-ті толық алмастыру:</strong> әрбір платформа интерактивті глоссарийді, кейстерді талдауды, бейнематериалдарды, өзекті экономикалық жаңалықтар лентасын және оқу кітапханасын біріктіреді.</li>
+                <li><strong>Симуляторлар, бақылау және аналитика:</strong> тірі экономикалық симуляторлар (оқытудағы зерттеу тәсілі), практикалық тапсырмалар, аралық бақылаулар, емтихандар және <strong>қалыпты үлестірім қисығын (Гаусс / Bell Curve қисығы)</strong> құру құралы енгізілді.</li>
+            </ul>`,
+
+            c3Title: "Нәтиже",
+            c3Question: "Не өзгерді: дейін / кейін, сандар, сапа, әсер?",
+            c3Body: `<ul>
+                <li><strong>188 білім алушыға 24/7 еркін қолжетімділік:</strong> <span class="highlight-pill">135 бакалавриат студенті</span> және <span class="highlight-pill">53 MBA тыңдаушысы</span> кез келген құрылғыдан, соның ішінде смартфондардан оқу платформаларына тәулік бойы қол жеткізді.</li>
+                <li><strong>Қағаз басып шығарудан толық бас тарту:</strong> осы 7 курс бойынша бүкіл оқу кезеңінде міндетті силлабустан басқа бірде-бір қағаз тапсырма немесе тест басып шығарылған жоқ.</li>
+                <li><strong>Бағалауды автоматтандыру және академиялық адалдық:</strong> автоматты тексеру, цифрлық аудит және AlmaU Академиялық адалдық кодексін сақтау жүйесі сынақтан өтті.</li>
+            </ul>`,
+
+            c4Title: "Дәлелдемелер",
+            c4Question: "Деректер, есептер, кері байланыс, құжаттар, сілтемелер",
+            c4Body: `<ul>
+                <li><strong>Платформаның өзі — ашық дәлел:</strong> барлық 7 жұмыс істейтін білім беру хабы, симуляторлар мен бағалау модульдері GitHub Pages ашық репозиторийлерінде орналастырылған және комиссияның тікелей тексеруіне қолжетімді.</li>
+                <li><strong>Көрші блоктардағы расталатын артефактілер:</strong> өтінімнің басқа бөлімдерінде әр курсқа тікелей сілтемелер, мобильді бейімделу скриншоттары, Белл қисығы графиктері, студенттердің халықаралық олимпиада дипломдары және ресурс үнемдеу есебі берілген.</li>
+            </ul>`,
+
+            c5Title: "Маңыздылығы",
+            c5Question: "Кімге жақсырақ болды және бұл әсер AlmaU үшін неге маңызды?",
+            c5Body: `<ul>
+                <li><strong>AlmaU толыққанды онлайн-курстарының іргетасы:</strong> құрылған архитектура әріптестерге практикалық бағдар болып, уақыт өте келе пәндердің басым бөлігін заманауи интерактивті онлайн-форматқа көшіруге мүмкіндік береді.</li>
+                <li><strong>Студенттер мен оқытушылар үшін құндылық:</strong> студенттерге енді қағаз бен құрғақ конспектілер қажет емес, ал оқытушылар күнделікті тексеру мен материалдар дайындауға кететін уақытты айтарлықтай үнемдейді.</li>
+                <li><strong>Тұрақты даму (ESG):</strong> қағаз басып шығарудан бас тарту ЖОО ішінде экологиялық жауапкершілікті қалыптастырады (қағаз үнемдеудің егжей-тегжейлі есебі соңғы <em>Financial Sustainability</em> блогында берілген).</li>
+            </ul>`,
+
+            mentorLabel: "Тәлімгерлік туралы сөз • Тәжірибе және сабақтастық",
+            mentorText: `<p>
+                «Университетте жиырма екі жылдан астам еңбек еткен уақыт ішінде мен мынаған көз жеткіздім: ешбір технология оқытушының студент тағдырына деген шынайы жанашырлығын алмастыра алмайды. Цифрлық платформалар күнделікті күйбеңді жеңілдетеді, бірақ мамандығымыздың басты мәні өзгермейді — жас адамның бойындағы ұшқынды дер кезінде байқап, оның тұтануына көмектесу.
+            </p>
+            <p>
+                Биыл маған экономикаға деген қызығушылығы менің дәрістерімде оянған екі тамаша студентпен — А. Сапарова және А. Мұстапамен бірге осындай жолдан өту бақыты бұйырды. Қадам басып біз үлкен сынақтарға дайындалдық: алдымен Түрікмен мемлекеттік экономика және қаржы институтында өткен макроэкономика бойынша Халықаралық олимпиадада жеңіс келді, одан кейін Ульм университетінің Экономика институтында өткен Халықаралық экономикалық олимпиадада AlmaU атынан тікелей өнер көрсетуге шақырту алдық. Онда жүлделі тұғырға көтерілмесек те, үлкен абыроймен өнер көрсетіп, батылдығымыз бен табандылығымыз үшін ұйымдастырушылардың шынайы ризашылығына бөлендік. Мен үшін ең үлкен марапат осы: жастар әлемдік академиялық ортаның нағыз ауқымын көріп, университетіміздің оларға кез келген есікті аша алатынына сенді».
+            </p>`,
+            mentorSign: "— Д. Огай"
+        },
+
+        en: {
+            backBtn: "← To Home Page",
+            pageTitle: "Meaningful — Value & Mission Alignment",
+            pageSubtitle: "Personal professional and academic contribution to AlmaU's mission through modernizing economics education, building a developmental environment, and mentoring.",
+            missionQuote: "AlmaU Mission: “We make the world better through the development of education, research, and entrepreneurship” — realized through classroom innovation and student empowerment.",
+            hintText: "Click any card below to flip it and explore the details",
+            toggleAllOpen: "Expand all cards",
+            toggleAllClose: "Collapse all cards",
+            flipOpen: "Flip ↻",
+            flipClose: "Flip back ↺",
+            footerText: "Ogay D.V. | School of Digital Technologies and Economics | AlmaU 2026",
+
+            c1Title: "The Problem",
+            c1Question: "What wasn't working or needed change?",
+            c1Body: `<ul>
+                <li><strong>Outdated static teaching methods:</strong> traditional economics instruction often relies on memorizing dry formulas and drawing static graphs on a board, preventing students from seeing live system dynamics or simulating market scenarios themselves.</li>
+                <li><strong>Underutilized AI & vibe-coding potential:</strong> amidst rapid technological advancement, failing to leverage generative AI to build an interactive developmental environment would be a major missed opportunity.</li>
+                <li><strong>Paper and time inefficiency:</strong> conventional paper assignments, repetitive test printouts, and manual grading consume substantial faculty time and university resources.</li>
+            </ul>`,
+
+            c2Title: "Your Contribution",
+            c2Question: "What exactly did you propose and implement?",
+            c2Body: `<ul>
+                <li><strong>7 digital learning platforms:</strong> aligned with AlmaU's mission (<em>education, research, and entrepreneurship</em>), designed and deployed open-access AI-built web hubs for <span class="highlight-pill">6 undergraduate courses</span> and <span class="highlight-pill">1 MBA course</span> (Managerial Economics).</li>
+                <li><strong>Complete replacement of traditional courseware:</strong> each platform integrates an interactive glossary, case studies, video lectures, live economic news feeds, and curated reading libraries.</li>
+                <li><strong>Simulators, assessment & analytics:</strong> introduced live economic simulators (research-driven learning), practical tasks, midterms, final exams, and a built-in <strong>Gaussian / Bell Curve distribution tool</strong>.</li>
+            </ul>`,
+
+            c3Title: "The Result",
+            c3Question: "What changed: before / after, metrics, quality, impact?",
+            c3Body: `<ul>
+                <li><strong>24/7 open access for 188 learners:</strong> <span class="highlight-pill">135 undergraduate students</span> and <span class="highlight-pill">53 MBA participants</span> gained unrestricted round-the-clock access to learning platforms from any device, including smartphones.</li>
+                <li><strong>Complete elimination of paper printouts:</strong> zero paper assignments or tests were printed across all 7 courses throughout the academic period (except for the mandatory syllabus).</li>
+                <li><strong>Automated grading & academic integrity:</strong> successfully piloted automated assessment, digital audit workflows, and adherence to AlmaU's Code of Academic Integrity.</li>
+            </ul>`,
+
+            c4Title: "Evidence",
+            c4Question: "Data, reports, feedback, documents, links",
+            c4Body: `<ul>
+                <li><strong>The platform itself as open proof:</strong> all 7 active educational hubs, simulators, and grading modules are hosted openly on GitHub Pages and available for direct inspection by the committee.</li>
+                <li><strong>Verifiable artifacts in adjacent sections:</strong> other tabs of this application present direct links to every course, mobile responsiveness screenshots, Bell Curve charts, international student Olympiad diplomas, and detailed resource-savings calculations.</li>
+            </ul>`,
+
+            c5Title: "Significance",
+            c5Question: "Who benefited and why does this impact matter for AlmaU?",
+            c5Body: `<ul>
+                <li><strong>Foundation for full-scale AlmaU online courses:</strong> the architecture serves as a practical benchmark for colleagues and enables transitioning most disciplines into modern interactive online formats over time.</li>
+                <li><strong>Shared value for students and faculty:</strong> students no longer need paper or static notes, while faculty dramatically cut time spent on routine grading and material preparation.</li>
+                <li><strong>Sustainable development (ESG):</strong> eliminating printouts fosters environmental responsibility across the university (detailed paper savings are calculated in the final <em>Financial Sustainability</em> section).</li>
+            </ul>`,
+
+            mentorLabel: "A Word on Mentorship • Experience & Continuity",
+            mentorText: `<p>
+                “Over more than twenty-two years at the university, I have come to believe that no technology can ever replace a teacher's genuine involvement in a student's journey. Digital platforms eliminate routine, yet the core purpose of our profession remains unchanged—to notice a spark in a young mind in time and help it grow into a flame.
+            </p>
+            <p>
+                This year, I was fortunate to walk that path alongside two remarkable students—A. Saparova and A. Mustapa—whose passion for economics first emerged in my lectures. Step by step, we prepared for major challenges: first came 1st place at the International Macroeconomics Olympiad at the Turkmen State Institute of Economics and Finance, followed by an invitation to represent AlmaU in person at the International Economics Olympiad at the Institute of Economics, Ulm University. Though we did not reach the podium there, the students competed with great dignity and earned sincere praise from the organizers for their courage and perseverance. To me, that is the finest reward: they witnessed the true scale of the global academic community and saw that our university can open any door for them.”
+            </p>`,
+            mentorSign: "— D. Ogay"
+        }
+    };
+
+    let currentLang = 'ru';
+    let allFlipped = false;
+
+    function toggleCard(card) {
+        card.classList.toggle('flipped');
+        updateToggleAllLabel();
+    }
+
+    function updateToggleAllLabel() {
+        const cards = document.querySelectorAll('.flip-card');
+        const flippedCount = document.querySelectorAll('.flip-card.flipped').length;
+        const btn = document.getElementById('toggleAllBtn');
+        allFlipped = flippedCount === cards.length;
+        btn.textContent = allFlipped ? translations[currentLang].toggleAllClose : translations[currentLang].toggleAllOpen;
+    }
+
+    document.getElementById('toggleAllBtn').addEventListener('click', () => {
+        const cards = document.querySelectorAll('.flip-card');
+        allFlipped = !allFlipped;
+        cards.forEach(card => {
+            if (allFlipped) {
+                card.classList.add('flipped');
+            } else {
+                card.classList.remove('flipped');
+            }
+        });
+        updateToggleAllLabel();
+    });
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang === 'kz' ? 'kk' : lang;
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+
+        updateToggleAllLabel();
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+</script>
+
+</body>
+</html>
