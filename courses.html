@@ -87,7 +87,7 @@
         /* Шапка с логотипом AlmaU строго по центру */
         .header-container {
             width: 100%;
-            max-width: 1260px;
+            max-width: 1360px;
             text-align: center;
             margin-top: 4px;
             margin-bottom: 28px;
@@ -120,32 +120,31 @@
             margin: 0 auto;
         }
 
-        /* Все 6 курсов в один ряд, строго одинаковые по ширине и высоте */
+        /* Все 6 курсов в один ряд (+15% к размеру: 210 x 279 px) */
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(6, 182px);
-            gap: 18px;
-            max-width: 1240px;
+            grid-template-columns: repeat(6, 210px);
+            gap: 16px;
+            max-width: 1360px;
             width: 100%;
             justify-content: center;
             align-items: center;
-            margin-bottom: 34px;
+            margin-bottom: 36px;
         }
 
-        /* Единый калибр всех 7 карточек: 182 x 242 px */
+        /* Тонкая рамка по умолчанию (2px) и утолщение + подсветка при наведении */
         .course-card {
             display: block;
-            width: 182px;
-            height: 242px;
+            width: 210px;
+            height: 279px;
             text-decoration: none;
-            background: transparent;
-            border: 4px solid transparent;
+            background: #ffffff;
+            border: 2px solid #00338D;
             border-radius: 17px;
             overflow: hidden;
+            box-shadow: 0 5px 14px rgba(0, 51, 141, 0.10);
             cursor: pointer;
-            transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                        border-color 0.25s ease,
-                        box-shadow 0.28s ease;
+            transition: all 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .course-card img {
@@ -153,30 +152,30 @@
             width: 100%;
             height: 100%;
             object-fit: fill;
-            border-radius: 12px;
-            transition: filter 0.25s ease;
+            transition: transform 0.28s ease, filter 0.28s ease;
         }
 
         .course-card:hover {
-            transform: translateY(-8px) scale(1.05);
+            transform: translateY(-8px) scale(1.045);
+            border-width: 4px;
             border-color: #00338D;
-            background: #ffffff;
-            box-shadow: 0 18px 34px rgba(0, 51, 141, 0.26), 0 0 0 4px rgba(0, 51, 141, 0.14);
+            box-shadow: 0 18px 36px rgba(0, 51, 141, 0.28), 0 0 0 4px rgba(0, 51, 141, 0.14);
         }
 
         .course-card:hover img {
-            filter: brightness(1.03) contrast(1.02);
+            transform: scale(1.02);
+            filter: brightness(1.04) contrast(1.02);
         }
 
-        /* Нижний центральный блок GSB (увеличен в 1.5 раза) + Управленческая экономика */
+        /* Нижний центральный блок GSB + Управленческая экономика того же размера (+15%) */
         .mba-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 460px;
-            padding-top: 18px;
+            max-width: 480px;
+            padding-top: 20px;
             border-top: 1px solid #e6ecf5;
             margin-bottom: 18px;
         }
@@ -194,7 +193,7 @@
             margin-top: auto;
             font-size: 13.5px;
             color: #8a94a6;
-            padding-top: 22px;
+            padding-top: 24px;
             padding-bottom: 14px;
             text-align: center;
             line-height: 1.6;
@@ -202,11 +201,11 @@
             letter-spacing: 0.2px;
         }
 
-        /* АДАПТАЦИЯ ПОД НОУТБУКИ С МАЛЫМ ЭКРАНОМ, ПЛАНШЕТЫ И СМАРТФОНЫ */
-        @media (max-width: 1220px) {
+        /* АДАПТАЦИЯ ПОД ЭКРАНЫ РАЗНОЙ ШИРИНЫ */
+        @media (max-width: 1380px) {
             .courses-grid {
-                grid-template-columns: repeat(3, 182px);
-                gap: 20px;
+                grid-template-columns: repeat(3, 210px);
+                gap: 22px;
             }
         }
 
@@ -224,7 +223,7 @@
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
             body {
                 padding: 14px 12px;
             }
@@ -247,21 +246,16 @@
 
             .courses-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                max-width: 400px;
-                margin-bottom: 26px;
+                gap: 14px;
+                max-width: 450px;
+                margin-bottom: 28px;
             }
 
             .course-card {
                 width: 100%;
                 height: auto;
-                aspect-ratio: 182 / 242;
-                border-width: 3px;
+                aspect-ratio: 210 / 279;
                 border-radius: 14px;
-            }
-
-            .course-card img {
-                border-radius: 10px;
             }
 
             .gsb-logo {
@@ -270,8 +264,8 @@
             }
 
             .mba-section .course-card {
-                width: calc(50% - 6px);
-                max-width: 194px;
+                width: calc(50% - 7px);
+                max-width: 218px;
             }
 
             footer {
@@ -301,7 +295,7 @@
         </p>
     </header>
 
-    <!-- Все 6 курсов в один ряд, выровненные по высоте и ширине -->
+    <!-- Все 6 курсов в один ряд (+15%, тонкая рамка по умолчанию) -->
     <main class="courses-grid">
         <a href="#" class="course-card" title="Микроэкономика">
             <img src="pic-micro.png" alt="Микроэкономика">
@@ -328,7 +322,7 @@
         </a>
     </main>
 
-    <!-- Отдельный центральный блок MBA: увеличенный логотип GSB + Управленческая экономика того же калибра -->
+    <!-- Отдельный центральный блок MBA: логотип GSB + Управленческая экономика (+15%) -->
     <section class="mba-section" aria-label="MBA Course">
         <img src="gsb.png" alt="Graduate School of Business AlmaU" class="gsb-logo">
         <a href="#" class="course-card" title="Управленческая экономика / Managerial Economics">
