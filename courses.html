@@ -19,14 +19,14 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 24px 20px;
+            padding: 22px 20px;
             position: relative;
         }
 
         /* Кнопка возврата в левом верхнем углу */
         .top-left-back {
             position: absolute;
-            top: 26px;
+            top: 24px;
             left: 28px;
             display: inline-flex;
             align-items: center;
@@ -52,7 +52,7 @@
         /* Переключатель языков в правом верхнем углу */
         .top-right-lang {
             position: absolute;
-            top: 26px;
+            top: 24px;
             right: 28px;
             display: inline-flex;
             background: #f4f7fb;
@@ -87,61 +87,60 @@
         /* Шапка с логотипом AlmaU строго по центру */
         .header-container {
             width: 100%;
-            max-width: 1120px;
+            max-width: 1260px;
             text-align: center;
-            margin-top: 6px;
-            margin-bottom: 34px;
+            margin-top: 4px;
+            margin-bottom: 28px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .center-logo {
-            width: 82px;
-            height: 82px;
+            width: 78px;
+            height: 78px;
             object-fit: contain;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         h1 {
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 800;
             color: #C8102E;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: 0.8px;
             text-transform: uppercase;
         }
 
         .subtitle {
-            font-size: 16px;
+            font-size: 15.5px;
             color: #555555;
             max-width: 740px;
             line-height: 1.5;
             margin: 0 auto;
         }
 
-        /* Сетка 2 ряда по 3 карточки */
+        /* Все 6 курсов в один ряд, строго одинаковые по ширине и высоте */
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 310px));
-            gap: 28px;
-            max-width: 1020px;
+            grid-template-columns: repeat(6, 182px);
+            gap: 18px;
+            max-width: 1240px;
             width: 100%;
             justify-content: center;
-            justify-items: center;
             align-items: center;
-            margin-bottom: 42px;
+            margin-bottom: 34px;
         }
 
-        /* Карточка плотно обжимает саму картинку; рамка появляется только при наведении */
+        /* Единый калибр всех 7 карточек: 182 x 242 px */
         .course-card {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
+            width: 182px;
+            height: 242px;
             text-decoration: none;
             background: transparent;
             border: 4px solid transparent;
-            border-radius: 18px;
+            border-radius: 17px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275),
@@ -152,62 +151,65 @@
         .course-card img {
             display: block;
             width: 100%;
-            max-width: 300px;
-            height: auto;
-            border-radius: 13px;
+            height: 100%;
+            object-fit: fill;
+            border-radius: 12px;
             transition: filter 0.25s ease;
         }
 
         .course-card:hover {
-            transform: translateY(-8px) scale(1.045);
+            transform: translateY(-8px) scale(1.05);
             border-color: #00338D;
             background: #ffffff;
-            box-shadow: 0 18px 36px rgba(0, 51, 141, 0.26), 0 0 0 4px rgba(0, 51, 141, 0.14);
+            box-shadow: 0 18px 34px rgba(0, 51, 141, 0.26), 0 0 0 4px rgba(0, 51, 141, 0.14);
         }
 
         .course-card:hover img {
             filter: brightness(1.03) contrast(1.02);
         }
 
-        /* Нижний центральный блок GSB + Управленческая экономика */
+        /* Нижний центральный блок GSB (увеличен в 1.5 раза) + Управленческая экономика */
         .mba-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 420px;
+            max-width: 460px;
             padding-top: 18px;
             border-top: 1px solid #e6ecf5;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
         }
 
         .gsb-logo {
-            height: 46px;
+            height: 70px;
             width: auto;
-            max-width: 190px;
+            max-width: 280px;
             object-fit: contain;
             margin-bottom: 14px;
             display: block;
-        }
-
-        .mba-section .course-card img {
-            max-width: 310px;
         }
 
         footer {
             margin-top: auto;
             font-size: 13.5px;
             color: #8a94a6;
-            padding-top: 28px;
-            padding-bottom: 16px;
+            padding-top: 22px;
+            padding-bottom: 14px;
             text-align: center;
             line-height: 1.6;
             width: 100%;
             letter-spacing: 0.2px;
         }
 
-        /* АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ И СМАРТФОНОВ */
+        /* АДАПТАЦИЯ ПОД НОУТБУКИ С МАЛЫМ ЭКРАНОМ, ПЛАНШЕТЫ И СМАРТФОНЫ */
+        @media (max-width: 1220px) {
+            .courses-grid {
+                grid-template-columns: repeat(3, 182px);
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 960px) {
             .top-bar-mobile {
                 display: flex;
@@ -220,20 +222,16 @@
             .top-right-lang {
                 position: static;
             }
-            .courses-grid {
-                grid-template-columns: repeat(2, minmax(0, 290px));
-                gap: 20px;
-            }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             body {
                 padding: 14px 12px;
             }
 
             .center-logo {
-                width: 66px;
-                height: 66px;
+                width: 64px;
+                height: 64px;
                 margin-bottom: 8px;
             }
 
@@ -250,31 +248,35 @@
             .courses-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
-                margin-bottom: 30px;
+                max-width: 400px;
+                margin-bottom: 26px;
             }
 
             .course-card {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 182 / 242;
                 border-width: 3px;
                 border-radius: 14px;
             }
 
             .course-card img {
-                max-width: 100%;
                 border-radius: 10px;
             }
 
             .gsb-logo {
-                height: 38px;
+                height: 54px;
                 margin-bottom: 10px;
             }
 
             .mba-section .course-card {
-                max-width: 68%;
+                width: calc(50% - 6px);
+                max-width: 194px;
             }
 
             footer {
                 font-size: 12px;
-                padding-top: 20px;
+                padding-top: 18px;
             }
         }
     </style>
@@ -299,10 +301,10 @@
         </p>
     </header>
 
-    <!-- 2 ряда по 3 курса -->
+    <!-- Все 6 курсов в один ряд, выровненные по высоте и ширине -->
     <main class="courses-grid">
-        <a href="#" class="course-card" title="Microeconomics">
-            <img src="pic-micro.png" alt="Microeconomics">
+        <a href="#" class="course-card" title="Микроэкономика">
+            <img src="pic-micro.png" alt="Микроэкономика">
         </a>
 
         <a href="#" class="course-card" title="Economics">
@@ -326,7 +328,7 @@
         </a>
     </main>
 
-    <!-- Отдельный центральный блок MBA: логотип GSB + Управленческая экономика -->
+    <!-- Отдельный центральный блок MBA: увеличенный логотип GSB + Управленческая экономика того же калибра -->
     <section class="mba-section" aria-label="MBA Course">
         <img src="gsb.png" alt="Graduate School of Business AlmaU" class="gsb-logo">
         <a href="#" class="course-card" title="Управленческая экономика / Managerial Economics">
