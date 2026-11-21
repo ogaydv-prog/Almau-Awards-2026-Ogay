@@ -87,7 +87,7 @@
         /* Шапка с логотипом AlmaU строго по центру */
         .header-container {
             width: 100%;
-            max-width: 1360px;
+            max-width: 1440px;
             text-align: center;
             margin-top: 4px;
             margin-bottom: 28px;
@@ -120,12 +120,12 @@
             margin: 0 auto;
         }
 
-        /* Все 6 курсов в один ряд (+15% к размеру: 210 x 279 px) */
+        /* Все 6 курсов в один ряд (+5% к размеру: 221 x 293 px) */
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(6, 210px);
-            gap: 16px;
-            max-width: 1360px;
+            grid-template-columns: repeat(6, 221px);
+            gap: 15px;
+            max-width: 1440px;
             width: 100%;
             justify-content: center;
             align-items: center;
@@ -135,8 +135,8 @@
         /* Тонкая рамка по умолчанию (2px) и утолщение + подсветка при наведении */
         .course-card {
             display: block;
-            width: 210px;
-            height: 279px;
+            width: 221px;
+            height: 293px;
             text-decoration: none;
             background: #ffffff;
             border: 2px solid #00338D;
@@ -167,16 +167,16 @@
             filter: brightness(1.04) contrast(1.02);
         }
 
-        /* Нижний центральный блок GSB + Управленческая экономика того же размера (+15%) */
+        /* Нижний центральный блок GSB + Управленческая экономика (+5%, линия чуть темнее) */
         .mba-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 480px;
-            padding-top: 20px;
-            border-top: 1px solid #e6ecf5;
+            max-width: 500px;
+            padding-top: 22px;
+            border-top: 1.5px solid #c3d1e6;
             margin-bottom: 18px;
         }
 
@@ -202,9 +202,9 @@
         }
 
         /* АДАПТАЦИЯ ПОД ЭКРАНЫ РАЗНОЙ ШИРИНЫ */
-        @media (max-width: 1380px) {
+        @media (max-width: 1440px) {
             .courses-grid {
-                grid-template-columns: repeat(3, 210px);
+                grid-template-columns: repeat(3, 221px);
                 gap: 22px;
             }
         }
@@ -223,7 +223,7 @@
             }
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 740px) {
             body {
                 padding: 14px 12px;
             }
@@ -247,14 +247,14 @@
             .courses-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 14px;
-                max-width: 450px;
+                max-width: 460px;
                 margin-bottom: 28px;
             }
 
             .course-card {
                 width: 100%;
                 height: auto;
-                aspect-ratio: 210 / 279;
+                aspect-ratio: 221 / 293;
                 border-radius: 14px;
             }
 
@@ -265,7 +265,7 @@
 
             .mba-section .course-card {
                 width: calc(50% - 7px);
-                max-width: 218px;
+                max-width: 222px;
             }
 
             footer {
@@ -295,7 +295,7 @@
         </p>
     </header>
 
-    <!-- Все 6 курсов в один ряд (+15%, тонкая рамка по умолчанию) -->
+    <!-- Все 6 курсов в один ряд (221 x 293 px) -->
     <main class="courses-grid">
         <a href="#" class="course-card" title="Микроэкономика">
             <img src="pic-micro.png" alt="Микроэкономика">
@@ -322,7 +322,7 @@
         </a>
     </main>
 
-    <!-- Отдельный центральный блок MBA: логотип GSB + Управленческая экономика (+15%) -->
+    <!-- Отдельный центральный блок MBA: логотип GSB + Управленческая экономика (221 x 293 px) -->
     <section class="mba-section" aria-label="MBA Course">
         <img src="gsb.png" alt="Graduate School of Business AlmaU" class="gsb-logo">
         <a href="#" class="course-card" title="Управленческая экономика / Managerial Economics">
