@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALMAU AWARDS 2026 | Курсы — Огай Д.В.</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px 20px;
+            position: relative;
+        }
+
+        /* Кнопка возврата в левом верхнем углу */
+        .top-left-back {
+            position: absolute;
+            top: 26px;
+            left: 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            background: #f4f7fb;
+            color: #00338D;
+            border: 1px solid #dce5f2;
+            padding: 7px 14px;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+
+        .top-left-back:hover {
+            background: #00338D;
+            color: #ffffff;
+            border-color: #00338D;
+        }
+
+        /* Переключатель языков в правом верхнем углу */
+        .top-right-lang {
+            position: absolute;
+            top: 26px;
+            right: 28px;
+            display: inline-flex;
+            background: #f4f7fb;
+            padding: 3px;
+            border-radius: 9px;
+            border: 1px solid #dce5f2;
+            z-index: 100;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #526480;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: #00338D;
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 51, 141, 0.2);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: #00338D;
+        }
+
+        /* Шапка с логотипом AlmaU строго по центру */
+        .header-container {
+            width: 100%;
+            max-width: 1120px;
+            text-align: center;
+            margin-top: 6px;
+            margin-bottom: 34px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .center-logo {
+            width: 82px;
+            height: 82px;
+            object-fit: contain;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 34px;
+            font-weight: 800;
+            color: #C8102E;
+            margin-bottom: 10px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #555555;
+            max-width: 740px;
+            line-height: 1.5;
+            margin: 0 auto;
+        }
+
+        /* Сетка 2 ряда по 3 карточки */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 310px));
+            gap: 28px;
+            max-width: 1020px;
+            width: 100%;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            margin-bottom: 42px;
+        }
+
+        /* Карточка плотно обжимает саму картинку; рамка появляется только при наведении */
+        .course-card {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background: transparent;
+            border: 4px solid transparent;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        border-color 0.25s ease,
+                        box-shadow 0.28s ease;
+        }
+
+        .course-card img {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 13px;
+            transition: filter 0.25s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px) scale(1.045);
+            border-color: #00338D;
+            background: #ffffff;
+            box-shadow: 0 18px 36px rgba(0, 51, 141, 0.26), 0 0 0 4px rgba(0, 51, 141, 0.14);
+        }
+
+        .course-card:hover img {
+            filter: brightness(1.03) contrast(1.02);
+        }
+
+        /* Нижний центральный блок GSB + Управленческая экономика */
+        .mba-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 420px;
+            padding-top: 18px;
+            border-top: 1px solid #e6ecf5;
+            margin-bottom: 24px;
+        }
+
+        .gsb-logo {
+            height: 46px;
+            width: auto;
+            max-width: 190px;
+            object-fit: contain;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .mba-section .course-card img {
+            max-width: 310px;
+        }
+
+        footer {
+            margin-top: auto;
+            font-size: 13.5px;
+            color: #8a94a6;
+            padding-top: 28px;
+            padding-bottom: 16px;
+            text-align: center;
+            line-height: 1.6;
+            width: 100%;
+            letter-spacing: 0.2px;
+        }
+
+        /* АДАПТАЦИЯ ДЛЯ ПЛАНШЕТОВ И СМАРТФОНОВ */
+        @media (max-width: 960px) {
+            .top-bar-mobile {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 12px;
+            }
+            .top-left-back,
+            .top-right-lang {
+                position: static;
+            }
+            .courses-grid {
+                grid-template-columns: repeat(2, minmax(0, 290px));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 14px 12px;
+            }
+
+            .center-logo {
+                width: 66px;
+                height: 66px;
+                margin-bottom: 8px;
+            }
+
+            h1 {
+                font-size: clamp(22px, 6.2vw, 28px);
+                margin-bottom: 8px;
+            }
+
+            .subtitle {
+                font-size: 13.5px;
+                padding: 0 6px;
+            }
+
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                margin-bottom: 30px;
+            }
+
+            .course-card {
+                border-width: 3px;
+                border-radius: 14px;
+            }
+
+            .course-card img {
+                max-width: 100%;
+                border-radius: 10px;
+            }
+
+            .gsb-logo {
+                height: 38px;
+                margin-bottom: 10px;
+            }
+
+            .mba-section .course-card {
+                max-width: 68%;
+            }
+
+            footer {
+                font-size: 12px;
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar-mobile">
+        <a href="index.html" class="top-left-back" data-i18n="backBtn">← Назад</a>
+
+        <div class="top-right-lang" role="group" aria-label="Language switcher">
+            <button type="button" class="lang-btn" data-lang="kz">ҚАЗ</button>
+            <button type="button" class="lang-btn active" data-lang="ru">РУС</button>
+            <button type="button" class="lang-btn" data-lang="en">ENG</button>
+        </div>
+    </div>
+
+    <header class="header-container">
+        <img src="almau.jpg" alt="AlmaU Logo" class="center-logo">
+        <h1 data-i18n="pageTitle">КУРСЫ</h1>
+        <p class="subtitle" data-i18n="subtitle">
+            Авторские образовательные порталы и интерактивные симуляторы по экономическим дисциплинам
+        </p>
+    </header>
+
+    <!-- 2 ряда по 3 курса -->
+    <main class="courses-grid">
+        <a href="#" class="course-card" title="Microeconomics">
+            <img src="pic-micro.png" alt="Microeconomics">
+        </a>
+
+        <a href="#" class="course-card" title="Economics">
+            <img src="pic-economics.png" alt="Economics">
+        </a>
+
+        <a href="#" class="course-card" title="Экономика">
+            <img src="pic-econ-rus.png" alt="Экономика">
+        </a>
+
+        <a href="#" class="course-card" title="Principles of Economics">
+            <img src="pic-pe.png" alt="Principles of Economics">
+        </a>
+
+        <a href="#" class="course-card" title="Monetary Economics">
+            <img src="pic-monetary.png" alt="Monetary Economics">
+        </a>
+
+        <a href="#" class="course-card" title="Industrial Economics">
+            <img src="pic-industial.png" alt="Industrial Economics">
+        </a>
+    </main>
+
+    <!-- Отдельный центральный блок MBA: логотип GSB + Управленческая экономика -->
+    <section class="mba-section" aria-label="MBA Course">
+        <img src="gsb.png" alt="Graduate School of Business AlmaU" class="gsb-logo">
+        <a href="#" class="course-card" title="Управленческая экономика / Managerial Economics">
+            <img src="pic-man-econ.png" alt="Управленческая экономика">
+        </a>
+    </section>
+
+    <footer>
+        <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
+    </footer>
+
+    <script>
+        const translations = {
+            ru: {
+                backBtn: "← Назад",
+                pageTitle: "КУРСЫ",
+                subtitle: "Авторские образовательные порталы и интерактивные симуляторы по экономическим дисциплинам",
+                footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026"
+            },
+            kz: {
+                backBtn: "← Артқа",
+                pageTitle: "КУРСТАР",
+                subtitle: "Экономикалық пәндер бойынша авторлық білім беру порталдары мен интерактивті симуляторлар",
+                footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026"
+            },
+            en: {
+                backBtn: "← Back",
+                pageTitle: "COURSES",
+                subtitle: "Author-designed educational portals and interactive simulators in economics",
+                footerText: "D.Ogay | School of Digital Technologies and Economics | AlmaU 2026"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang === 'kz' ? 'kk' : lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+    </script>
+
+</body>
+</html>
