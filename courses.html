@@ -132,7 +132,6 @@
             margin-bottom: 36px;
         }
 
-        /* Тонкая рамка по умолчанию (2px) и утолщение + подсветка при наведении */
         .course-card {
             display: block;
             width: 221px;
@@ -167,7 +166,7 @@
             filter: brightness(1.04) contrast(1.02);
         }
 
-        /* Нижний центральный блок GSB + Управленческая экономика (221 x 293 px) */
+        /* Нижний центральный блок GSB + Управленческая экономика */
         .mba-section {
             display: flex;
             flex-direction: column;
@@ -199,6 +198,82 @@
             line-height: 1.6;
             width: 100%;
             letter-spacing: 0.2px;
+        }
+
+        /* ПОЛНОЭКРАННЫЙ РЕЖИМ ПРОСМОТРА КУРСА С КНОПКОЙ ВОЗВРАТА */
+        .course-viewer {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+        }
+
+        .course-viewer.open {
+            display: flex;
+        }
+
+        .viewer-bar {
+            height: 46px;
+            background: #00338D;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 18px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+            flex-shrink: 0;
+        }
+
+        .viewer-back-btn {
+            background: #ffffff;
+            color: #00338D;
+            border: none;
+            border-radius: 7px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.18s ease;
+        }
+
+        .viewer-back-btn:hover {
+            background: #e6eefc;
+        }
+
+        .viewer-title {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 12px;
+        }
+
+        .viewer-ext-link {
+            color: #cfe0ff;
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .viewer-ext-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .viewer-frame {
+            width: 100%;
+            height: calc(100vh - 46px);
+            border: none;
+            display: block;
+            background: #ffffff;
         }
 
         /* АДАПТАЦИЯ ПОД ЭКРАНЫ РАЗНОЙ ШИРИНЫ */
@@ -291,33 +366,33 @@
         <img src="almau.jpg" alt="AlmaU Logo" class="center-logo">
         <h1 data-i18n="pageTitle">КУРСЫ</h1>
         <p class="subtitle" data-i18n="subtitle">
-            Цифровые образовательные порталы по экономическим дисциплинам
+            Авторские образовательные порталы и интерактивные симуляторы по экономическим дисциплинам
         </p>
     </header>
 
     <!-- Все 6 курсов бакалавриата в один ряд -->
     <main class="courses-grid">
-        <a href="https://ogaydv-prog.github.io/Microeconomics-BA/" target="_blank" rel="noopener" class="course-card" title="Микроэкономика">
+        <a href="https://ogaydv-prog.github.io/Microeconomics-BA/" class="course-card" title="Микроэкономика" onclick="openCourse(event, this)">
             <img src="pic-micro.png" alt="Микроэкономика">
         </a>
 
-        <a href="https://ogaydv-prog.github.io/Economics-se/" target="_blank" rel="noopener" class="course-card" title="Economics">
+        <a href="https://ogaydv-prog.github.io/Economics-se/" class="course-card" title="Economics" onclick="openCourse(event, this)">
             <img src="pic-economics.png" alt="Economics">
         </a>
 
-        <a href="https://ogaydv-prog.github.io/Economics-rus/" target="_blank" rel="noopener" class="course-card" title="Экономика">
+        <a href="https://ogaydv-prog.github.io/Economics-rus/" class="course-card" title="Экономика" onclick="openCourse(event, this)">
             <img src="pic-econ-rus.png" alt="Экономика">
         </a>
 
-        <a href="https://ogaydv-prog.github.io/principles-economics/" target="_blank" rel="noopener" class="course-card" title="Principles of Economics">
+        <a href="https://ogaydv-prog.github.io/principles-economics/" class="course-card" title="Principles of Economics" onclick="openCourse(event, this)">
             <img src="pic-pe.png" alt="Principles of Economics">
         </a>
 
-        <a href="https://ogaydv-prog.github.io/Monetary-economics-almau/" target="_blank" rel="noopener" class="course-card" title="Monetary Economics">
+        <a href="https://ogaydv-prog.github.io/Monetary-economics-almau/" class="course-card" title="Monetary Economics" onclick="openCourse(event, this)">
             <img src="pic-monetary.png" alt="Monetary Economics">
         </a>
 
-        <a href="https://ogaydv-prog.github.io/Industrial-Economics/" target="_blank" rel="noopener" class="course-card" title="Industrial Economics">
+        <a href="https://ogaydv-prog.github.io/Industrial-Economics/" class="course-card" title="Industrial Economics" onclick="openCourse(event, this)">
             <img src="pic-industial.png" alt="Industrial Economics">
         </a>
     </main>
@@ -325,7 +400,7 @@
     <!-- Отдельный центральный блок MBA: логотип GSB + Управленческая экономика -->
     <section class="mba-section" aria-label="MBA Course">
         <img src="gsb.png" alt="Graduate School of Business AlmaU" class="gsb-logo">
-        <a href="https://ogaydv-prog.github.io/Managerial-Economics/" target="_blank" rel="noopener" class="course-card" title="Управленческая экономика / Managerial Economics">
+        <a href="https://ogaydv-prog.github.io/Managerial-Economics/" class="course-card" title="Управленческая экономика / Managerial Economics" onclick="openCourse(event, this)">
             <img src="pic-man-econ.png" alt="Управленческая экономика">
         </a>
     </section>
@@ -334,25 +409,41 @@
         <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
     </footer>
 
+    <!-- Встроенный просмотрщик курса с плашкой возврата -->
+    <div id="courseViewer" class="course-viewer" aria-hidden="true">
+        <div class="viewer-bar">
+            <button type="button" class="viewer-back-btn" onclick="closeCourse()" data-i18n="toCoursesBtn">← К списку курсов</button>
+            <span id="viewerTitle" class="viewer-title">Курс</span>
+            <a id="viewerExtLink" href="#" target="_blank" rel="noopener" class="viewer-ext-link" data-i18n="openNewTab">В новой вкладке ↗</a>
+        </div>
+        <iframe id="viewerFrame" class="viewer-frame" src="about:blank" title="Course Portal"></iframe>
+    </div>
+
     <script>
         const translations = {
             ru: {
                 backBtn: "← Назад",
                 pageTitle: "КУРСЫ",
                 subtitle: "Авторские образовательные порталы и интерактивные симуляторы по экономическим дисциплинам",
-                footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026"
+                footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
+                toCoursesBtn: "← К списку курсов",
+                openNewTab: "В новой вкладке ↗"
             },
             kz: {
                 backBtn: "← Артқа",
                 pageTitle: "КУРСТАР",
                 subtitle: "Экономикалық пәндер бойынша авторлық білім беру порталдары мен интерактивті симуляторлар",
-                footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026"
+                footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
+                toCoursesBtn: "← Курстар тізіміне",
+                openNewTab: "Жаңа қойындыда ↗"
             },
             en: {
                 backBtn: "← Back",
                 pageTitle: "COURSES",
                 subtitle: "Author-designed educational portals and interactive simulators in economics",
-                footerText: "D.Ogay | School of Digital Technologies and Economics | AlmaU 2026"
+                footerText: "D.Ogay | School of Digital Technologies and Economics | AlmaU 2026",
+                toCoursesBtn: "← Back to Courses",
+                openNewTab: "Open in new tab ↗"
             }
         };
 
@@ -371,6 +462,27 @@
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        function openCourse(e, link) {
+            e.preventDefault();
+            const url = link.getAttribute('href');
+            const title = link.getAttribute('title') || 'Course';
+            document.getElementById('viewerTitle').textContent = title;
+            document.getElementById('viewerExtLink').href = url;
+            document.getElementById('viewerFrame').src = url;
+            document.getElementById('courseViewer').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCourse() {
+            document.getElementById('courseViewer').classList.remove('open');
+            document.getElementById('viewerFrame').src = 'about:blank';
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCourse();
         });
     </script>
 
