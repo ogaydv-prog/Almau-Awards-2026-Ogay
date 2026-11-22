@@ -200,7 +200,7 @@
             letter-spacing: 0.2px;
         }
 
-        /* ПОЛНОЭКРАННЫЙ РЕЖИМ ПРОСМОТРА БЕЗ ПОЛОСЫ — ТОЛЬКО ПЛАВАЮЩИЕ СЕРЫЕ КНОПКИ В УГЛАХ */
+        /* ПОЛНОЭКРАННЫЙ ПРОСМОТРЩИК + ПОЛНОСТЬЮ ПРОЗРАЧНАЯ КРУГЛАЯ ЗОНА ПОВЕРХ ГЕРБА ALMAU */
         .course-viewer {
             position: fixed;
             inset: 0;
@@ -213,44 +213,23 @@
             display: block;
         }
 
-        .viewer-pill-left,
-        .viewer-pill-right {
+        .logo-back-hotspot {
             position: fixed;
             top: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(244, 246, 249, 0.92);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            color: #475569;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 6px 12px;
-            font-size: 12.5px;
-            font-weight: 700;
-            text-decoration: none;
+            left: 20px;
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
-            transition: all 0.2s ease;
             z-index: 10000;
+            transition: box-shadow 0.22s ease, transform 0.22s ease;
         }
 
-        .viewer-pill-left {
-            left: 16px;
-        }
-
-        .viewer-pill-right {
-            right: 16px;
-            font-weight: 600;
-            color: #64748b;
-        }
-
-        .viewer-pill-left:hover,
-        .viewer-pill-right:hover {
-            background: #e2e8f0;
-            color: #1e293b;
-            border-color: #94a3b8;
+        .logo-back-hotspot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 3px rgba(0, 51, 141, 0.28);
         }
 
         .viewer-frame {
@@ -328,15 +307,12 @@
                 max-width: 222px;
             }
 
-            .viewer-pill-left,
-            .viewer-pill-right {
+            .logo-back-hotspot {
                 top: 10px;
-                padding: 5px 10px;
-                font-size: 11.5px;
+                left: 12px;
+                width: 64px;
+                height: 64px;
             }
-
-            .viewer-pill-left { left: 10px; }
-            .viewer-pill-right { right: 10px; }
 
             footer {
                 font-size: 12px;
@@ -404,10 +380,9 @@
         <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
     </footer>
 
-    <!-- Полноэкранный просмотрщик без синей шапки — только две аккуратные серые кнопки в углах -->
+    <!-- Полноэкранный просмотрщик: поверх герба AlmaU лежит прозрачная круглая кнопка возврата -->
     <div id="courseViewer" class="course-viewer" aria-hidden="true">
-        <button type="button" class="viewer-pill-left" onclick="closeCourse()" data-i18n="toCoursesBtn">← К списку курсов</button>
-        <a id="viewerExtLink" href="#" target="_blank" rel="noopener" class="viewer-pill-right" data-i18n="openNewTab">В новой вкладке ↗</a>
+        <button type="button" id="logoBackBtn" class="logo-back-hotspot" onclick="closeCourse()" title="← К списку курсов" aria-label="К списку курсов"></button>
         <iframe id="viewerFrame" class="viewer-frame" src="about:blank" title="Course Portal"></iframe>
     </div>
 
@@ -418,24 +393,21 @@
                 pageTitle: "КУРСЫ",
                 subtitle: "Авторские образовательные порталы и интерактивные симуляторы по экономическим дисциплинам",
                 footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
-                toCoursesBtn: "← К списку курсов",
-                openNewTab: "В новой вкладке ↗"
+                toCoursesTitle: "← К списку курсов"
             },
             kz: {
                 backBtn: "← Артқа",
                 pageTitle: "КУРСТАР",
                 subtitle: "Экономикалық пәндер бойынша авторлық білім беру порталдары мен интерактивті симуляторлар",
                 footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
-                toCoursesBtn: "← Курстар тізіміне",
-                openNewTab: "Жаңа қойындыда ↗"
+                toCoursesTitle: "← Курстар тізіміне"
             },
             en: {
                 backBtn: "← Back",
                 pageTitle: "COURSES",
                 subtitle: "Author-designed educational portals and interactive simulators in economics",
                 footerText: "D.Ogay | School of Digital Technologies and Economics | AlmaU 2026",
-                toCoursesBtn: "← Back to courses",
-                openNewTab: "Open in new tab ↗"
+                toCoursesTitle: "← Back to courses"
             }
         };
 
@@ -450,6 +422,10 @@
                     el.innerHTML = translations[lang][key];
                 }
             });
+            const logoBtn = document.getElementById('logoBackBtn');
+            if (logoBtn && translations[lang]) {
+                logoBtn.title = translations[lang].toCoursesTitle;
+            }
         }
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -459,7 +435,6 @@
         function openCourse(e, link) {
             e.preventDefault();
             const url = link.getAttribute('href');
-            document.getElementById('viewerExtLink').href = url;
             document.getElementById('viewerFrame').src = url;
             document.getElementById('courseViewer').classList.add('open');
             document.body.style.overflow = 'hidden';
