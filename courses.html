@@ -200,7 +200,7 @@
             letter-spacing: 0.2px;
         }
 
-        /* ПОЛНОЭКРАННЫЙ ПРОСМОТРЩИК + ПОЛНОСТЬЮ ПРОЗРАЧНАЯ КРУГЛАЯ ЗОНА ПОВЕРХ ГЕРБА ALMAU */
+        /* ПОЛНОЭКРАННЫЙ ПРОСМОТРЩИК + 100% НЕВИДИМАЯ КРУГЛАЯ ЗОНА ПОВЕРХ ГЕРБА ALMAU */
         .course-viewer {
             position: fixed;
             inset: 0;
@@ -215,21 +215,18 @@
 
         .logo-back-hotspot {
             position: fixed;
-            top: 14px;
-            left: 20px;
-            width: 84px;
-            height: 84px;
+            top: 12px;
+            left: 14px;
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
             background: transparent;
             border: none;
+            outline: none;
+            box-shadow: none;
             cursor: pointer;
             z-index: 10000;
-            transition: box-shadow 0.22s ease, transform 0.22s ease;
-        }
-
-        .logo-back-hotspot:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 0 3px rgba(0, 51, 141, 0.28);
+            -webkit-tap-highlight-color: transparent;
         }
 
         .viewer-frame {
@@ -307,9 +304,11 @@
                 max-width: 222px;
             }
 
+            /* На смартфоне герб внутри портала встаёт строго по центру вверху */
             .logo-back-hotspot {
                 top: 10px;
-                left: 12px;
+                left: 50%;
+                transform: translateX(-50%);
                 width: 64px;
                 height: 64px;
             }
@@ -380,7 +379,7 @@
         <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
     </footer>
 
-    <!-- Полноэкранный просмотрщик: поверх герба AlmaU лежит прозрачная круглая кнопка возврата -->
+    <!-- Полноэкранный просмотрщик: поверх герба AlmaU лежит полностью прозрачная кнопка возврата -->
     <div id="courseViewer" class="course-viewer" aria-hidden="true">
         <button type="button" id="logoBackBtn" class="logo-back-hotspot" onclick="closeCourse()" title="← К списку курсов" aria-label="К списку курсов"></button>
         <iframe id="viewerFrame" class="viewer-frame" src="about:blank" title="Course Portal"></iframe>
