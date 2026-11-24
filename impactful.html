@@ -50,7 +50,7 @@
             flex: 1;
         }
 
-        /* Шапка в едином стиле AlmaU Awards 2026 */
+        /* Шапка в едином стиле AlmaU Awards 2026 (синяя линия на уровне левого края контента) */
         header {
             display: flex;
             justify-content: space-between;
@@ -66,12 +66,14 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            margin-left: -82px;
         }
 
         .brand-logo {
             width: 66px;
             height: 66px;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .brand-title-tag {
@@ -525,6 +527,13 @@
             z-index: 10000;
         }
 
+        /* На экранах < 1540px возвращаем логотип в границы контейнера, чтобы не обрезался слева */
+        @media (max-width: 1540px) {
+            .brand-left {
+                margin-left: 0;
+            }
+        }
+
         /* Адаптация под планшеты и смартфоны */
         @media (max-width: 1180px) {
             .events-grid {
@@ -578,7 +587,7 @@
             Подтверждённый результат, масштаб изменений и эффект для AlmaU и внешней среды (нажмите на любое фото, сертификат или письмо для просмотра).
         </p>
         <div class="mission-quote-strip" data-i18n="missionQuote">
-            Четыре ключевых события 2026 года: PMS-семинар CEEMAN → выездная лекция по курсу монетарной экономики в офисе IMF CCAMTAC → визит депутата Европейского парламента → участие в Международной олимпиаде по экономике Института экономики Университета Ульма.
+            Участие в четырёх мероприятиях в 2026 году: PMS-семинар CEEMAN → выездная лекция по курсу монетарной экономики в офисе IMF CCAMTAC → визит депутата Европейского парламента → участие в Международной олимпиаде по экономике Института экономики Университета Ульма.
         </div>
     </section>
 
@@ -630,8 +639,8 @@
             <h2 data-i18n="e2Title">Сотрудничество с МВФ (IMF CCAMTAC) и выездная лекция</h2>
 
             <div class="event-desc" data-i18n="e2Desc">
-                <p><strong>23 июня:</strong> во время проведения курса монетарной экономики по теме роли МВФ был организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
-                <p><strong>2 июля:</strong> организована и проведена выездная лекция-экскурсия для студентов AlmaU в региональном офисе IMF CCAMTAC в Алматы по макроэкономической политике и таргетированию инфляции.</p>
+                <p><strong>23 июня:</strong> во время проведения курса монетарной экономики по теме <strong>«Роль МВФ в макроэкономической политике»</strong> был организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
+                <p><strong>2 июля:</strong> организована и проведена выездная лекция-экскурсия для студентов 3 курса английского отделения <strong>BA «Бизнес-аналитика и экономика» AlmaU</strong> в региональном офисе IMF CCAMTAC в Алматы по макроэкономической политике и таргетированию инфляции.</p>
             </div>
 
             <div class="media-label" data-i18n="e2MediaLabel">Визит в AlmaU и выездная лекция в МВФ</div>
@@ -640,7 +649,7 @@
                     <img src="imf1.jpg" alt="IMF в AlmaU">
                     <span class="thumb-caption">Встреча в AlmaU</span>
                 </div>
-                <div class="thumb-item" onclick="openLightbox('imf2.jpg', 'Студенты AlmaU в региональном офисе IMF CCAMTAC (2 июля 2026)')">
+                <div class="thumb-item" onclick="openLightbox('imf2.jpg', 'Студенты 3 курса BA Бизнес-аналитика и экономика AlmaU в региональном офисе IMF CCAMTAC (2 июля 2026)')">
                     <img src="imf2.jpg" alt="Студенты в IMF CCAMTAC">
                     <span class="thumb-caption">Офис МВФ</span>
                 </div>
@@ -734,7 +743,6 @@
                 </div>
             </div>
 
-            <div class="media-label" data-i18n="e4PhotoLabel">Фотохроника поездки (6 кадров)</div>
             <div class="photo-grid-3">
                 <div class="thumb-item" onclick="openLightbox('ulm01.jpg', 'Ульм, Германия — прибытие команды AlmaU')">
                     <img src="ulm01.jpg" alt="Ульм 1">
@@ -905,7 +913,7 @@
             backBtn: "← К начальной странице",
             pageTitle: "Impactful — Подтверждённое влияние",
             pageSubtitle: "Подтверждённый результат, масштаб изменений и эффект для AlmaU и внешней среды (нажмите на любое фото, сертификат или письмо для просмотра).",
-            missionQuote: "Четыре ключевых события 2026 года: PMS-семинар CEEMAN → выездная лекция по курсу монетарной экономики в офисе IMF CCAMTAC → визит депутата Европейского парламента → участие в Международной олимпиаде по экономике Института экономики Университета Ульма.",
+            missionQuote: "Участие в четырёх мероприятиях в 2026 году: PMS-семинар CEEMAN → выездная лекция по курсу монетарной экономики в офисе IMF CCAMTAC → визит депутата Европейского парламента → участие в Международной олимпиаде по экономике Института экономики Университета Ульма.",
             footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
 
             e1Date: "15–17 апреля 2026 • Блед, Словения",
@@ -916,8 +924,8 @@
 
             e2Date: "23 июня и 2 июля 2026 • Алматы",
             e2Title: "Сотрудничество с МВФ (IMF CCAMTAC) и выездная лекция",
-            e2Desc: `<p><strong>23 июня:</strong> во время проведения курса монетарной экономики по теме роли МВФ был организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
-                     <p><strong>2 июля:</strong> организована и проведена выездная лекция-экскурсия для студентов AlmaU в региональном офисе IMF CCAMTAC в Алматы по макроэкономической политике и таргетированию инфляции.</p>`,
+            e2Desc: `<p><strong>23 июня:</strong> во время проведения курса монетарной экономики по теме <strong>«Роль МВФ в макроэкономической политике»</strong> был организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
+                     <p><strong>2 июля:</strong> организована и проведена выездная лекция-экскурсия для студентов 3 курса английского отделения <strong>BA «Бизнес-аналитика и экономика» AlmaU</strong> в региональном офисе IMF CCAMTAC в Алматы по макроэкономической политике и таргетированию инфляции.</p>`,
             e2MediaLabel: "Визит в AlmaU и выездная лекция в МВФ",
             e2Link1: "🔗 LinkedIn: Пост директора МВФ о визите в AlmaU",
             e2Link2: "🔗 LinkedIn: Пост МВФ о лекции студентов в CCAMTAC",
@@ -936,7 +944,6 @@
             e4Desc: `<p>Подготовка и сопровождение команды студентов AlmaU (<strong>А. Мустапа</strong> и <strong>А. Сапарова</strong>) на 3-ю Международную экономическую олимпиаду в Институте экономики Университета Ульма (Германия).</p>
                      <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации по проведению онлайн-этапа олимпиады приняты оргкомитетом.</p>`,
             e4CertLabel: "Сертификаты Университета Ульма",
-            e4PhotoLabel: "Фотохроника поездки (6 кадров)",
             e4Link1: "✉️ Письмо оргкомитета Ульма (оригинал)",
             e4Link2: "✉️ Письмо по фидбеку онлайн-этапа (оригинал)"
         },
@@ -945,7 +952,7 @@
             backBtn: "← Бастапқы бетке",
             pageTitle: "Impactful — Расталған ықпал",
             pageSubtitle: "Расталған нәтиже, өзгерістер ауқымы және AlmaU мен сыртқы ортаға тигізген әсері (көру үшін кез келген фотоны, сертификатты немесе хатты басыңыз).",
-            missionQuote: "2026 жылғы төрт негізгі оқиға: CEEMAN PMS-семинары → IMF CCAMTAC кеңсесіндегі монетарлық экономика курсы бойынша көшпелі дәріс → Еуропалық парламент депутатының сапары → Ульм университетінің Экономика институтындағы Халықаралық экономикалық олимпиадаға қатысу.",
+            missionQuote: "2026 жылғы төрт іс-шараға қатысу: CEEMAN PMS-семинары → IMF CCAMTAC кеңсесіндегі монетарлық экономика курсы бойынша көшпелі дәріс → Еуропалық парламент депутатының сапары → Ульм университетінің Экономика институтындағы Халықаралық экономикалық олимпиадаға қатысу.",
             footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
 
             e1Date: "15–17 сәуір 2026 • Блед, Словения",
@@ -956,8 +963,8 @@
 
             e2Date: "23 маусым және 2 шілде 2026 • Алматы",
             e2Title: "ХВҚ (IMF CCAMTAC) серіктестігі және көшпелі дәріс",
-            e2Desc: `<p><strong>23 маусым:</strong> монетарлық экономика курсын өткізу барысында ХВҚ рөлі тақырыбы аясында ХВҚ Өңірлік орталығының (<strong>IMF CCAMTAC</strong>) директоры Хольгер Флёркемайердің AlmaU басшылығымен және ПОҚ-мен кездесуі ұйымдастырылды.</p>
-                     <p><strong>2 шілде:</strong> AlmaU студенттері үшін Алматыдағы IMF CCAMTAC кеңсесінде макроэкономикалық саясат бойынша көшпелі дәріс-экскурсия ұйымдастырылып, өткізілді.</p>`,
+            e2Desc: `<p><strong>23 маусым:</strong> монетарлық экономика курсын өткізу барысында <strong>«Макроэкономикалық саясаттағы ХВҚ рөлі»</strong> тақырыбы бойынша ХВҚ Өңірлік орталығының (<strong>IMF CCAMTAC</strong>) директоры Хольгер Флёркемайердің AlmaU басшылығымен және ПОҚ-мен кездесуі ұйымдастырылды.</p>
+                     <p><strong>2 шілде:</strong> <strong>AlmaU «Бизнес-аналитика және экономика» BA ағылшын бөлімінің 3-курс студенттері</strong> үшін Алматыдағы IMF CCAMTAC өңірлік кеңсесінде макроэкономикалық саясат және инфляцияны таргеттеу бойынша көшпелі дәріс-экскурсия ұйымдастырылып, өткізілді.</p>`,
             e2MediaLabel: "AlmaU-ға сапар және ХВҚ-дағы көшпелі дәріс",
             e2Link1: "🔗 LinkedIn: ХВҚ директорының AlmaU сапары туралы жазбасы",
             e2Link2: "🔗 LinkedIn: Студенттердің CCAMTAC дәрісі туралы жазба",
@@ -976,7 +983,6 @@
             e4Desc: `<p>AlmaU студенттері командасын (<strong>А. Мұстапа</strong> және <strong>А. Сапарова</strong>) Германияның Ульм университетінің Экономика институтында өткен 3-ші Халықаралық экономикалық олимпиадаға дайындау және алып бару.</p>
                      <p>AlmaU 2027 жылға ресми шақырту алды, ал олимпиаданың онлайн-кезеңін өткізу жөніндегі ұсыныстар ұйымдастыру комитетімен қабылданды.</p>`,
             e4CertLabel: "Ульм университетінің сертификаттары",
-            e4PhotoLabel: "Сапар фотохроникасы (6 кадр)",
             e4Link1: "✉️ Ульм ұйымдастыру комитетінің хаты (түпнұсқа)",
             e4Link2: "✉️ Онлайн-кезең пікірі бойынша хат (түпнұсқа)"
         },
@@ -985,7 +991,7 @@
             backBtn: "← To Home Page",
             pageTitle: "Impactful — Verified Impact",
             pageSubtitle: "Verified outcomes, scale of change, and impact on AlmaU and the external environment (click any photo, certificate, or letter to view).",
-            missionQuote: "Four key events of 2026: CEEMAN PMS Seminar → Monetary Economics field lecture at the IMF CCAMTAC office → visit of a Member of the European Parliament → participation in the International Economics Olympiad at the Institute of Economics, Ulm University.",
+            missionQuote: "Participation in four events in 2026: CEEMAN PMS Seminar → Monetary Economics field lecture at the IMF CCAMTAC office → visit of a Member of the European Parliament → participation in the International Economics Olympiad at the Institute of Economics, Ulm University.",
             footerText: "Ogay D.V. | School of Digital Technologies and Economics | AlmaU 2026",
 
             e1Date: "15–17 April 2026 • Bled, Slovenia",
@@ -996,8 +1002,8 @@
 
             e2Date: "23 June & 2 July 2026 • Almaty",
             e2Title: "IMF CCAMTAC Cooperation & Field Lecture for Students",
-            e2Desc: `<p><strong>23 June:</strong> during the Monetary Economics course module on the role of the IMF, organized a visit by <strong>IMF CCAMTAC</strong> Director Holger Floerkemeier to AlmaU to meet university leadership and faculty.</p>
-                     <p><strong>2 July:</strong> organized and conducted an on-site field lecture and study tour for AlmaU students at the IMF CCAMTAC regional office in Almaty on macroeconomic policy and inflation targeting.</p>`,
+            e2Desc: `<p><strong>23 June:</strong> during the Monetary Economics course module on <strong>"The Role of the IMF in Macroeconomic Policy"</strong>, organized a visit by <strong>IMF CCAMTAC</strong> Director Holger Floerkemeier to AlmaU to meet university leadership and faculty.</p>
+                     <p><strong>2 July:</strong> organized and conducted an on-site field lecture and study tour for <strong>3rd-year English-track students of BA in Business Analytics and Economics at AlmaU</strong> at the IMF CCAMTAC regional office in Almaty on macroeconomic policy and inflation targeting.</p>`,
             e2MediaLabel: "AlmaU Visit & IMF Field Lecture",
             e2Link1: "🔗 LinkedIn: IMF Director's post on visiting AlmaU",
             e2Link2: "🔗 LinkedIn: IMF post on AlmaU students at CCAMTAC",
@@ -1016,7 +1022,6 @@
             e4Desc: `<p>Mentored and accompanied the AlmaU student team (<strong>A. Mustapa</strong> and <strong>A. Saparova</strong>) to the 3rd ULMA Economic Olympiad at the Institute of Economics, Ulm University, Germany.</p>
                      <p>AlmaU received an official invitation for 2027, and recommendations on improving the online selection stage were adopted by the organizing committee.</p>`,
             e4CertLabel: "Ulm University Certificates",
-            e4PhotoLabel: "Trip Photo Chronicle (6 photos)",
             e4Link1: "✉️ Letter from Ulm Committee (Original)",
             e4Link2: "✉️ Online Stage Feedback Letter (Original)"
         }
