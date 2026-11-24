@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Sustainability — AlmaU Awards 2026 | Огай Д.В.</title>
+    <style>
+        :root {
+            --almau-navy: #001e50;
+            --almau-blue: #00338D;
+            --almau-blue-soft: #f0f4fa;
+            --almau-red: #C8102E;
+            --bg-page: #ffffff;
+            --bg-subtle: #f8fafd;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 12px 28px rgba(0, 30, 80, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.55;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Верхняя сплошная красная полоса */
+        .top-red-bar {
+            height: 6px;
+            background-color: var(--almau-red);
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1120px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 22px 24px 40px;
+            flex: 1;
+        }
+
+        /* Шапка в едином стиле AlmaU Awards 2026 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 26px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .brand-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-logo {
+            width: 66px;
+            height: 66px;
+            object-fit: contain;
+        }
+
+        .brand-title-tag {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: var(--almau-red);
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--almau-navy);
+            padding: 4px 0 4px 14px;
+            line-height: 1.35;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
+            flex-wrap: wrap;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 13px;
+            border-radius: 8px;
+            background: var(--almau-blue-soft);
+            color: var(--almau-navy);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #d0dcf0;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--almau-navy);
+            color: #ffffff;
+            border-color: var(--almau-navy);
+        }
+
+        /* Переключатель языков: ҚАЗ | РУС | ENG */
+        .lang-switcher {
+            display: inline-flex;
+            background: #f4f7fb;
+            padding: 3px;
+            border-radius: 9px;
+            border: 1px solid #dce5f2;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #526480;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--almau-navy);
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 30, 80, 0.2);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--almau-navy);
+        }
+
+        /* Заголовок раздела */
+        .hero-section {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 900px;
+            line-height: 1.5;
+        }
+
+        .matrix-rule-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            background: var(--bg-subtle);
+            border-left: 3px solid var(--almau-red);
+            border-radius: 0 8px 8px 0;
+            font-size: 13.5px;
+            color: var(--almau-navy);
+            line-height: 1.5;
+        }
+
+        .matrix-rule-box strong {
+            color: var(--almau-red);
+        }
+
+        /* Сетка 4 основных аспектов устойчивости (2x2) */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .pillar-card {
+            background: #ffffff;
+            border: 2px solid var(--border-light);
+            border-radius: 14px;
+            padding: 18px 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--almau-navy);
+        }
+
+        .pillar-card:hover {
+            border-color: var(--almau-navy);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pillar-num {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: var(--almau-red);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pillar-header h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            line-height: 1.3;
+        }
+
+        .pillar-body {
+            font-size: 13.8px;
+            color: var(--text-main);
+            line-height: 1.55;
+        }
+
+        .pillar-body p + p {
+            margin-top: 8px;
+        }
+
+        .pillar-body strong {
+            color: var(--almau-navy);
+        }
+
+        /* Интерактивный калькулятор экономии ресурсов и масштабирования */
+        .calculator-section {
+            background: var(--bg-subtle);
+            border: 2px solid #d0dcf0;
+            border-radius: 16px;
+            padding: 24px 26px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .calc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #dce5f2;
+        }
+
+        .calc-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            margin-bottom: 4px;
+        }
+
+        .calc-header p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        .reset-calc-btn {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: var(--almau-navy);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .reset-calc-btn:hover {
+            background: var(--almau-navy);
+            color: #ffffff;
+            border-color: var(--almau-navy);
+        }
+
+        .calc-layout {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .calc-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .control-group {
+            background: #ffffff;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+        }
+
+        .control-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--almau-navy);
+        }
+
+        .control-val {
+            background: var(--almau-blue-soft);
+            color: var(--almau-navy);
+            padding: 2px 9px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--almau-navy);
+            cursor: pointer;
+        }
+
+        .control-note {
+            font-size: 11.5px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Карточки итогов расчёта */
+        .calc-results {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .metric-box {
+            background: #ffffff;
+            border: 1px solid #d0dcf0;
+            border-radius: 12px;
+            padding: 16px 14px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 30, 80, 0.04);
+        }
+
+        .metric-box.accent {
+            border: 2px solid var(--almau-navy);
+            background: #ffffff;
+        }
+
+        .metric-value {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--almau-navy);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .metric-box.accent .metric-value {
+            color: var(--almau-red);
+        }
+
+        .metric-label {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .metric-sub {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 3px;
+        }
+
+        .calc-footnote {
+            margin-top: 16px;
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: auto;
+            font-size: 13.5px;
+            color: #8a94a6;
+            padding-top: 26px;
+            padding-bottom: 18px;
+            text-align: center;
+            line-height: 1.6;
+            width: 100%;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @media (max-width: 860px) {
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            .calc-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 14px 30px;
+            }
+            .brand-logo {
+                width: 54px;
+                height: 54px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .calc-results {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-red-bar"></div>
+
+<div class="container">
+    <!-- Шапка в едином стиле AlmaU Awards 2026 -->
+    <header>
+        <div class="brand-left">
+            <img src="almau.jpg" alt="AlmaU Logo" class="brand-logo">
+            <span class="brand-title-tag">ALMAU AWARDS 2026</span>
+        </div>
+
+        <div class="header-right">
+            <a href="index.html" class="back-btn" data-i18n="backBtn">← К начальной странице</a>
+            <div class="lang-switcher" role="group" aria-label="Language switcher">
+                <button type="button" class="lang-btn" data-lang="kz">ҚАЗ</button>
+                <button type="button" class="lang-btn active" data-lang="ru">РУС</button>
+                <button type="button" class="lang-btn" data-lang="en">ENG</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Заголовок раздела -->
+    <section class="hero-section">
+        <h1 data-i18n="pageTitle">Financial Sustainability — Устойчивость результата и ресурсов</h1>
+        <p class="subtitle" data-i18n="pageSubtitle">
+            Рациональное использование ресурсов университета, переход к безбумажной цифровой образовательной среде и создание повторно используемых учебных решений.
+        </p>
+        <div class="matrix-rule-box" data-i18n="matrixQuote">
+            <strong>Критерий матрицы AlmaU Awards 2026 (номинация «Лучший преподаватель»):</strong> вклад в долгосрочную устойчивость академической деятельности — рациональность ресурсов, предотвращение потерь, <em>повторно используемые образовательные материалы и решения</em> (привлечение внешнего финансирования учитывается только там, где релевантно, и не выступает обязательным требованием ко всем ППС).
+        </div>
+    </section>
+
+    <!-- 4 спокойных, фактологических блока -->
+    <main class="pillars-grid">
+
+        <!-- Блок 1 -->
+        <article class="pillar-card">
+            <div class="pillar-header">
+                <span class="pillar-num">1</span>
+                <h2 data-i18n="p1Title">Безбумажная цифровая образовательная среда</h2>
+            </div>
+            <div class="pillar-body" data-i18n="p1Body">
+                <p>Все практические задания, кейсы, тесты и рубежные контроли переведены в цифровой формат и выполняются студентами непосредственно на компьютере или смартфоне.</p>
+                <p>За весь семестр по всем дисциплинам не было распечатано ни одного листа с заданиями или хендаутами (за исключением обязательного печатного экземпляра силлабуса). При этом открытый доступ 24/7 на GitHub Pages не ограничивает выбор формата работы: часть студентов по собственной инициативе дополнительно ведёт рукописные конспекты в тетрадях.</p>
+            </div>
+        </article>
+
+        <!-- Блок 2 -->
+        <article class="pillar-card">
+            <div class="pillar-header">
+                <span class="pillar-num">2</span>
+                <h2 data-i18n="p2Title">Повторно используемые решения и нулевые затраты на хостинг</h2>
+            </div>
+            <div class="pillar-body" data-i18n="p2Body">
+                <p>Созданные веб-порталы и экономические симуляторы для <strong>6 курсов бакалавриата</strong> и <strong>1 курса MBA</strong> размещены на открытой инфраструктуре GitHub Pages и не требуют от университета затрат на платные лицензии или аренду серверов.</p>
+                <p>Разработанные модули, глоссарии и симуляторы являются <strong>повторно используемыми образовательными материалами</strong>: они легко обновляются и применяются из семестра в семестр для новых потоков обучающихся.</p>
+            </div>
+        </article>
+
+        <!-- Блок 3 -->
+        <article class="pillar-card">
+            <div class="pillar-header">
+                <span class="pillar-num">3</span>
+                <h2 data-i18n="p3Title">Автоматизация проверки и предотвращение потерь времени</h2>
+            </div>
+            <div class="pillar-body" data-i18n="p3Body">
+                <p>В учебный процесс внедрена система автоматической проверки заданий, цифрового аудита работ и структурированной обратной связи (комментариев и пояснений для студентов).</p>
+                <p>Это снижает нагрузку на печатную технику кафедры, исключает потери времени на тиражирование и ручную проверку типовых работ и позволяет направить время преподавателя на разбор сложных кейсов и консультации.</p>
+            </div>
+        </article>
+
+        <!-- Блок 4 -->
+        <article class="pillar-card">
+            <div class="pillar-header">
+                <span class="pillar-num">4</span>
+                <h2 data-i18n="p4Title">Потенциал масштабирования и экологическая ответственность</h2>
+            </div>
+            <div class="pillar-body" data-i18n="p4Body">
+                <p><strong>Перспектива масштабирования:</strong> текущая архитектура сознательно выстроена как поддержка очного обучения без подмены живой работы преподавателя, однако при постановке задачи на перевод дисциплин в полноценный дистанционный/онлайн-формат она требует лишь небольшой доработки (добавления маршрутизатора прохождения тем).</p>
+                <p><strong>Бережное отношение к ресурсам:</strong> отказ от лишней печати формирует культуру безбумажного документооборота и снижает расход бумаги и тонера в повседневной работе вуза.</p>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Интерактивный калькулятор экономии бумаги и масштабирования -->
+    <section class="calculator-section" aria-label="Калькулятор экономии ресурсов">
+        <div class="calc-header">
+            <div>
+                <h3 data-i18n="calcTitle">Калькулятор экономии бумаги при безбумажном обучении</h3>
+                <p data-i18n="calcSubtitle">Базовый расчёт по фактическому контингенту текущего периода и оценка эффекта при масштабировании на другие курсы и потоки.</p>
+            </div>
+            <button type="button" class="reset-calc-btn" onclick="resetCalc()" data-i18n="calcReset">Сбросить к факту (135 + 53)</button>
+        </div>
+
+        <div class="calc-layout">
+            <div class="calc-controls">
+                <div class="control-group">
+                    <div class="control-top">
+                        <span data-i18n="lblBach">Студенты бакалавриата (факт: 135 чел.)</span>
+                        <span class="control-val" id="valBach">135</span>
+                    </div>
+                    <input type="range" id="inpBach" min="0" max="500" step="5" value="135" oninput="updateCalc()">
+                    <div class="control-note" data-i18n="noteBach">Расчёт: 7 листов А4 на 1 студента за семестр (задания, кейсы, рубежные контроли)</div>
+                </div>
+
+                <div class="control-group">
+                    <div class="control-top">
+                        <span data-i18n="lblMba">Слушатели MBA (факт: 53 чел.)</span>
+                        <span class="control-val" id="valMba">53</span>
+                    </div>
+                    <input type="range" id="inpMba" min="0" max="250" step="1" value="53" oninput="updateCalc()">
+                    <div class="control-note" data-i18n="noteMba">Расчёт: 5 листов А4 на 1 слушателя (раздаточные хендауты и практические задания)</div>
+                </div>
+
+                <div class="control-group">
+                    <div class="control-top">
+                        <span data-i18n="lblScale">Коэффициент масштабирования (семестры / потоки)</span>
+                        <span class="control-val" id="valScale">1×</span>
+                    </div>
+                    <input type="range" id="inpScale" min="1" max="10" step="1" value="1" oninput="updateCalc()">
+                    <div class="control-note" data-i18n="noteScale">1× — фактический результат за 1 семестр; 2×–10× — тиражирование модели на учебный год или Школу</div>
+                </div>
+            </div>
+
+            <div class="calc-results">
+                <div class="metric-box accent">
+                    <div class="metric-value" id="resSheets">1 210</div>
+                    <div class="metric-label" data-i18n="m1Label">Сэкономлено листов А4</div>
+                    <div class="metric-sub" data-i18n="m1Sub">0 листов заданий распечатано</div>
+                </div>
+
+                <div class="metric-box">
+                    <div class="metric-value" id="resPacks">2.4</div>
+                    <div class="metric-label" data-i18n="m2Label">Стандартных пачек бумаги</div>
+                    <div class="metric-sub" data-i18n="m2Sub">по 500 листов в пачке</div>
+                </div>
+
+                <div class="metric-box">
+                    <div class="metric-value" id="resWeight">6.1 кг</div>
+                    <div class="metric-label" data-i18n="m3Label">Масса сохранённой бумаги</div>
+                    <div class="metric-sub" data-i18n="m3Sub">плотность 80 г/м² (~5 г/лист)</div>
+                </div>
+
+                <div class="metric-box">
+                    <div class="metric-value" id="resStudents">188</div>
+                    <div class="metric-label" data-i18n="m4Label">Охват обучающихся 24/7</div>
+                    <div class="metric-sub" data-i18n="m4Sub">открытый доступ без затрат на ПО</div>
+                </div>
+            </div>
+        </div>
+
+        <p class="calc-footnote" data-i18n="calcFootnote">
+            * Примечание: в расчёте учтены только базовые раздаточные материалы и бланки заданий (7 листов для бакалавриата и 5 листов для MBA), без учёта повторных распечаток при пересдачах и расхода тонера принтеров.
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
+</footer>
+
+<script>
+    function updateCalc() {
+        const bach = parseInt(document.getElementById('inpBach').value, 10);
+        const mba = parseInt(document.getElementById('inpMba').value, 10);
+        const scale = parseInt(document.getElementById('inpScale').value, 10);
+
+        document.getElementById('valBach').textContent = bach;
+        document.getElementById('valMba').textContent = mba;
+        document.getElementById('valScale').textContent = scale + '×';
+
+        const totalSheets = (bach * 7 + mba * 5) * scale;
+        const packs = (totalSheets / 500).toFixed(1);
+        const weightKg = ((totalSheets * 5) / 1000).toFixed(1);
+        const totalLearners = (bach + mba) * scale;
+
+        document.getElementById('resSheets').textContent = totalSheets.toLocaleString('ru-RU');
+        document.getElementById('resPacks').textContent = packs;
+        document.getElementById('resWeight').textContent = weightKg + (currentLang === 'en' ? ' kg' : ' кг');
+        document.getElementById('resStudents').textContent = totalLearners.toLocaleString('ru-RU');
+    }
+
+    function resetCalc() {
+        document.getElementById('inpBach').value = 135;
+        document.getElementById('inpMba').value = 53;
+        document.getElementById('inpScale').value = 1;
+        updateCalc();
+    }
+
+    const translations = {
+        ru: {
+            backBtn: "← К начальной странице",
+            pageTitle: "Financial Sustainability — Устойчивость результата и ресурсов",
+            pageSubtitle: "Рациональное использование ресурсов университета, переход к безбумажной цифровой образовательной среде и создание повторно используемых учебных решений.",
+            matrixQuote: "<strong>Критерий матрицы AlmaU Awards 2026 (номинация «Лучший преподаватель»):</strong> вклад в долгосрочную устойчивость академической деятельности — рациональность ресурсов, предотвращение потерь, <em>повторно используемые образовательные материалы и решения</em> (привлечение внешнего финансирования учитывается только там, где релевантно, и не выступает обязательным требованием ко всем ППС).",
+            footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
+
+            p1Title: "Безбумажная цифровая образовательная среда",
+            p1Body: `<p>Все практические задания, кейсы, тесты и рубежные контроли переведены в цифровой формат и выполняются студентами непосредственно на компьютере или смартфоне.</p>
+                     <p>За весь семестр по всем дисциплинам не было распечатано ни одного листа с заданиями или хендаутами (за исключением обязательного печатного экземпляра силлабуса). При этом открытый доступ 24/7 на GitHub Pages не ограничивает выбор формата работы: часть студентов по собственной инициативе дополнительно ведёт рукописные конспекты в тетрадях.</p>`,
+
+            p2Title: "Повторно используемые решения и нулевые затраты на хостинг",
+            p2Body: `<p>Созданные веб-порталы и экономические симуляторы для <strong>6 курсов бакалавриата</strong> и <strong>1 курса MBA</strong> размещены на открытой инфраструктуре GitHub Pages и не требуют от университета затрат на платные лицензии или аренду серверов.</p>
+                     <p>Разработанные модули, глоссарии и симуляторы являются <strong>повторно используемыми образовательными материалами</strong>: они легко обновляются и применяются из семестра в семестр для новых потоков обучающихся.</p>`,
+
+            p3Title: "Автоматизация проверки и предотвращение потерь времени",
+            p3Body: `<p>В учебный процесс внедрена система автоматической проверки заданий, цифрового аудита работ и структурированной обратной связи (комментариев и пояснений для студентов).</p>
+                     <p>Это снижает нагрузку на печатную технику кафедры, исключает потери времени на тиражирование и ручную проверку типовых работ и позволяет направить время преподавателя на разбор сложных кейсов и консультации.</p>`,
+
+            p4Title: "Потенциал масштабирования и экологическая ответственность",
+            p4Body: `<p><strong>Перспектива масштабирования:</strong> текущая архитектура сознательно выстроена как поддержка очного обучения без подмены живой работы преподавателя, однако при постановке задачи на перевод дисциплин в полноценный дистанционный/онлайн-формат она требует лишь небольшой доработки (добавления маршрутизатора прохождения тем).</p>
+                     <p><strong>Бережное отношение к ресурсам:</strong> отказ от лишней печати формирует культуру безбумажного документооборота и снижает расход бумаги и тонера в повседневной работе вуза.</p>`,
+
+            calcTitle: "Калькулятор экономии бумаги при безбумажном обучении",
+            calcSubtitle: "Базовый расчёт по фактическому контингенту текущего периода и оценка эффекта при масштабировании на другие курсы и потоки.",
+            calcReset: "Сбросить к факту (135 + 53)",
+            lblBach: "Студенты бакалавриата (факт: 135 чел.)",
+            noteBach: "Расчёт: 7 листов А4 на 1 студента за семестр (задания, кейсы, рубежные контроли)",
+            lblMba: "Слушатели MBA (факт: 53 чел.)",
+            noteMba: "Расчёт: 5 листов А4 на 1 слушателя (раздаточные хендауты и практические задания)",
+            lblScale: "Коэффициент масштабирования (семестры / потоки)",
+            noteScale: "1× — фактический результат за 1 семестр; 2×–10× — тиражирование модели на учебный год или Школу",
+            m1Label: "Сэкономлено листов А4",
+            m1Sub: "0 листов заданий распечатано",
+            m2Label: "Стандартных пачек бумаги",
+            m2Sub: "по 500 листов в пачке",
+            m3Label: "Масса сохранённой бумаги",
+            m3Sub: "плотность 80 г/м² (~5 г/лист)",
+            m4Label: "Охват обучающихся 24/7",
+            m4Sub: "открытый доступ без затрат на ПО",
+            calcFootnote: "* Примечание: в расчёте учтены только базовые раздаточные материалы и бланки заданий (7 листов для бакалавриата и 5 листов для MBA), без учёта повторных распечаток при пересдачах и расхода тонера принтеров."
+        },
+
+        kz: {
+            backBtn: "← Бастапқы бетке",
+            pageTitle: "Financial Sustainability — Нәтиже мен ресурстардың тұрақтылығы",
+            pageSubtitle: "Университет ресурстарын ұтымды пайдалану, қағазсыз цифрлық білім беру ортасына көшу және қайта пайдаланылатын оқу шешімдерін құру.",
+            matrixQuote: "<strong>AlmaU Awards 2026 матрицасының критерийі («Үздік оқытушы» номинациясы):</strong> академиялық қызметтің ұзақ мерзімді тұрақтылығына үлес — ресурстарды ұтымды пайдалану, шығындардың алдын алу, <em>қайта пайдаланылатын білім беру материалдары мен шешімдері</em> (сыртқы қаржыландыру тарту тек орынды болған жағдайда ескеріледі және барлық ПОҚ үшін міндетті талап болып табылмайды).",
+            footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
+
+            p1Title: "Қағазсыз цифрлық білім беру ортасы",
+            p1Body: `<p>Барлық практикалық тапсырмалар, кейстер, тесттер және аралық бақылаулар цифрлық форматқа көшіріліп, студенттермен тікелей компьютерде немесе смартфонда орындалады.</p>
+                     <p>Бүкіл семестр бойы барлық пәндер бойынша тапсырмалар немесе хендауттар жазылған бірде-бір парақ басып шығарылған жоқ (міндетті силлабус данасын қоспағанда). Сонымен қатар GitHub Pages-тегі 24/7 ашық қолжетімділік студенттердің таңдауын шектемейді: кейбір студенттер өз қалауымен дәптерге қолжазба конспектілер жүргізеді.</p>`,
+
+            p2Title: "Қайта пайдаланылатын шешімдер және хостингке нөлдік шығын",
+            p2Body: `<p><strong>Бакалавриаттың 6 курсы</strong> мен <strong>MBA-дің 1 курсы</strong> үшін жасалған веб-порталдар мен экономикалық симуляторлар GitHub Pages ашық инфрақұрылымында орналастырылған және университеттен ақылы лицензиялар мен сервер жалдауға шығын талап етпейді.</p>
+                     <p>Әзірленген модульдер, глоссарийлер мен симуляторлар <strong>қайта пайдаланылатын білім беру материалдары</strong> болып табылады: олар оңай жаңартылып, жаңа оқу ағындары үшін семестрден семестрге қолданылады.</p>`,
+
+            p3Title: "Тексеруді автоматтандыру және уақыт шығынының алдын алу",
+            p3Body: `<p>Оқу үдерісіне тапсырмаларды автоматты тексеру, жұмыстардың цифрлық аудиті және құрылымдалған кері байланыс (студенттерге арналған түсініктемелер мен пікірлер) жүйесі енгізілді.</p>
+                     <p>Бұл кафедраның баспа техникасына түсетін жүктемені азайтады, типтік жұмыстарды көбейту мен қолмен тексеруге кететін уақытты үнемдейді және оқытушы уақытын күрделі кейстерді талдауға бағыттауға мүмкіндік береді.</p>`,
+
+            p4Title: "Масштабтау әлеуеті және экологиялық жауапкершілік",
+            p4Body: `<p><strong>Масштабтау перспективасы:</strong> ағымдағы архитектура оқытушының тірі жұмысын алмастырмай, күндізгі оқытуды қолдау ретінде құрылған, алайда пәндерді толыққанды қашықтан/онлайн форматқа көшіру міндеті қойылған жағдайда аз ғана пысықтауды (тақырыптарды өту маршрутизаторын қосуды) талап етеді.</p>
+                     <p><strong>Ресурстарға ұқыпты қарау:</strong> артық басып шығарудан бас тарту қағазсыз құжат айналымы мәдениетін қалыптастырып, ЖОО-ның күнделікті жұмысында қағаз бен тонер шығынын азайтады.</p>`,
+
+            calcTitle: "Қағазсыз оқыту кезіндегі қағаз үнемдеу калькуляторы",
+            calcSubtitle: "Ағымдағы кезеңдегі нақты контингент бойынша базалық есеп және басқа курстар мен ағындарға масштабтау кезіндегі әсерді бағалау.",
+            calcReset: "Нақты мәнге қайтару (135 + 53)",
+            lblBach: "Бакалавриат студенттері (нақты: 135 адам)",
+            noteBach: "Есеп: семестр ішінде 1 студентке 7 А4 парағы (тапсырмалар, кейстер, аралық бақылаулар)",
+            lblMba: "MBA тыңдаушылары (нақты: 53 адам)",
+            noteMba: "Есеп: 1 тыңдаушыға 5 А4 парағы (таратпа хендауттар және практикалық тапсырмалар)",
+            lblScale: "Масштабтау коэффициенті (семестрлер / ағындар)",
+            noteScale: "1× — 1 семестрдегі нақты нәтиже; 2×–10× — модельді оқу жылына немесе Мектепке тарату",
+            m1Label: "Үнемделген А4 парақтары",
+            m1Sub: "0 тапсырма парағы басылды",
+            m2Label: "Стандартты қағаз бумасы",
+            m2Sub: "әр бумада 500 парақтан",
+            m3Label: "Сақталған қағаз салмағы",
+            m3Sub: "тығыздығы 80 г/м² (~5 г/парақ)",
+            m4Label: "24/7 білім алушылар қамтуы",
+            m4Sub: "БҚ шығынсыз ашық қолжетімділік",
+            calcFootnote: "* Ескертпе: есепте тек базалық таратпа материалдар мен тапсырма бланкілері (бакалавриат үшін 7 парақ және MBA үшін 5 парақ) ескерілген, қайта тапсыру кезіндегі қайта басып шығарулар мен принтер тонері есептелмеген."
+        },
+
+        en: {
+            backBtn: "← To Home Page",
+            pageTitle: "Financial Sustainability — Resource & Outcome Sustainability",
+            pageSubtitle: "Rational use of university resources, transition to a paperless digital learning environment, and creation of reusable educational solutions.",
+            matrixQuote: "<strong>AlmaU Awards 2026 Matrix Criterion (Best Teacher Nomination):</strong> contribution to long-term academic sustainability — resource rationality, loss prevention, and <em>reusable educational materials and solutions</em> (external revenue/funding is considered only where relevant and is not a mandatory requirement for all faculty).",
+            footerText: "Ogay D.V. | School of Digital Technologies and Economics | AlmaU 2026",
+
+            p1Title: "Paperless Digital Learning Environment",
+            p1Body: `<p>All practical assignments, case studies, quizzes, and midterm assessments have been transitioned to a digital format and are completed by students directly on a computer or smartphone.</p>
+                     <p>Throughout the entire semester across all courses, zero sheets of assignments or handouts were printed (except for the mandatory printed syllabus copy). Meanwhile, 24/7 open access on GitHub Pages respects learner preferences: some students voluntarily keep handwritten notes in notebooks alongside digital tools.</p>`,
+
+            p2Title: "Reusable Educational Solutions & Zero Hosting Costs",
+            p2Body: `<p>The web portals and economic simulators built for <strong>6 undergraduate courses</strong> and <strong>1 MBA course</strong> are hosted on open GitHub Pages infrastructure, requiring zero university expenditure on software licenses or server rentals.</p>
+                     <p>The developed modules, glossaries, and simulators serve as <strong>reusable educational materials</strong> that are easily updated and deployed semester after semester for incoming cohorts.</p>`,
+
+            p3Title: "Automated Grading & Prevention of Time Loss",
+            p3Body: `<p>An automated assignment checking workflow, digital audit trail, and structured student feedback system (comments and explanations) have been integrated into course delivery.</p>
+                     <p>This reduces wear on departmental printing equipment, eliminates time lost on duplicating and manually grading routine tasks, and frees faculty time for complex case discussions and student consultations.</p>`,
+
+            p4Title: "Scalability Potential & Environmental Responsibility",
+            p4Body: `<p><strong>Scalability outlook:</strong> the current architecture was intentionally designed to support on-campus teaching without replacing live faculty engagement; however, if tasked with transitioning courses into a full online format, it requires only minor refinement (adding a learning path router).</p>
+                     <p><strong>Resource stewardship:</strong> eliminating unnecessary printing fosters a paperless academic workflow and reduces paper and toner consumption in daily university operations.</p>`,
+
+            calcTitle: "Paperless Learning Resource Savings Calculator",
+            calcSubtitle: "Baseline calculation using actual current-semester enrollment and projected impact when scaled across additional courses and cohorts.",
+            calcReset: "Reset to Actual (135 + 53)",
+            lblBach: "Undergraduate Students (Actual: 135)",
+            noteBach: "Basis: 7 A4 sheets per student per semester (assignments, cases, midterms)",
+            lblMba: "MBA Participants (Actual: 53)",
+            noteMba: "Basis: 5 A4 sheets per participant (printed handouts and practical tasks)",
+            lblScale: "Scaling Multiplier (Semesters / Cohorts)",
+            noteScale: "1× — actual single-semester result; 2×–10× — scaling across an academic year or School",
+            m1Label: "A4 Sheets Saved",
+            m1Sub: "0 assignment sheets printed",
+            m2Label: "Standard Paper Reams",
+            m2Sub: "500 sheets per ream",
+            m3Label: "Paper Weight Saved",
+            m3Sub: "80 gsm density (~5 g/sheet)",
+            m4Label: "24/7 Learner Reach",
+            m4Sub: "open access with zero software fees",
+            calcFootnote: "* Note: calculations account only for baseline handouts and assignment sheets (7 sheets for undergraduate and 5 sheets for MBA courses), excluding reprints for retakes and printer toner costs."
+        }
+    };
+
+    let currentLang = 'ru';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang === 'kz' ? 'kk' : lang;
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        updateCalc();
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    updateCalc();
+</script>
+
+</body>
+</html>
