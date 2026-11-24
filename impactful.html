@@ -394,11 +394,11 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 18, 48, 0.86);
+            background: rgba(0, 18, 48, 0.88);
             z-index: 9999;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 18px;
             backdrop-filter: blur(3px);
         }
 
@@ -407,8 +407,8 @@
         }
 
         .lightbox-content {
-            max-width: 92vw;
-            max-height: 90vh;
+            max-width: 96vw;
+            max-height: 94vh;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -417,11 +417,19 @@
         }
 
         .lightbox-content img {
-            max-width: 100%;
-            max-height: 82vh;
+            max-width: 95vw;
+            max-height: 86vh;
             border-radius: 10px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
             background: #ffffff;
+            object-fit: contain;
+        }
+
+        /* Увеличенный масштаб для скриншота письма Европарламента */
+        .lightbox-content img.large-letter-img {
+            width: min(1150px, 95vw);
+            max-height: 87vh;
+            filter: contrast(1.04);
         }
 
         .lightbox-title {
@@ -431,12 +439,12 @@
             text-align: center;
         }
 
-        /* Окно чтения официальных писем из Ульма */
+        /* Окно чтения официальных писем в оригинале */
         .letter-modal-box {
             background: #ffffff;
-            max-width: 740px;
+            max-width: 780px;
             width: 100%;
-            max-height: 86vh;
+            max-height: 88vh;
             border-radius: 14px;
             border-top: 5px solid var(--almau-red);
             box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
@@ -469,7 +477,7 @@
         }
 
         .letter-modal-body {
-            padding: 22px 24px;
+            padding: 22px 26px;
             overflow-y: auto;
             font-size: 14px;
             line-height: 1.65;
@@ -480,10 +488,15 @@
             margin-top: 12px;
         }
 
+        .letter-modal-body a {
+            color: var(--almau-blue);
+            word-break: break-all;
+        }
+
         .letter-divider {
-            margin: 18px 0;
+            margin: 20px 0;
             border: none;
-            border-top: 1px dashed #cbd5e1;
+            border-top: 1px solid #cbd5e1;
         }
 
         .modal-close-btn {
@@ -505,10 +518,11 @@
 
         .floating-close {
             position: fixed;
-            top: 18px;
-            right: 24px;
-            width: 38px;
-            height: 38px;
+            top: 16px;
+            right: 22px;
+            width: 40px;
+            height: 40px;
+            z-index: 10000;
         }
 
         /* Адаптация под планшеты и смартфоны */
@@ -564,7 +578,7 @@
             Подтверждённый результат, масштаб изменений и эффект для AlmaU и внешней среды (нажмите на любое фото, сертификат или письмо для просмотра).
         </p>
         <div class="mission-quote-strip" data-i18n="missionQuote">
-            Четыре ключевых события 2026 года: Словения (CEEMAN) → МВФ (IMF CCAMTAC) → Европейский парламент → Германия (Университет Ульма).
+            Четыре ключевых события 2026 года: PMS-семинар CEEMAN → выездная лекция по курсу монетарной экономики в офисе IMF CCAMTAC → визит депутата Европейского парламента → участие в Международной олимпиаде по экономике Института экономики Университета Ульма.
         </div>
     </section>
 
@@ -670,7 +684,7 @@
                     <img src="pimpi-vizit.jpg" alt="Визит Пьера Пампи в AlmaU">
                     <span class="thumb-caption">Визит в AlmaU</span>
                 </div>
-                <div class="thumb-item" onclick="openLightbox('Pimpi-letter.png', 'Официальное благодарственное письмо от парламентского ассистента MEP Pierre Pimpie')">
+                <div class="thumb-item" onclick="openLightbox('Pimpi-letter.png', 'Официальное благодарственное письмо от парламентского ассистента MEP Pierre Pimpie (09.09.2026)', true)">
                     <img src="Pimpi-letter.png" alt="Благодарственное письмо из Европарламента">
                     <span class="thumb-caption">Письмо из ЕС</span>
                 </div>
@@ -685,8 +699,8 @@
                     <span data-i18n="e3Link2">📰 Публикация о визите на официальном сайте AlmaU</span>
                     <span class="arrow">↗</span>
                 </a>
-                <button type="button" class="doc-link" onclick="openLightbox('Pimpi-letter.png', 'Официальное благодарственное письмо от парламентского ассистента MEP Pierre Pimpie (09.09.2026)')">
-                    <span data-i18n="e3Link3">✉️ Открыть благодарственное письмо (Брюссель)</span>
+                <button type="button" class="doc-link" onclick="openLightbox('Pimpi-letter.png', 'Официальное благодарственное письмо от парламентского ассистента MEP Pierre Pimpie (09.09.2026)', true)">
+                    <span data-i18n="e3Link3">✉️ Открыть благодарственное письмо (увеличенный вид)</span>
                     <span class="arrow">🔍</span>
                 </button>
             </div>
@@ -744,11 +758,11 @@
 
             <div class="card-links">
                 <button type="button" class="doc-link" onclick="openLetterModal('ulm1')">
-                    <span data-i18n="e4Link1">✉️ Письмо оргкомитета Ульма (приглашение на 2027)</span>
+                    <span data-i18n="e4Link1">✉️ Письмо оргкомитета Ульма (оригинал)</span>
                     <span class="arrow">🔍</span>
                 </button>
                 <button type="button" class="doc-link" onclick="openLetterModal('ulm2')">
-                    <span data-i18n="e4Link2">✉️ Письмо Луки Чермака по фидбеку онлайн-этапа</span>
+                    <span data-i18n="e4Link2">✉️ Письмо по фидбеку онлайн-этапа (оригинал)</span>
                     <span class="arrow">🔍</span>
                 </button>
             </div>
@@ -770,16 +784,18 @@
     </div>
 </div>
 
-<!-- Модальное окно 1: Письмо из Университета Ульма (07.11.2026) -->
+<!-- Модальное окно 1: Оригинальное письмо из Университета Ульма (07.11.2026) -->
 <div class="modal-overlay" id="modal-ulm1" onclick="closeModal('modal-ulm1')">
     <div class="letter-modal-box" onclick="event.stopPropagation()">
         <div class="letter-modal-header">
             <div>
-                <h3>Thank you for coming to Ulm! — Institute of Economics, Ulm University</h3>
+                <h3>Fw: Thank you for coming to Ulm!</h3>
                 <div class="letter-meta-info">
-                    <strong>От:</strong> Luca Cermak &lt;luca.cermak@uni-ulm.de&gt; (Ulm University, Institute of Economics)<br>
-                    <strong>Кому:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt; • <strong>Копия:</strong> Simon Maier, Christoph Kiesl<br>
-                    <strong>Дата:</strong> Saturday, 07 November 2026
+                    <strong>От:</strong> luca.cermak@uni-ulm.de &lt;luca.cermak@uni-ulm.de&gt;<br>
+                    <strong>Отправлено:</strong> Saturday, 07 November 2026 15:39:36<br>
+                    <strong>Кому:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt;<br>
+                    <strong>Копия:</strong> simon.maier@uni-ulm.de &lt;simon.maier@uni-ulm.de&gt;; Christoph Kiesl &lt;christoph.kiesl@uni-ulm.de&gt;<br>
+                    <strong>Тема:</strong> Thank you for coming to Ulm!
                 </div>
             </div>
             <button type="button" class="modal-close-btn" onclick="closeModal('modal-ulm1')" aria-label="Закрыть">×</button>
@@ -787,24 +803,39 @@
         <div class="letter-modal-body">
             <p>Dear Dmitriy,</p>
             <p>thank you for coming to Ulm with Amin and Alina and for spending the competition day with us. Travelling that far to accompany two students is a real effort and it was great to have you three.</p>
-            <p>We will put a report on this year's Olympiad on our website over the coming weeks, as we did for the previous editions: <a href="https://www.uni-ulm.de/ulma-eo" target="_blank" rel="noopener noreferrer">https://www.uni-ulm.de/ulma-eo</a></p>
+            <p>We will put a report on this year's Olympiad on our website over the coming weeks, as we did for the previous editions:</p>
+            <p><a href="https://www.uni-ulm.de/ulma-eo" target="_blank" rel="noopener noreferrer">https://www.uni-ulm.de/ulma-eo</a></p>
+            <p>The photos are in a shared Dropbox folder, and you are very welcome to add your own:</p>
+            <p><a href="https://www.dropbox.com/scl/fo/1nhxm9gu5ychmb266jc6z/ANBVD3fYMEE4a527k3Jt_dU?rlkey=9dxr654v0hzb72qned5jhzk93&st=au78dmjl&dl=0" target="_blank" rel="noopener noreferrer">https://www.dropbox.com/scl/fo/1nhxm9gu5ychmb266jc6z/ANBVD3fYMEE4a527k3Jt_dU?rlkey=9dxr654v0hzb72qned5jhzk93&amp;st=au78dmjl&amp;dl=0</a></p>
             <p>If you have feedback for us, we would be glad to have it. You saw the day from the outside, which is a perspective none of us has. If something did not work for your students, or if there is anything that would make a trip to Ulm easier or more worthwhile for a group, please say so plainly.</p>
-            <p>We would be glad if the contact with Almaty Management University carried on. After our confirmation back in September the thread went quiet, and we should have come back to you before November rather than leaving it there. <strong>If a group from AlmaU is considering Ulm again in 2027, it helps a great deal to hear about it early, then we can see what we are able to arrange on our side, for the students and for whoever travels with them.</strong></p>
+            <p>We would be glad if the contact with Almaty Management University carried on. After our confirmation back in September the thread went quiet, and we should have come back to you before November rather than leaving it there. If a group from AlmaU is considering Ulm again in 2027, it helps a great deal to hear about it early, then we can see what we are able to arrange on our side, for the students and for whoever travels with them.</p>
             <p>Thank you again, and safe travels home.</p>
-            <p>Warm regards,<br><strong>Luca Cermak</strong><br>Ulm University, Institute of Economics (Helmholtzstraße 18, Room 1.28, D-89081 Ulm, Germany)</p>
+            <p>Warm regards,</p>
+            <p>Luca</p>
+            <p style="font-size: 13px; color: #475569; margin-top: 14px;">
+                Ulm University<br>
+                Institute of Economics<br>
+                Helmholtzstraße 18, Room 1.28<br>
+                D-89081 Ulm<br>
+                Baden-Württemberg<br>
+                Germany<br>
+                Phone: +49 731 50-23738<br>
+                E-Mail: luca.cermak@uni-ulm.de
+            </p>
         </div>
     </div>
 </div>
 
-<!-- Модальное окно 2: Переписка и ответ Луки Чермака по фидбеку (10–11.11.2026) -->
+<!-- Модальное окно 2: Оригинальная переписка по фидбеку (10–11.11.2026) -->
 <div class="modal-overlay" id="modal-ulm2" onclick="closeModal('modal-ulm2')">
     <div class="letter-modal-box" onclick="event.stopPropagation()">
         <div class="letter-modal-header">
             <div>
                 <h3>AW: International Economic Olympiad at Ulm University / Greetings from Almaty</h3>
                 <div class="letter-meta-info">
-                    <strong>От:</strong> Luca Cermak &lt;luca.cermak@uni-ulm.de&gt; • <strong>Кому:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt;<br>
-                    <strong>Дата:</strong> 11.11.2026, 19:18
+                    <strong>От:</strong> luca.cermak@uni-ulm.de &lt;luca.cermak@uni-ulm.de&gt;<br>
+                    <strong>Кому:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt;<br>
+                    <strong>Дата:</strong> 11.11.2026, Ср, 19:18
                 </div>
             </div>
             <button type="button" class="modal-close-btn" onclick="closeModal('modal-ulm2')" aria-label="Закрыть">×</button>
@@ -812,27 +843,45 @@
         <div class="letter-modal-body">
             <p>Dear Dmitriy,</p>
             <p>thank you for the detailed message and I am glad the days in Ulm worked out for Amin and Alina.</p>
-            <p><strong>Your point on the online track is a fair one. We do have some detection methods in place, but we keep them confidential, otherwise they stop working. We are looking at the online stage again for 2027 and your remarks go into that.</strong></p>
-            <p><strong>On 2027 we would be glad to keep AlmaU involved.</strong> The dates are not fixed yet. I will come back to you once they are, so that we can talk in summer. What helps most at that point is how many students might come and whether someone travels with them.</p>
+            <p>Your point on the online track is a fair one. We do have some detection methods in place, but we keep them confidential, otherwise they stop working. We are looking at the online stage again for 2027 and your remarks go into that.</p>
+            <p>On 2027 we would be glad to keep AlmaU involved. The dates are not fixed yet. I will come back to you once they are, so that we can talk in summer. What helps most at that point is how many students might come and whether someone travels with them.</p>
             <p>If you are in Ulm again, you are welcome to sit in on a lecture properly rather than through a glass wall.</p>
             <p>Thanks again for coming.</p>
-            <p>Warm regards,<br><strong>Luca Cermak</strong><br>Ulm University, Institute of Economics</p>
-            <hr class="letter-divider">
-            <p style="font-size: 12.5px; color: #64748b;">
-                <strong>Von:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt; • <strong>Gesendet:</strong> Dienstag, 10. November 2026 10:17<br>
-                <strong>An:</strong> luca.cermak@uni-ulm.de • <strong>Betreff:</strong> RE: International Economic Olympiad at Ulm University / Greetings from Almaty
+            <p>Warm regards,<br>Luca</p>
+            <p style="font-size: 13px; color: #475569; margin-top: 12px;">
+                Ulm University<br>
+                Institute of Economics<br>
+                Helmholtzstraße 18, Room 1.28<br>
+                D-89081 Ulm<br>
+                Baden-Württemberg<br>
+                Germany<br>
+                Phone: +49 731 50-23738<br>
+                E-Mail: luca.cermak@uni-ulm.de
             </p>
-            <p>Dear Luca,<br>Thank you very much for your warm letter and for welcoming us so kindly to Ulm University. After a long journey, we are finally back home in Almaty, filled with wonderful memories and impressions from our trip...</p>
+            <hr class="letter-divider">
+            <p style="font-size: 13px; color: #475569;">
+                <strong>Von:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt;<br>
+                <strong>Gesendet:</strong> Dienstag, 10. November 2026 10:17<br>
+                <strong>An:</strong> luca.cermak@uni-ulm.de<br>
+                <strong>Betreff:</strong> RE: International Economic Olympiad at Ulm University / Greetings from Almaty
+            </p>
+            <p>Dear Luca,</p>
+            <p>Thank you very much for your warm letter and for welcoming us so kindly to Ulm University. After a long journey, we are finally back home in Almaty, filled with wonderful memories and impressions from our trip.</p>
         </div>
     </div>
 </div>
 
 <script>
-    function openLightbox(src, caption) {
+    function openLightbox(src, caption, isLargeLetter) {
         const lb = document.getElementById('lightbox');
         const img = document.getElementById('lightboxImg');
         const cap = document.getElementById('lightboxCaption');
         img.src = src;
+        if (isLargeLetter) {
+            img.classList.add('large-letter-img');
+        } else {
+            img.classList.remove('large-letter-img');
+        }
         cap.textContent = caption || '';
         lb.classList.add('open');
     }
@@ -856,7 +905,7 @@
             backBtn: "← К начальной странице",
             pageTitle: "Impactful — Подтверждённое влияние",
             pageSubtitle: "Подтверждённый результат, масштаб изменений и эффект для AlmaU и внешней среды (нажмите на любое фото, сертификат или письмо для просмотра).",
-            missionQuote: "Четыре ключевых события 2026 года: Словения (CEEMAN) → МВФ (IMF CCAMTAC) → Европейский парламент → Германия (Университет Ульма).",
+            missionQuote: "Четыре ключевых события 2026 года: PMS-семинар CEEMAN → выездная лекция по курсу монетарной экономики в офисе IMF CCAMTAC → визит депутата Европейского парламента → участие в Международной олимпиаде по экономике Института экономики Университета Ульма.",
             footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
 
             e1Date: "15–17 апреля 2026 • Блед, Словения",
@@ -880,7 +929,7 @@
             e3MediaLabel: "Фото встречи и письмо из Европарламента",
             e3Link1: "🇪🇺 Официальный реестр встреч Европарламента",
             e3Link2: "📰 Публикация о визите на официальном сайте AlmaU",
-            e3Link3: "✉️ Открыть благодарственное письмо (Брюссель)",
+            e3Link3: "✉️ Открыть благодарственное письмо (увеличенный вид)",
 
             e4Date: "4–7 ноября 2026 • Ульм, Германия",
             e4Title: "Международная олимпиада в Университете Ульма (ULMA)",
@@ -888,15 +937,15 @@
                      <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации по проведению онлайн-этапа олимпиады приняты оргкомитетом.</p>`,
             e4CertLabel: "Сертификаты Университета Ульма",
             e4PhotoLabel: "Фотохроника поездки (6 кадров)",
-            e4Link1: "✉️ Письмо оргкомитета Ульма (приглашение на 2027)",
-            e4Link2: "✉️ Письмо Луки Чермака по фидбеку онлайн-этапа"
+            e4Link1: "✉️ Письмо оргкомитета Ульма (оригинал)",
+            e4Link2: "✉️ Письмо по фидбеку онлайн-этапа (оригинал)"
         },
 
         kz: {
             backBtn: "← Бастапқы бетке",
             pageTitle: "Impactful — Расталған ықпал",
             pageSubtitle: "Расталған нәтиже, өзгерістер ауқымы және AlmaU мен сыртқы ортаға тигізген әсері (көру үшін кез келген фотоны, сертификатты немесе хатты басыңыз).",
-            missionQuote: "2026 жылғы төрт негізгі оқиға: Словения (CEEMAN) → ХВҚ (IMF CCAMTAC) → Еуропалық парламент → Германия (Ульм университеті).",
+            missionQuote: "2026 жылғы төрт негізгі оқиға: CEEMAN PMS-семинары → IMF CCAMTAC кеңсесіндегі монетарлық экономика курсы бойынша көшпелі дәріс → Еуропалық парламент депутатының сапары → Ульм университетінің Экономика институтындағы Халықаралық экономикалық олимпиадаға қатысу.",
             footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
 
             e1Date: "15–17 сәуір 2026 • Блед, Словения",
@@ -920,7 +969,7 @@
             e3MediaLabel: "Кездесу фотосы және Еуропарламент хаты",
             e3Link1: "🇪🇺 Еуропарламент кездесулерінің ресми тізілімі",
             e3Link2: "📰 AlmaU ресми сайтындағы жарияланым",
-            e3Link3: "✉️ Алғыс хатты ашу (Брюссель)",
+            e3Link3: "✉️ Алғыс хатты ашу (үлкейтілген түрі)",
 
             e4Date: "4–7 қараша 2026 • Ульм, Германия",
             e4Title: "Ульм университетіндегі халықаралық олимпиада (ULMA)",
@@ -928,15 +977,15 @@
                      <p>AlmaU 2027 жылға ресми шақырту алды, ал олимпиаданың онлайн-кезеңін өткізу жөніндегі ұсыныстар ұйымдастыру комитетімен қабылданды.</p>`,
             e4CertLabel: "Ульм университетінің сертификаттары",
             e4PhotoLabel: "Сапар фотохроникасы (6 кадр)",
-            e4Link1: "✉️ Ульм ұйымдастыру комитетінің хаты (2027 шақырту)",
-            e4Link2: "✉️ Лука Чермактың онлайн-кезең пікірі бойынша жауабы"
+            e4Link1: "✉️ Ульм ұйымдастыру комитетінің хаты (түпнұсқа)",
+            e4Link2: "✉️ Онлайн-кезең пікірі бойынша хат (түпнұсқа)"
         },
 
         en: {
             backBtn: "← To Home Page",
             pageTitle: "Impactful — Verified Impact",
             pageSubtitle: "Verified outcomes, scale of change, and impact on AlmaU and the external environment (click any photo, certificate, or letter to view).",
-            missionQuote: "Four milestone events in 2026: Slovenia (CEEMAN) → IMF CCAMTAC → European Parliament → Germany (Ulm University).",
+            missionQuote: "Four key events of 2026: CEEMAN PMS Seminar → Monetary Economics field lecture at the IMF CCAMTAC office → visit of a Member of the European Parliament → participation in the International Economics Olympiad at the Institute of Economics, Ulm University.",
             footerText: "Ogay D.V. | School of Digital Technologies and Economics | AlmaU 2026",
 
             e1Date: "15–17 April 2026 • Bled, Slovenia",
@@ -960,7 +1009,7 @@
             e3MediaLabel: "Meeting Photo & European Parliament Letter",
             e3Link1: "🇪🇺 Official European Parliament Meeting Register",
             e3Link2: "📰 Official News Article on AlmaU Website",
-            e3Link3: "✉️ View Appreciation Letter from Brussels",
+            e3Link3: "✉️ View Appreciation Letter (Enlarged View)",
 
             e4Date: "4–7 November 2026 • Ulm, Germany",
             e4Title: "International Economics Olympiad at Ulm University (ULMA)",
@@ -968,8 +1017,8 @@
                      <p>AlmaU received an official invitation for 2027, and recommendations on improving the online selection stage were adopted by the organizing committee.</p>`,
             e4CertLabel: "Ulm University Certificates",
             e4PhotoLabel: "Trip Photo Chronicle (6 photos)",
-            e4Link1: "✉️ Letter from Ulm Committee (2027 Invitation)",
-            e4Link2: "✉️ Reply from Luca Cermak on Online Stage Feedback"
+            e4Link1: "✉️ Letter from Ulm Committee (Original)",
+            e4Link2: "✉️ Online Stage Feedback Letter (Original)"
         }
     };
 
