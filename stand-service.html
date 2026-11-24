@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stand Service — AlmaU Awards 2026 | Огай Д.В.</title>
+    <style>
+        :root {
+            --almau-navy: #001e50;
+            --almau-blue: #00338D;
+            --almau-blue-soft: #f0f4fa;
+            --almau-red: #C8102E;
+            --bg-page: #ffffff;
+            --bg-subtle: #f8fafd;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 12px 28px rgba(0, 30, 80, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.55;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Верхняя сплошная красная полоса */
+        .top-red-bar {
+            height: 6px;
+            background-color: var(--almau-red);
+            width: 100%;
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 22px 20px 44px;
+            flex: 1;
+        }
+
+        /* Шапка в точном стиле meaningful.html */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 28px;
+            gap: 16px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .brand-left {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .brand-logo {
+            position: absolute;
+            right: calc(100% + 18px);
+            width: 68px;
+            height: 68px;
+            object-fit: contain;
+        }
+
+        .brand-title-tag {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: var(--almau-red);
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--almau-navy);
+            padding: 4px 0 4px 14px;
+            line-height: 1.35;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
+            flex-wrap: wrap;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 13px;
+            border-radius: 8px;
+            background: var(--almau-blue-soft);
+            color: var(--almau-navy);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #d0dcf0;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--almau-navy);
+            color: #ffffff;
+            border-color: var(--almau-navy);
+        }
+
+        /* Переключатель языков: ҚАЗ | РУС | ENG */
+        .lang-switcher {
+            display: inline-flex;
+            background: #f4f7fb;
+            padding: 3px;
+            border-radius: 9px;
+            border: 1px solid #dce5f2;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #526480;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--almau-navy);
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 30, 80, 0.2);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--almau-navy);
+        }
+
+        /* Заголовок раздела */
+        .hero-section {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 840px;
+            line-height: 1.5;
+        }
+
+        .mission-quote-strip {
+            margin-top: 14px;
+            padding: 10px 16px;
+            background: var(--bg-subtle);
+            border-left: 3px solid var(--almau-red);
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: var(--almau-navy);
+            font-weight: 500;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hint-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .toggle-all-btn {
+            background: #ffffff;
+            border: 1px solid #d0dcf0;
+            color: var(--almau-navy);
+            padding: 6px 13px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-all-btn:hover {
+            background: var(--almau-blue-soft);
+            border-color: var(--almau-navy);
+        }
+
+        /* Стек 5 карточек со стрелками */
+        .cards-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            color: var(--almau-navy);
+            opacity: 0.55;
+            user-select: none;
+        }
+
+        .flow-arrow svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2.3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .flip-card {
+            perspective: 1400px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+            display: grid;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateX(180deg);
+        }
+
+        .card-front, .card-back {
+            grid-area: 1 / 1;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 14px;
+            padding: 16px 22px;
+            border: 2px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s ease;
+        }
+
+        .card-front {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 78px;
+        }
+
+        .flip-card:hover .card-front {
+            background: var(--bg-subtle);
+            border-color: var(--almau-navy);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .front-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background: var(--almau-red);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(200, 16, 46, 0.25);
+        }
+
+        .step-info h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 2px;
+        }
+
+        .step-info p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        .flip-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--almau-navy);
+            background: var(--almau-blue-soft);
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 1px solid #d0dcf0;
+            white-space: nowrap;
+        }
+
+        .card-back {
+            background: #ffffff;
+            border: 2px solid var(--almau-navy);
+            transform: rotateX(180deg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .back-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 8px;
+            gap: 10px;
+        }
+
+        .back-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-circle-sm {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            background: var(--almau-red);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-header h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .flip-back-tag {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--almau-navy);
+            background: var(--almau-blue-soft);
+            padding: 4px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .back-body {
+            font-size: 14px;
+            color: var(--text-main);
+            line-height: 1.55;
+        }
+
+        .back-body ul {
+            padding-left: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .back-body li strong {
+            color: var(--almau-navy);
+        }
+
+        .highlight-pill {
+            display: inline-block;
+            background: var(--almau-blue-soft);
+            color: var(--almau-navy);
+            font-weight: 600;
+            padding: 1px 7px;
+            border-radius: 5px;
+            font-size: 13.5px;
+        }
+
+        /* =========================================================
+           ГАЛЕРЕЯ ДОКУМЕНТОВ: 2 ТОРЖЕСТВЕННЫХ ДИПЛОМА + СКРОМНАЯ БЛАГОДАРНОСТЬ
+           ========================================================= */
+        .awards-showcase {
+            margin-top: 40px;
+            padding: 30px 26px 34px;
+            background: #fafbfd;
+            border: 1px solid var(--border-light);
+            border-top: 4px solid var(--almau-navy);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .showcase-badge {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--almau-red);
+            margin-bottom: 6px;
+        }
+
+        .showcase-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            margin-bottom: 4px;
+        }
+
+        .showcase-header p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        /* Верхний ряд: два диплома I степени студенток в роскошных торжественных рамках */
+        .student-diplomas-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 360px));
+            gap: 30px;
+            justify-content: center;
+            align-items: start;
+            margin-bottom: 34px;
+        }
+
+        .diploma-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: zoom-in;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .diploma-item:hover {
+            transform: translateY(-6px) scale(1.02);
+        }
+
+        /* Благородная торжественная багетная рамка (глубокий синий + золотой кант + паспарту) */
+        .grand-frame {
+            width: 100%;
+            padding: 11px;
+            background: linear-gradient(145deg, #002a75 0%, #00163d 55%, #00338D 100%);
+            border: 3px solid #c59b27;
+            border-radius: 10px;
+            box-shadow:
+                0 16px 32px rgba(0, 30, 80, 0.18),
+                0 0 0 1px #e5c667,
+                inset 0 0 0 2px #d4af37;
+        }
+
+        .grand-mat {
+            background: #fdfbf7;
+            padding: 10px;
+            border: 1.5px solid #d4af37;
+            border-radius: 4px;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .grand-mat img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+        }
+
+        .diploma-caption {
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .diploma-caption .student-name {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--almau-navy);
+        }
+
+        .diploma-caption .diploma-rank {
+            display: inline-block;
+            margin-top: 3px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #8a6408;
+            background: #fef8e6;
+            border: 1px solid #edd48b;
+            padding: 2px 10px;
+            border-radius: 999px;
+        }
+
+        /* Нижний блок: благодарность руководителя — меньше по размеру и в самой простой скромной рамке */
+        .mentor-thanks-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 26px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .mentor-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 245px;
+            cursor: zoom-in;
+            transition: transform 0.25s ease;
+        }
+
+        .mentor-item:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Простая лаконичная тонкая деревянная рамка */
+        .simple-wood-frame {
+            width: 100%;
+            padding: 7px;
+            background: #8b6f4e;
+            border: 1.5px solid #6e5539;
+            border-radius: 5px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.10);
+        }
+
+        .simple-wood-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #ffffff;
+            border: 1px solid #d6c7b2;
+        }
+
+        .mentor-caption {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .mentor-caption .mentor-role {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .mentor-caption .mentor-sub {
+            display: block;
+            font-size: 12px;
+            color: #7b8798;
+            margin-top: 2px;
+        }
+
+        /* Модальное окно увеличения документа */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.84);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 9999;
+            cursor: zoom-out;
+        }
+
+        .lightbox-modal.open {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            cursor: default;
+        }
+
+        .lightbox-content img {
+            display: block;
+            max-width: 86vw;
+            max-height: 84vh;
+            width: auto;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--almau-red);
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            margin-top: auto;
+            font-size: 13.5px;
+            color: #8a94a6;
+            padding-top: 28px;
+            padding-bottom: 18px;
+            text-align: center;
+            line-height: 1.6;
+            width: 100%;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @media (max-width: 1150px) {
+            .brand-left {
+                gap: 14px;
+            }
+            .brand-logo {
+                position: static;
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .student-diplomas-row {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin-left: auto;
+                margin-right: auto;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .card-front {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .flip-indicator {
+                align-self: flex-end;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .awards-showcase {
+                padding: 22px 16px 26px;
+            }
+            .mentor-item {
+                max-width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-red-bar"></div>
+
+<div class="container">
+    <!-- Шапка -->
+    <header>
+        <div class="brand-left">
+            <img src="almau.jpg" alt="AlmaU Logo" class="brand-logo">
+            <span class="brand-title-tag">ALMAU AWARDS 2026</span>
+        </div>
+
+        <div class="header-right">
+            <a href="index.html" class="back-btn" data-i18n="backBtn">← К начальной странице</a>
+            <div class="lang-switcher" role="group" aria-label="Language switcher">
+                <button type="button" class="lang-btn" data-lang="kz">ҚАЗ</button>
+                <button type="button" class="lang-btn active" data-lang="ru">РУС</button>
+                <button type="button" class="lang-btn" data-lang="en">ENG</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Заголовок раздела -->
+    <section class="hero-section">
+        <h1 data-i18n="pageTitle">Stand Service — Качество опыта и процессов</h1>
+        <p class="subtitle" data-i18n="pageSubtitle">
+            Высокий стандарт образовательного сервиса, круглосуточная доступность учебных материалов, прозрачность оценки и персональное сопровождение студентов на пути к международным победам.
+        </p>
+        <div class="mission-quote-strip" data-i18n="missionQuote">
+            Принцип сервиса в обучении: студент в любой момент времени понимает правила игры, имеет 24/7 доступ ко всем инструментам курса и получает адресную поддержку наставника.
+        </div>
+    </section>
+
+    <!-- Панель управления карточками -->
+    <div class="toolbar">
+        <span class="hint-text" data-i18n="hintText">Нажмите на любую карточку ниже, чтобы перевернуть её и раскрыть содержание</span>
+        <button type="button" class="toggle-all-btn" id="toggleAllBtn" data-i18n="toggleAllOpen">Раскрыть все карточки</button>
+    </div>
+
+    <!-- 5 переворачивающихся карточек -->
+    <main class="cards-stack">
+
+        <!-- Карточка 1: ПРОБЛЕМА -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">1</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c1Title">Проблема</h2>
+                            <p data-i18n="c1Question">Что не работало или требовало изменения в образовательном сервисе?</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">1</div>
+                            <h3 data-i18n="c1Title">Проблема</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c1Body">
+                        <ul>
+                            <li><strong>Разрозненность учебных материалов:</strong> при классическом сопровождении курса лекции, глоссарий, кейсы и тесты часто хранятся в разных файлах и папках, из-за чего студент тратит время на поиск нужной темы перед занятием или экзаменом.</li>
+                            <li><strong>Ограниченность стандартного расписания для сильных студентов:</strong> базовые консультации по ИПР закрывают минимальные вопросы группы, но талантливым ребятам требуется системное индивидуальное сопровождение для выхода на международный уровень.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="6 14 12 20 18 14"></polyline></svg>
+        </div>
+
+        <!-- Карточка 2: ВАШ ВКЛАД -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">2</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c2Title">Ваш вклад</h2>
+                            <p data-i18n="c2Question">Как был перестроен сервис и сопровождение обучающихся?</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">2</div>
+                            <h3 data-i18n="c2Title">Ваш вклад</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c2Body">
+                        <ul>
+                            <li><strong>Единое «окно» курса 24/7:</strong> все 7 дисциплин собраны в единую цифровую экосистему с мгновенной навигацией с любого смартфона или ноутбука (силлабус, темы, симуляторы, видео, глоссарий, рубежные контроли и правила оценки).</li>
+                            <li><strong>Индивидуальный олимпиадный коучинг сверх ИПР:</strong> организована внеаудиторная подготовка мотивированных студенток по макроэкономическому моделированию и решению задач повышенной сложности.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="6 14 12 20 18 14"></polyline></svg>
+        </div>
+
+        <!-- Карточка 3: РЕЗУЛЬТАТ -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">3</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c3Title">Результат</h2>
+                            <p data-i18n="c3Question">Какой измеримый эффект дало улучшение сервиса и наставничества?</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">3</div>
+                            <h3 data-i18n="c3Title">Результат</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c3Body">
+                        <ul>
+                            <li><strong>Международное золото студентов AlmaU:</strong> студентки <span class="highlight-pill">Алина Сапарова</span> и <span class="highlight-pill">Амина Мустапа</span> завоевали <strong>Дипломы I степени</strong> на IV Открытой международной интернет-олимпиаде по макроэкономике (Ашхабад, 2026).</li>
+                            <li><strong>Высокая скорость и прозрачность учебного процесса:</strong> 188 обучающихся (бакалавриат и MBA) получают мгновенную обратную связь, чёткие критерии оценивания и бесперебойный доступ к материалам без технических сбоев.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="6 14 12 20 18 14"></polyline></svg>
+        </div>
+
+        <!-- Карточка 4: ДОКАЗАТЕЛЬСТВА -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">4</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c4Title">Доказательства</h2>
+                            <p data-i18n="c4Question">Официальные документы, дипломы и подтверждения</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">4</div>
+                            <h3 data-i18n="c4Title">Доказательства</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c4Body">
+                        <ul>
+                            <li><strong>Два официальных Диплома I степени:</strong> выданы Министерством образования Туркменистана и Туркменским государственным институтом экономики и управления студенткам AlmaU А. Сапаровой и А. Мустапа (представлены ниже).</li>
+                            <li><strong>Официальная Благодарность ректора:</strong> выдана научному руководителю команды AlmaU Д.В. Огаю за высокий уровень подготовки студентов (представлена ниже).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="6 14 12 20 18 14"></polyline></svg>
+        </div>
+
+        <!-- Карточка 5: ЗНАЧИМОСТЬ -->
+        <div class="flip-card" onclick="toggleCard(this)">
+            <div class="flip-card-inner">
+                <div class="card-front">
+                    <div class="front-left">
+                        <div class="step-circle">5</div>
+                        <div class="step-info">
+                            <h2 data-i18n="c5Title">Значимость</h2>
+                            <p data-i18n="c5Question">Почему такой стандарт сопровождения важен для AlmaU?</p>
+                        </div>
+                    </div>
+                    <span class="flip-indicator" data-i18n="flipOpen">Перевернуть ↻</span>
+                </div>
+                <div class="card-back">
+                    <div class="back-header">
+                        <div class="back-title-group">
+                            <div class="step-circle-sm">5</div>
+                            <h3 data-i18n="c5Title">Значимость</h3>
+                        </div>
+                        <span class="flip-back-tag" data-i18n="flipClose">Свернуть ↺</span>
+                    </div>
+                    <div class="back-body" data-i18n="c5Body">
+                        <ul>
+                            <li><strong>Студентоцентричность на деле:</strong> качественный образовательный сервис превращает сложную экономическую теорию в понятную и поддерживающую среду, где каждый студент чувствует внимание преподавателя.</li>
+                            <li><strong>Престиж университета:</strong> победы студентов на международных олимпиадах напрямую подтверждают конкурентоспособность подготовки в Школе цифровых технологий и экономики AlmaU.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ГАЛЕРЕЯ НАГРАД: сверху 2 диплома студенток в красивых рамках, ниже скромная благодарность руководителя -->
+    <section class="awards-showcase" aria-label="Дипломы и благодарность">
+        <div class="showcase-header">
+            <span class="showcase-badge" data-i18n="awardsBadge">Подтверждённый результат сопровождения • 2026</span>
+            <h2 data-i18n="awardsTitle">IV Открытая международная интернет-олимпиада по макроэкономике</h2>
+            <p data-i18n="awardsHint">Нажмите на любой документ, чтобы открыть его в полном размере</p>
+        </div>
+
+        <!-- Верхний ряд: 2 диплома девчонок в торжественных рамках -->
+        <div class="student-diplomas-row">
+            <div class="diploma-item" onclick="openLightbox('diplom-saparova.png', 'Диплом I степени — Сапарова Алина')">
+                <div class="grand-frame">
+                    <div class="grand-mat">
+                        <img src="diplom-saparova.png" alt="Диплом I степени — Сапарова Алина">
+                    </div>
+                </div>
+                <div class="diploma-caption">
+                    <span class="student-name" data-i18n="st1Name">Сапарова Алина</span>
+                    <span class="diploma-rank" data-i18n="st1Rank">Диплом I степени</span>
+                </div>
+            </div>
+
+            <div class="diploma-item" onclick="openLightbox('diplom-mustapa.png', 'Диплом I степени — Мустапа Амина')">
+                <div class="grand-frame">
+                    <div class="grand-mat">
+                        <img src="diplom-mustapa.png" alt="Диплом I степени — Мустапа Амина">
+                    </div>
+                </div>
+                <div class="diploma-caption">
+                    <span class="student-name" data-i18n="st2Name">Мустапа Амина</span>
+                    <span class="diploma-rank" data-i18n="st2Rank">Диплом I степени</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижний блок: благодарность научного руководителя — компактнее и в простой скромной деревянной рамке -->
+        <div class="mentor-thanks-row">
+            <div class="mentor-item" onclick="openLightbox('ogay-blag.png', 'Благодарность научному руководителю — Огай Д.В.')">
+                <div class="simple-wood-frame">
+                    <img src="ogay-blag.png" alt="Благодарность научному руководителю Огай Д.В.">
+                </div>
+                <div class="mentor-caption">
+                    <span class="mentor-role" data-i18n="mentorDocTitle">Благодарность научному руководителю</span>
+                    <span class="mentor-sub" data-i18n="mentorDocSub">Огай Д.В. • AlmaU</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Модальное окно просмотра документа в полный размер -->
+<div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)" aria-hidden="true">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Закрыть">×</button>
+        <img id="lightboxImg" src="" alt="">
+    </div>
+</div>
+
+<footer>
+    <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
+</footer>
+
+<script>
+    const translations = {
+        ru: {
+            backBtn: "← К начальной странице",
+            pageTitle: "Stand Service — Качество опыта и процессов",
+            pageSubtitle: "Высокий стандарт образовательного сервиса, круглосуточная доступность учебных материалов, прозрачность оценки и персональное сопровождение студентов на пути к международным победам.",
+            missionQuote: "Принцип сервиса в обучении: студент в любой момент времени понимает правила игры, имеет 24/7 доступ ко всем инструментам курса и получает адресную поддержку наставника.",
+            hintText: "Нажмите на любую карточку ниже, чтобы перевернуть её и раскрыть содержание",
+            toggleAllOpen: "Раскрыть все карточки",
+            toggleAllClose: "Свернуть все карточки",
+            flipOpen: "Перевернуть ↻",
+            flipClose: "Свернуть ↺",
+            footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
+
+            c1Title: "Проблема",
+            c1Question: "Что не работало или требовало изменения в образовательном сервисе?",
+            c1Body: `<ul>
+                <li><strong>Разрозненность учебных материалов:</strong> при классическом сопровождении курса лекции, глоссарий, кейсы и тесты часто хранятся в разных файлах и папках, из-за чего студент тратит время на поиск нужной темы перед занятием или экзаменом.</li>
+                <li><strong>Ограниченность стандартного расписания для сильных студентов:</strong> базовые консультации по ИПР закрывают минимальные вопросы группы, но талантливым ребятам требуется системное индивидуальное сопровождение для выхода на международный уровень.</li>
+            </ul>`,
+
+            c2Title: "Ваш вклад",
+            c2Question: "Как был перестроен сервис и сопровождение обучающихся?",
+            c2Body: `<ul>
+                <li><strong>Единое «окно» курса 24/7:</strong> все 7 дисциплин собраны в единую цифровую экосистему с мгновенной навигацией с любого смартфона или ноутбука (силлабус, темы, симуляторы, видео, глоссарий, рубежные контроли и правила оценки).</li>
+                <li><strong>Индивидуальный олимпиадный коучинг сверх ИПР:</strong> организована внеаудиторная подготовка мотивированных студенток по макроэкономическому моделированию и решению задач повышенной сложности.</li>
+            </ul>`,
+
+            c3Title: "Результат",
+            c3Question: "Какой измеримый эффект дало улучшение сервиса и наставничества?",
+            c3Body: `<ul>
+                <li><strong>Международное золото студентов AlmaU:</strong> студентки <span class="highlight-pill">Алина Сапарова</span> и <span class="highlight-pill">Амина Мустапа</span> завоевали <strong>Дипломы I степени</strong> на IV Открытой международной интернет-олимпиаде по макроэкономике (Ашхабад, 2026).</li>
+                <li><strong>Высокая скорость и прозрачность учебного процесса:</strong> 188 обучающихся (бакалавриат и MBA) получают мгновенную обратную связь, чёткие критерии оценивания и бесперебойный доступ к материалам без технических сбоев.</li>
+            </ul>`,
+
+            c4Title: "Доказательства",
+            c4Question: "Официальные документы, дипломы и подтверждения",
+            c4Body: `<ul>
+                <li><strong>Два официальных Диплома I степени:</strong> выданы Министерством образования Туркменистана и Туркменским государственным институтом экономики и управления студенткам AlmaU А. Сапаровой и А. Мустапа (представлены ниже).</li>
+                <li><strong>Официальная Благодарность ректора:</strong> выдана научному руководителю команды AlmaU Д.В. Огаю за высокий уровень подготовки студентов (представлена ниже).</li>
+            </ul>`,
+
+            c5Title: "Значимость",
+            c5Question: "Почему такой стандарт сопровождения важен для AlmaU?",
+            c5Body: `<ul>
+                <li><strong>Студентоцентричность на деле:</strong> качественный образовательный сервис превращает сложную экономическую теорию в понятную и поддерживающую среду, где каждый студент чувствует внимание преподавателя.</li>
+                <li><strong>Престиж университета:</strong> победы студентов на международных олимпиадах напрямую подтверждают конкурентоспособность подготовки в Школе цифровых технологий и экономики AlmaU.</li>
+            </ul>`,
+
+            awardsBadge: "Подтверждённый результат сопровождения • 2026",
+            awardsTitle: "IV Открытая международная интернет-олимпиада по макроэкономике",
+            awardsHint: "Нажмите на любой документ, чтобы открыть его в полном размере",
+            st1Name: "Сапарова Алина",
+            st1Rank: "Диплом I степени",
+            st2Name: "Мустапа Амина",
+            st2Rank: "Диплом I степени",
+            mentorDocTitle: "Благодарность научному руководителю",
+            mentorDocSub: "Огай Д.В. • AlmaU"
+        },
+
+        kz: {
+            backBtn: "← Бастапқы бетке",
+            pageTitle: "Stand Service — Тәжірибе мен үдерістердің сапасы",
+            pageSubtitle: "Білім беру сервисінің жоғары стандарты, оқу материалдарының тәулік бойы қолжетімділігі, бағалаудың ашықтығы және халықаралық жеңістер жолындағы студенттерді жеке сүйемелдеу.",
+            missionQuote: "Оқытудағы сервис қағидаты: студент кез келген уақытта бағалау ережелерін нақты түсінеді, курс құралдарына 24/7 қол жеткізеді және тәлімгердің атаулы қолдауын алады.",
+            hintText: "Мазмұнын ашу үшін төмендегі кез келген карточканы басыңыз",
+            toggleAllOpen: "Барлық карточкаларды ашу",
+            toggleAllClose: "Барлық карточкаларды жабу",
+            flipOpen: "Аудару ↻",
+            flipClose: "Жабу ↺",
+            footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
+
+            c1Title: "Мәселе",
+            c1Question: "Білім беру сервисінде не жұмыс істемеді немесе өзгерісті талап етті?",
+            c1Body: `<ul>
+                <li><strong>Оқу материалдарының шашыраңқылығы:</strong> курсты дәстүрлі сүйемелдеуде дәрістер, глоссарий, кейстер мен тесттер әртүрлі файлдарда сақталады, соның салдарынан студент қажетті тақырыпты іздеуге уақыт жоғалтады.</li>
+                <li><strong>Қабілетті студенттер үшін стандартты кестенің шектеулігі:</strong> ЖЖЖ бойынша базалық кеңестер топтың ең төменгі сұрақтарын ғана жабады, ал дарынды жастарға халықаралық деңгейге шығу үшін жүйелі жеке сүйемелдеу қажет.</li>
+            </ul>`,
+
+            c2Title: "Сіздің үлесіңіз",
+            c2Question: "Білім алушыларға сервис пен сүйемелдеу қалай қайта құрылды?",
+            c2Body: `<ul>
+                <li><strong>Курстың 24/7 бірыңғай «терезесі»:</strong> барлық 7 пән кез келген смартфон немесе ноутбуктен лезде навигация жасалатын бірыңғай цифрлық экожүйеге біріктірілді (силлабус, тақырыптар, симуляторлар, бейне, глоссарий, аралық бақылау).</li>
+                <li><strong>ЖЖЖ-дан тыс жеке олимпиадалық коучинг:</strong> ынталы студенттерді макроэкономикалық модельдеу және күрделі есептерді шешу бойынша аудиториядан тыс дайындау ұйымдастырылды.</li>
+            </ul>`,
+
+            c3Title: "Нәтиже",
+            c3Question: "Сервис пен тәлімгерлікті жақсарту қандай өлшенетін әсер берді?",
+            c3Body: `<ul>
+                <li><strong>AlmaU студенттерінің халықаралық алтыны:</strong> <span class="highlight-pill">Алина Сапарова</span> және <span class="highlight-pill">Амина Мұстапа</span> макроэкономика бойынша IV Ашық халықаралық интернет-олимпиадада (Ашхабад, 2026) <strong>I дәрежелі дипломдарды</strong> жеңіп алды.</li>
+                <li><strong>Оқу үдерісінің жоғары жылдамдығы мен ашықтығы:</strong> 188 білім алушы (бакалавриат және MBA) жедел кері байланыс, нақты бағалау критерийлері және материалдарға үздіксіз қолжетімділік алады.</li>
+            </ul>`,
+
+            c4Title: "Дәлелдемелер",
+            c4Question: "Ресми құжаттар, дипломдар және растаулар",
+            c4Body: `<ul>
+                <li><strong>Екі ресми I дәрежелі диплом:</strong> Түрікменстан Білім министрлігі және Түрікмен мемлекеттік экономика және басқару институты тарапынан AlmaU студенттері А. Сапарова мен А. Мұстапаға берілген (төменде ұсынылған).</li>
+                <li><strong>Ректордың ресми Алғыс хаты:</strong> студенттерді жоғары деңгейде дайындағаны үшін AlmaU командасының ғылыми жетекшісі Д.В. Огайға берілген (төменде ұсынылған).</li>
+            </ul>`,
+
+            c5Title: "Маңыздылығы",
+            c5Question: "Мұндай сүйемелдеу стандарты AlmaU үшін неге маңызды?",
+            c5Body: `<ul>
+                <li><strong>Іс жүзіндегі студентке бағдарлану:</strong> сапалы білім беру сервисі күрделі экономикалық теорияны әрбір студент оқытушының назарын сезінетін түсінікті әрі қолдаушы ортаға айналдырады.</li>
+                <li><strong>Университет беделі:</strong> студенттердің халықаралық олимпиадалардағы жеңістері AlmaU Цифрлық технологиялар және экономика мектебіндегі дайындықтың бәсекеге қабілеттілігін тікелей растайды.</li>
+            </ul>`,
+
+            awardsBadge: "Сүйемелдеудің расталған нәтижесі • 2026",
+            awardsTitle: "Макроэкономика бойынша IV Ашық халықаралық интернет-олимпиада",
+            awardsHint: "Толық көлемде ашу үшін кез келген құжатты басыңыз",
+            st1Name: "Сапарова Алина",
+            st1Rank: "I дәрежелі диплом",
+            st2Name: "Мұстапа Амина",
+            st2Rank: "I дәрежелі диплом",
+            mentorDocTitle: "Ғылыми жетекшіге алғыс хат",
+            mentorDocSub: "Огай Д.В. • AlmaU"
+        },
+
+        en: {
+            backBtn: "← To Home Page",
+            pageTitle: "Stand Service — Quality of Experience & Processes",
+            pageSubtitle: "High standard of educational service, 24/7 availability of learning materials, transparent grading, and personalized student mentoring toward international victories.",
+            missionQuote: "Service principle in teaching: at every moment, students clearly understand the rules, enjoy 24/7 access to all course tools, and receive dedicated mentor support.",
+            hintText: "Click any card below to flip it and explore the details",
+            toggleAllOpen: "Expand all cards",
+            toggleAllClose: "Collapse all cards",
+            flipOpen: "Flip ↻",
+            flipClose: "Flip back ↺",
+            footerText: "Ogay D.V. | School of Digital Technologies and Economics | AlmaU 2026",
+
+            c1Title: "The Problem",
+            c1Question: "What wasn't working or needed improvement in educational service?",
+            c1Body: `<ul>
+                <li><strong>Fragmented learning materials:</strong> in conventional course delivery, lectures, glossaries, cases, and tests are often scattered across separate files, forcing students to waste time searching for topics before classes or exams.</li>
+                <li><strong>Limits of standard schedules for high-potential students:</strong> baseline consultations cover routine group questions, whereas talented students require structured individual coaching to compete internationally.</li>
+            </ul>`,
+
+            c2Title: "Your Contribution",
+            c2Question: "How were student service and academic mentoring redesigned?",
+            c2Body: `<ul>
+                <li><strong>Unified 24/7 course portal:</strong> all 7 courses are consolidated into a single digital ecosystem with instant navigation from any smartphone or laptop (syllabus, modules, simulators, videos, glossary, midterms, and grading rules).</li>
+                <li><strong>Individual Olympiad coaching beyond workload:</strong> organized extracurricular training for motivated students in macroeconomic modeling and advanced problem solving.</li>
+            </ul>`,
+
+            c3Title: "The Result",
+            c3Question: "What measurable impact did enhanced service and mentoring achieve?",
+            c3Body: `<ul>
+                <li><strong>International gold for AlmaU students:</strong> students <span class="highlight-pill">Alina Saparova</span> and <span class="highlight-pill">Amina Mustapa</span> won <strong>1st Degree Diplomas</strong> at the 4th Open International Internet Olympiad in Macroeconomics (Ashgabat, 2026).</li>
+                <li><strong>Speed and transparency of the learning process:</strong> 188 learners (undergraduate and MBA) receive prompt feedback, clear assessment criteria, and uninterrupted access to course resources.</li>
+            </ul>`,
+
+            c4Title: "Evidence",
+            c4Question: "Official documents, diplomas, and confirmations",
+            c4Body: `<ul>
+                <li><strong>Two official 1st Degree Diplomas:</strong> awarded by the Ministry of Education of Turkmenistan and the Turkmen State Institute of Economics and Management to AlmaU students A. Saparova and A. Mustapa (displayed below).</li>
+                <li><strong>Official Rector's Letter of Appreciation:</strong> awarded to AlmaU team academic advisor D.V. Ogay for high-level student preparation (displayed below).</li>
+            </ul>`,
+
+            c5Title: "Significance",
+            c5Question: "Why does this standard of student support matter for AlmaU?",
+            c5Body: `<ul>
+                <li><strong>True student-centricity:</strong> responsive educational service turns complex economic theory into a clear, supportive environment where every student feels faculty engagement.</li>
+                <li><strong>University prestige:</strong> student victories at international Olympiads directly validate the global competitiveness of AlmaU's School of Digital Technologies and Economics.</li>
+            </ul>`,
+
+            awardsBadge: "Verified Mentoring Outcome • 2026",
+            awardsTitle: "4th Open International Internet Olympiad in Macroeconomics",
+            awardsHint: "Click any document to view it in full size",
+            st1Name: "Alina Saparova",
+            st1Rank: "1st Degree Diploma",
+            st2Name: "Amina Mustapa",
+            st2Rank: "1st Degree Diploma",
+            mentorDocTitle: "Letter of Appreciation to Academic Advisor",
+            mentorDocSub: "D.V. Ogay • AlmaU"
+        }
+    };
+
+    let currentLang = 'ru';
+    let allFlipped = false;
+
+    function toggleCard(card) {
+        card.classList.toggle('flipped');
+        updateToggleAllLabel();
+    }
+
+    function updateToggleAllLabel() {
+        const cards = document.querySelectorAll('.flip-card');
+        const flippedCount = document.querySelectorAll('.flip-card.flipped').length;
+        const btn = document.getElementById('toggleAllBtn');
+        allFlipped = flippedCount === cards.length;
+        btn.textContent = allFlipped ? translations[currentLang].toggleAllClose : translations[currentLang].toggleAllOpen;
+    }
+
+    document.getElementById('toggleAllBtn').addEventListener('click', () => {
+        const cards = document.querySelectorAll('.flip-card');
+        allFlipped = !allFlipped;
+        cards.forEach(card => {
+            if (allFlipped) {
+                card.classList.add('flipped');
+            } else {
+                card.classList.remove('flipped');
+            }
+        });
+        updateToggleAllLabel();
+    });
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang === 'kz' ? 'kk' : lang;
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+
+        updateToggleAllLabel();
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    function openLightbox(src, altText) {
+        const modal = document.getElementById('lightboxModal');
+        const img = document.getElementById('lightboxImg');
+        img.src = src;
+        img.alt = altText;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        const modal = document.getElementById('lightboxModal');
+        modal.classList.remove('open');
+        document.getElementById('lightboxImg').src = '';
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
+
+</body>
+</html>
