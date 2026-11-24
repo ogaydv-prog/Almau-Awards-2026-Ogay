@@ -42,7 +42,6 @@
             width: 100%;
         }
 
-        /* Контейнер расширен до 1360px, чтобы 4 карточки комфортно стояли в 1 ряд */
         .container {
             max-width: 1360px;
             width: 100%;
@@ -220,7 +219,6 @@
             background: var(--almau-red);
         }
 
-        /* Верхняя строка карточки: номер + дата/локация */
         .card-meta {
             display: flex;
             align-items: center;
@@ -297,11 +295,6 @@
             gap: 6px;
         }
 
-        .photo-grid-1 {
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-
         .thumb-item {
             position: relative;
             border-radius: 8px;
@@ -314,10 +307,6 @@
 
         .thumb-item.cert-ratio {
             aspect-ratio: 3 / 4;
-        }
-
-        .thumb-item.wide-ratio {
-            aspect-ratio: 16 / 10;
         }
 
         .thumb-item img {
@@ -373,6 +362,8 @@
             border: 1px solid #d0dcf0;
             transition: all 0.2s ease;
             cursor: pointer;
+            text-align: left;
+            width: 100%;
         }
 
         .doc-link:hover {
@@ -398,12 +389,12 @@
             border-top: 1px solid var(--border-light);
         }
 
-        /* Лайтбокс для просмотра фото и сертификатов в полный размер */
-        .lightbox {
+        /* Модальное окно для фото и писем */
+        .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 18, 48, 0.88);
+            background: rgba(0, 18, 48, 0.86);
             z-index: 9999;
             align-items: center;
             justify-content: center;
@@ -411,7 +402,7 @@
             backdrop-filter: blur(3px);
         }
 
-        .lightbox.open {
+        .modal-overlay.open {
             display: flex;
         }
 
@@ -440,20 +431,84 @@
             text-align: center;
         }
 
-        .lightbox-close {
-            position: fixed;
-            top: 18px;
-            right: 24px;
+        /* Окно чтения официальных писем из Ульма */
+        .letter-modal-box {
+            background: #ffffff;
+            max-width: 740px;
+            width: 100%;
+            max-height: 86vh;
+            border-radius: 14px;
+            border-top: 5px solid var(--almau-red);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .letter-modal-header {
+            padding: 16px 22px;
+            background: var(--bg-subtle);
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .letter-modal-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            margin-bottom: 4px;
+        }
+
+        .letter-meta-info {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        .letter-modal-body {
+            padding: 22px 24px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.65;
+            color: #1e293b;
+        }
+
+        .letter-modal-body p + p {
+            margin-top: 12px;
+        }
+
+        .letter-divider {
+            margin: 18px 0;
+            border: none;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .modal-close-btn {
             background: var(--almau-red);
             color: #ffffff;
             border: none;
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
             border-radius: 50%;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .floating-close {
+            position: fixed;
+            top: 18px;
+            right: 24px;
+            width: 38px;
+            height: 38px;
         }
 
         /* Адаптация под планшеты и смартфоны */
@@ -502,14 +557,14 @@
         </div>
     </header>
 
-    <!-- Заголовок раздела -->
+    <!-- Заголовок раздела строго по матрице AlmaU Awards 2026 -->
     <section class="hero-section">
-        <h1 data-i18n="pageTitle">Impactful — Подтверждённое влияние и международное признание</h1>
+        <h1 data-i18n="pageTitle">Impactful — Подтверждённое влияние</h1>
         <p class="subtitle" data-i18n="pageSubtitle">
-            Реализованные международные инициативы, партнёрства с глобальными институтами и продвижение бренда AlmaU в академическом и экспертном пространстве (нажмите на любое фото или сертификат для увеличения).
+            Подтверждённый результат, масштаб изменений и эффект для AlmaU и внешней среды (нажмите на любое фото, сертификат или письмо для просмотра).
         </p>
         <div class="mission-quote-strip" data-i18n="missionQuote">
-            Четыре ключевых международных кейса 2026 года: Словения (CEEMAN) → МВФ (IMF CCAMTAC) → Европейский парламент → Германия (Университет Ульма).
+            Четыре ключевых события 2026 года: Словения (CEEMAN) → МВФ (IMF CCAMTAC) → Европейский парламент → Германия (Университет Ульма).
         </div>
     </section>
 
@@ -528,8 +583,8 @@
             <h2 data-i18n="e1Title">Международный семинар CEEMAN (Program Management)</h2>
 
             <div class="event-desc" data-i18n="e1Desc">
-                <p>Успешное прохождение международного семинара <strong>Program Management Seminar 2026</strong> в ассоциации CEEMAN (IEDC-Bled School of Management).</p>
-                <p>Интеграция европейских стандартов управления программами в курсы Школы цифровых технологий и экономики и представление AlmaU в международной сети бизнес-школ.</p>
+                <p>Прохождение международного семинара <strong>Program Management Seminar 2026</strong> в ассоциации CEEMAN (IEDC-Bled School of Management).</p>
+                <p>Интеграция европейских стандартов управления образовательными программами в курсы Школы цифровых технологий и экономики и представление AlmaU в международной сети бизнес-школ.</p>
             </div>
 
             <div class="media-label" data-i18n="e1MediaLabel">Фотоотчёт и сертификат</div>
@@ -558,10 +613,10 @@
                 <span class="date-pill" data-i18n="e2Date">23 июня и 2 июля 2026 • Алматы</span>
             </div>
 
-            <h2 data-i18n="e2Title">Партнёрство с МВФ (IMF CCAMTAC) и выездная лекция</h2>
+            <h2 data-i18n="e2Title">Сотрудничество с МВФ (IMF CCAMTAC) и выездная лекция</h2>
 
             <div class="event-desc" data-i18n="e2Desc">
-                <p><strong>23 июня:</strong> по моей инициативе организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
+                <p><strong>23 июня:</strong> во время проведения курса монетарной экономики по теме роли МВФ был организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
                 <p><strong>2 июля:</strong> организована и проведена выездная лекция-экскурсия для студентов AlmaU в региональном офисе IMF CCAMTAC в Алматы по макроэкономической политике и таргетированию инфляции.</p>
             </div>
 
@@ -622,12 +677,16 @@
             </div>
 
             <div class="card-links">
-                <a href="https://www.europarl.europa.eu/meps/en/256951/PIERRE_PIMPIE/meetings/past" target="_blank" rel="noopener noreferrer" class="doc-link">
+                <a href="https://www.europarl.europa.eu/meps/en/256893/PIERRE_PIMPIE/meetings/past" target="_blank" rel="noopener noreferrer" class="doc-link">
                     <span data-i18n="e3Link1">🇪🇺 Официальный реестр встреч Европарламента</span>
                     <span class="arrow">↗</span>
                 </a>
+                <a href="https://almau.edu.kz/ru/v-almau-sostoyalas-vstrecha-s-deputatom-evropejskogo-parlamenta-perom-pampi/" target="_blank" rel="noopener noreferrer" class="doc-link">
+                    <span data-i18n="e3Link2">📰 Публикация о визите на официальном сайте AlmaU</span>
+                    <span class="arrow">↗</span>
+                </a>
                 <button type="button" class="doc-link" onclick="openLightbox('Pimpi-letter.png', 'Официальное благодарственное письмо от парламентского ассистента MEP Pierre Pimpie (09.09.2026)')">
-                    <span data-i18n="e3Link2">✉️ Открыть благодарственное письмо (Брюссель)</span>
+                    <span data-i18n="e3Link3">✉️ Открыть благодарственное письмо (Брюссель)</span>
                     <span class="arrow">🔍</span>
                 </button>
             </div>
@@ -646,7 +705,7 @@
 
             <div class="event-desc" data-i18n="e4Desc">
                 <p>Подготовка и сопровождение команды студентов AlmaU (<strong>А. Мустапа</strong> и <strong>А. Сапарова</strong>) на 3-ю Международную экономическую олимпиаду в Институте экономики Университета Ульма (Германия).</p>
-                <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации преподавателя по онлайн-этапу приняты оргкомитетом.</p>
+                <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации по проведению онлайн-этапа олимпиады приняты оргкомитетом.</p>
             </div>
 
             <div class="media-label" data-i18n="e4CertLabel">Сертификаты Университета Ульма</div>
@@ -684,14 +743,14 @@
             </div>
 
             <div class="card-links">
-                <a href="letter from Ulm.docx" target="_blank" rel="noopener noreferrer" class="doc-link">
-                    <span data-i18n="e4Link1">📄 Письмо оргкомитета Ульма (приглашение на 2027)</span>
-                    <span class="arrow">↗</span>
-                </a>
-                <a href="letter from Ulm feedbak.docx" target="_blank" rel="noopener noreferrer" class="doc-link">
-                    <span data-i18n="e4Link2">📄 Ответ Луки Чермака на экспертный фидбек</span>
-                    <span class="arrow">↗</span>
-                </a>
+                <button type="button" class="doc-link" onclick="openLetterModal('ulm1')">
+                    <span data-i18n="e4Link1">✉️ Письмо оргкомитета Ульма (приглашение на 2027)</span>
+                    <span class="arrow">🔍</span>
+                </button>
+                <button type="button" class="doc-link" onclick="openLetterModal('ulm2')">
+                    <span data-i18n="e4Link2">✉️ Письмо Луки Чермака по фидбеку онлайн-этапа</span>
+                    <span class="arrow">🔍</span>
+                </button>
             </div>
         </article>
 
@@ -703,11 +762,68 @@
 </footer>
 
 <!-- Модальное окно увеличения фотографий и сертификатов -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button type="button" class="lightbox-close" onclick="closeLightbox(event)" aria-label="Закрыть">×</button>
+<div class="modal-overlay" id="lightbox" onclick="closeModal('lightbox')">
+    <button type="button" class="modal-close-btn floating-close" onclick="closeModal('lightbox')" aria-label="Закрыть">×</button>
     <div class="lightbox-content" onclick="event.stopPropagation()">
         <img id="lightboxImg" src="" alt="">
         <div class="lightbox-title" id="lightboxCaption"></div>
+    </div>
+</div>
+
+<!-- Модальное окно 1: Письмо из Университета Ульма (07.11.2026) -->
+<div class="modal-overlay" id="modal-ulm1" onclick="closeModal('modal-ulm1')">
+    <div class="letter-modal-box" onclick="event.stopPropagation()">
+        <div class="letter-modal-header">
+            <div>
+                <h3>Thank you for coming to Ulm! — Institute of Economics, Ulm University</h3>
+                <div class="letter-meta-info">
+                    <strong>От:</strong> Luca Cermak &lt;luca.cermak@uni-ulm.de&gt; (Ulm University, Institute of Economics)<br>
+                    <strong>Кому:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt; • <strong>Копия:</strong> Simon Maier, Christoph Kiesl<br>
+                    <strong>Дата:</strong> Saturday, 07 November 2026
+                </div>
+            </div>
+            <button type="button" class="modal-close-btn" onclick="closeModal('modal-ulm1')" aria-label="Закрыть">×</button>
+        </div>
+        <div class="letter-modal-body">
+            <p>Dear Dmitriy,</p>
+            <p>thank you for coming to Ulm with Amin and Alina and for spending the competition day with us. Travelling that far to accompany two students is a real effort and it was great to have you three.</p>
+            <p>We will put a report on this year's Olympiad on our website over the coming weeks, as we did for the previous editions: <a href="https://www.uni-ulm.de/ulma-eo" target="_blank" rel="noopener noreferrer">https://www.uni-ulm.de/ulma-eo</a></p>
+            <p>If you have feedback for us, we would be glad to have it. You saw the day from the outside, which is a perspective none of us has. If something did not work for your students, or if there is anything that would make a trip to Ulm easier or more worthwhile for a group, please say so plainly.</p>
+            <p>We would be glad if the contact with Almaty Management University carried on. After our confirmation back in September the thread went quiet, and we should have come back to you before November rather than leaving it there. <strong>If a group from AlmaU is considering Ulm again in 2027, it helps a great deal to hear about it early, then we can see what we are able to arrange on our side, for the students and for whoever travels with them.</strong></p>
+            <p>Thank you again, and safe travels home.</p>
+            <p>Warm regards,<br><strong>Luca Cermak</strong><br>Ulm University, Institute of Economics (Helmholtzstraße 18, Room 1.28, D-89081 Ulm, Germany)</p>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно 2: Переписка и ответ Луки Чермака по фидбеку (10–11.11.2026) -->
+<div class="modal-overlay" id="modal-ulm2" onclick="closeModal('modal-ulm2')">
+    <div class="letter-modal-box" onclick="event.stopPropagation()">
+        <div class="letter-modal-header">
+            <div>
+                <h3>AW: International Economic Olympiad at Ulm University / Greetings from Almaty</h3>
+                <div class="letter-meta-info">
+                    <strong>От:</strong> Luca Cermak &lt;luca.cermak@uni-ulm.de&gt; • <strong>Кому:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt;<br>
+                    <strong>Дата:</strong> 11.11.2026, 19:18
+                </div>
+            </div>
+            <button type="button" class="modal-close-btn" onclick="closeModal('modal-ulm2')" aria-label="Закрыть">×</button>
+        </div>
+        <div class="letter-modal-body">
+            <p>Dear Dmitriy,</p>
+            <p>thank you for the detailed message and I am glad the days in Ulm worked out for Amin and Alina.</p>
+            <p><strong>Your point on the online track is a fair one. We do have some detection methods in place, but we keep them confidential, otherwise they stop working. We are looking at the online stage again for 2027 and your remarks go into that.</strong></p>
+            <p><strong>On 2027 we would be glad to keep AlmaU involved.</strong> The dates are not fixed yet. I will come back to you once they are, so that we can talk in summer. What helps most at that point is how many students might come and whether someone travels with them.</p>
+            <p>If you are in Ulm again, you are welcome to sit in on a lecture properly rather than through a glass wall.</p>
+            <p>Thanks again for coming.</p>
+            <p>Warm regards,<br><strong>Luca Cermak</strong><br>Ulm University, Institute of Economics</p>
+            <hr class="letter-divider">
+            <p style="font-size: 12.5px; color: #64748b;">
+                <strong>Von:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt; • <strong>Gesendet:</strong> Dienstag, 10. November 2026 10:17<br>
+                <strong>An:</strong> luca.cermak@uni-ulm.de • <strong>Betreff:</strong> RE: International Economic Olympiad at Ulm University / Greetings from Almaty
+            </p>
+            <p>Dear Luca,<br>Thank you very much for your warm letter and for welcoming us so kindly to Ulm University. After a long journey, we are finally back home in Almaty, filled with wonderful memories and impressions from our trip...</p>
+        </div>
     </div>
 </div>
 
@@ -721,32 +837,37 @@
         lb.classList.add('open');
     }
 
-    function closeLightbox(e) {
-        if (e) e.stopPropagation();
-        document.getElementById('lightbox').classList.remove('open');
+    function openLetterModal(id) {
+        document.getElementById('modal-' + id).classList.add('open');
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('open');
     }
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.open').forEach(el => el.classList.remove('open'));
+        }
     });
 
     const translations = {
         ru: {
             backBtn: "← К начальной странице",
-            pageTitle: "Impactful — Подтверждённое влияние и международное признание",
-            pageSubtitle: "Реализованные международные инициативы, партнёрства с глобальными институтами и продвижение бренда AlmaU в академическом и экспертном пространстве (нажмите на любое фото или сертификат для увеличения).",
-            missionQuote: "Четыре ключевых международных кейса 2026 года: Словения (CEEMAN) → МВФ (IMF CCAMTAC) → Европейский парламент → Германия (Университет Ульма).",
+            pageTitle: "Impactful — Подтверждённое влияние",
+            pageSubtitle: "Подтверждённый результат, масштаб изменений и эффект для AlmaU и внешней среды (нажмите на любое фото, сертификат или письмо для просмотра).",
+            missionQuote: "Четыре ключевых события 2026 года: Словения (CEEMAN) → МВФ (IMF CCAMTAC) → Европейский парламент → Германия (Университет Ульма).",
             footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
 
             e1Date: "15–17 апреля 2026 • Блед, Словения",
             e1Title: "Международный семинар CEEMAN (Program Management)",
-            e1Desc: `<p>Успешное прохождение международного семинара <strong>Program Management Seminar 2026</strong> в ассоциации CEEMAN (IEDC-Bled School of Management).</p>
-                     <p>Интеграция европейских стандартов управления программами в курсы Школы цифровых технологий и экономики и представление AlmaU в международной сети бизнес-школ.</p>`,
+            e1Desc: `<p>Прохождение международного семинара <strong>Program Management Seminar 2026</strong> в ассоциации CEEMAN (IEDC-Bled School of Management).</p>
+                     <p>Интеграция европейских стандартов управления образовательными программами в курсы Школы цифровых технологий и экономики и представление AlmaU в международной сети бизнес-школ.</p>`,
             e1MediaLabel: "Фотоотчёт и сертификат",
 
             e2Date: "23 июня и 2 июля 2026 • Алматы",
-            e2Title: "Партнёрство с МВФ (IMF CCAMTAC) и выездная лекция",
-            e2Desc: `<p><strong>23 июня:</strong> по моей инициативе организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
+            e2Title: "Сотрудничество с МВФ (IMF CCAMTAC) и выездная лекция",
+            e2Desc: `<p><strong>23 июня:</strong> во время проведения курса монетарной экономики по теме роли МВФ был организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
                      <p><strong>2 июля:</strong> организована и проведена выездная лекция-экскурсия для студентов AlmaU в региональном офисе IMF CCAMTAC в Алматы по макроэкономической политике и таргетированию инфляции.</p>`,
             e2MediaLabel: "Визит в AlmaU и выездная лекция в МВФ",
             e2Link1: "🔗 LinkedIn: Пост директора МВФ о визите в AlmaU",
@@ -758,34 +879,35 @@
                      <p>Обсуждены студенческие и преподавательские обмены с вузами ЕС, диверсификация экономики и инвестиционный климат Казахстана. Встреча официально задекларирована в реестре Европарламента.</p>`,
             e3MediaLabel: "Фото встречи и письмо из Европарламента",
             e3Link1: "🇪🇺 Официальный реестр встреч Европарламента",
-            e3Link2: "✉️ Открыть благодарственное письмо (Брюссель)",
+            e3Link2: "📰 Публикация о визите на официальном сайте AlmaU",
+            e3Link3: "✉️ Открыть благодарственное письмо (Брюссель)",
 
             e4Date: "4–7 ноября 2026 • Ульм, Германия",
             e4Title: "Международная олимпиада в Университете Ульма (ULMA)",
             e4Desc: `<p>Подготовка и сопровождение команды студентов AlmaU (<strong>А. Мустапа</strong> и <strong>А. Сапарова</strong>) на 3-ю Международную экономическую олимпиаду в Институте экономики Университета Ульма (Германия).</p>
-                     <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации преподавателя по онлайн-этапу приняты оргкомитетом.</p>`,
+                     <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации по проведению онлайн-этапа олимпиады приняты оргкомитетом.</p>`,
             e4CertLabel: "Сертификаты Университета Ульма",
             e4PhotoLabel: "Фотохроника поездки (6 кадров)",
-            e4Link1: "📄 Письмо оргкомитета Ульма (приглашение на 2027)",
-            e4Link2: "📄 Ответ Луки Чермака на экспертный фидбек"
+            e4Link1: "✉️ Письмо оргкомитета Ульма (приглашение на 2027)",
+            e4Link2: "✉️ Письмо Луки Чермака по фидбеку онлайн-этапа"
         },
 
         kz: {
             backBtn: "← Бастапқы бетке",
-            pageTitle: "Impactful — Расталған ықпал және халықаралық мойындау",
-            pageSubtitle: "Іске асырылған халықаралық бастамалар, жаһандық институттармен серіктестік және AlmaU брендін академиялық әрі сараптамалық кеңістікте ілгерілету (үлкейту үшін кез келген фотоны басыңыз).",
-            missionQuote: "2026 жылғы төрт негізгі халықаралық кейс: Словения (CEEMAN) → ХВҚ (IMF CCAMTAC) → Еуропалық парламент → Германия (Ульм университеті).",
+            pageTitle: "Impactful — Расталған ықпал",
+            pageSubtitle: "Расталған нәтиже, өзгерістер ауқымы және AlmaU мен сыртқы ортаға тигізген әсері (көру үшін кез келген фотоны, сертификатты немесе хатты басыңыз).",
+            missionQuote: "2026 жылғы төрт негізгі оқиға: Словения (CEEMAN) → ХВҚ (IMF CCAMTAC) → Еуропалық парламент → Германия (Ульм университеті).",
             footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
 
             e1Date: "15–17 сәуір 2026 • Блед, Словения",
             e1Title: "CEEMAN халықаралық семинары (Program Management)",
-            e1Desc: `<p>CEEMAN қауымдастығында (IEDC-Bled School of Management) <strong>Program Management Seminar 2026</strong> халықаралық семинарынан сәтті өту.</p>
-                     <p>Бағдарламаларды басқарудың еуропалық стандарттарын Цифрлық технологиялар және экономика мектебінің курстарына енгізу және AlmaU-ды бизнес-мектептердің халықаралық желісінде таныту.</p>`,
+            e1Desc: `<p>CEEMAN қауымдастығында (IEDC-Bled School of Management) <strong>Program Management Seminar 2026</strong> халықаралық семинарынан өту.</p>
+                     <p>Білім беру бағдарламаларын басқарудың еуропалық стандарттарын Цифрлық технологиялар және экономика мектебінің курстарына енгізу және AlmaU-ды бизнес-мектептердің халықаралық желісінде таныту.</p>`,
             e1MediaLabel: "Фотоесеп және сертификат",
 
             e2Date: "23 маусым және 2 шілде 2026 • Алматы",
             e2Title: "ХВҚ (IMF CCAMTAC) серіктестігі және көшпелі дәріс",
-            e2Desc: `<p><strong>23 маусым:</strong> жеке бастамаммен ХВҚ Өңірлік техникалық көмек орталығының (<strong>IMF CCAMTAC</strong>) директоры Хольгер Флёркемайердің AlmaU басшылығымен кездесуі ұйымдастырылды.</p>
+            e2Desc: `<p><strong>23 маусым:</strong> монетарлық экономика курсын өткізу барысында ХВҚ рөлі тақырыбы аясында ХВҚ Өңірлік орталығының (<strong>IMF CCAMTAC</strong>) директоры Хольгер Флёркемайердің AlmaU басшылығымен және ПОҚ-мен кездесуі ұйымдастырылды.</p>
                      <p><strong>2 шілде:</strong> AlmaU студенттері үшін Алматыдағы IMF CCAMTAC кеңсесінде макроэкономикалық саясат бойынша көшпелі дәріс-экскурсия ұйымдастырылып, өткізілді.</p>`,
             e2MediaLabel: "AlmaU-ға сапар және ХВҚ-дағы көшпелі дәріс",
             e2Link1: "🔗 LinkedIn: ХВҚ директорының AlmaU сапары туралы жазбасы",
@@ -797,35 +919,36 @@
                      <p>ЕО университеттерімен студенттік және оқытушылық алмасулар, экономиканы әртараптандыру мәселелері талқыланды. Кездесу Еуропарламенттің ресми тізілімінде тіркелген.</p>`,
             e3MediaLabel: "Кездесу фотосы және Еуропарламент хаты",
             e3Link1: "🇪🇺 Еуропарламент кездесулерінің ресми тізілімі",
-            e3Link2: "✉️ Алғыс хатты ашу (Брюссель)",
+            e3Link2: "📰 AlmaU ресми сайтындағы жарияланым",
+            e3Link3: "✉️ Алғыс хатты ашу (Брюссель)",
 
             e4Date: "4–7 қараша 2026 • Ульм, Германия",
             e4Title: "Ульм университетіндегі халықаралық олимпиада (ULMA)",
             e4Desc: `<p>AlmaU студенттері командасын (<strong>А. Мұстапа</strong> және <strong>А. Сапарова</strong>) Германияның Ульм университетінің Экономика институтында өткен 3-ші Халықаралық экономикалық олимпиадаға дайындау және алып бару.</p>
-                     <p>AlmaU 2027 жылға ресми шақырту алды, ал оқытушының онлайн-кезең бойынша ұсыныстары ұйымдастыру комитетімен қабылданды.</p>`,
+                     <p>AlmaU 2027 жылға ресми шақырту алды, ал олимпиаданың онлайн-кезеңін өткізу жөніндегі ұсыныстар ұйымдастыру комитетімен қабылданды.</p>`,
             e4CertLabel: "Ульм университетінің сертификаттары",
             e4PhotoLabel: "Сапар фотохроникасы (6 кадр)",
-            e4Link1: "📄 Ульм ұйымдастыру комитетінің хаты (2027 шақырту)",
-            e4Link2: "📄 Лука Чермактың сараптамалық пікірге жауабы"
+            e4Link1: "✉️ Ульм ұйымдастыру комитетінің хаты (2027 шақырту)",
+            e4Link2: "✉️ Лука Чермактың онлайн-кезең пікірі бойынша жауабы"
         },
 
         en: {
             backBtn: "← To Home Page",
-            pageTitle: "Impactful — Verified Impact & International Recognition",
-            pageSubtitle: "Implemented international initiatives, partnerships with global institutions, and promotion of the AlmaU brand across academic and policy circles (click any photo or certificate to enlarge).",
-            missionQuote: "Four milestone international cases in 2026: Slovenia (CEEMAN) → IMF CCAMTAC → European Parliament → Germany (Ulm University).",
+            pageTitle: "Impactful — Verified Impact",
+            pageSubtitle: "Verified outcomes, scale of change, and impact on AlmaU and the external environment (click any photo, certificate, or letter to view).",
+            missionQuote: "Four milestone events in 2026: Slovenia (CEEMAN) → IMF CCAMTAC → European Parliament → Germany (Ulm University).",
             footerText: "Ogay D.V. | School of Digital Technologies and Economics | AlmaU 2026",
 
             e1Date: "15–17 April 2026 • Bled, Slovenia",
             e1Title: "CEEMAN International Seminar (Program Management)",
-            e1Desc: `<p>Successfully completed the international <strong>Program Management Seminar 2026</strong> hosted by CEEMAN (IEDC-Bled School of Management).</p>
-                     <p>Integrated European program management standards into the School of Digital Technologies and Economics and represented AlmaU within the global network of business schools.</p>`,
+            e1Desc: `<p>Completion of the international <strong>Program Management Seminar 2026</strong> hosted by CEEMAN (IEDC-Bled School of Management).</p>
+                     <p>Integrating European program management standards into courses at the School of Digital Technologies and Economics and representing AlmaU within the international network of business schools.</p>`,
             e1MediaLabel: "Photo Report & Certificate",
 
             e2Date: "23 June & 2 July 2026 • Almaty",
-            e2Title: "IMF CCAMTAC Partnership & Field Lecture for Students",
-            e2Desc: `<p><strong>23 June:</strong> initiated and organized an introductory visit by <strong>IMF CCAMTAC</strong> Director Holger Floerkemeier to AlmaU to meet university leadership and faculty.</p>
-                     <p><strong>2 July:</strong> organized and led an on-site field lecture and study tour for AlmaU students at the IMF CCAMTAC regional office in Almaty on macroeconomic policy and inflation targeting.</p>`,
+            e2Title: "IMF CCAMTAC Cooperation & Field Lecture for Students",
+            e2Desc: `<p><strong>23 June:</strong> during the Monetary Economics course module on the role of the IMF, organized a visit by <strong>IMF CCAMTAC</strong> Director Holger Floerkemeier to AlmaU to meet university leadership and faculty.</p>
+                     <p><strong>2 July:</strong> organized and conducted an on-site field lecture and study tour for AlmaU students at the IMF CCAMTAC regional office in Almaty on macroeconomic policy and inflation targeting.</p>`,
             e2MediaLabel: "AlmaU Visit & IMF Field Lecture",
             e2Link1: "🔗 LinkedIn: IMF Director's post on visiting AlmaU",
             e2Link2: "🔗 LinkedIn: IMF post on AlmaU students at CCAMTAC",
@@ -836,16 +959,17 @@
                      <p>Discussed student and faculty exchanges with EU universities, economic diversification, and investment prospects in Kazakhstan. Officially logged in the European Parliament transparency register.</p>`,
             e3MediaLabel: "Meeting Photo & European Parliament Letter",
             e3Link1: "🇪🇺 Official European Parliament Meeting Register",
-            e3Link2: "✉️ View Appreciation Letter from Brussels",
+            e3Link2: "📰 Official News Article on AlmaU Website",
+            e3Link3: "✉️ View Appreciation Letter from Brussels",
 
             e4Date: "4–7 November 2026 • Ulm, Germany",
             e4Title: "International Economics Olympiad at Ulm University (ULMA)",
             e4Desc: `<p>Mentored and accompanied the AlmaU student team (<strong>A. Mustapa</strong> and <strong>A. Saparova</strong>) to the 3rd ULMA Economic Olympiad at the Institute of Economics, Ulm University, Germany.</p>
-                     <p>AlmaU received an official invitation for 2027, and faculty recommendations on improving the online selection stage were adopted by the organizing committee.</p>`,
+                     <p>AlmaU received an official invitation for 2027, and recommendations on improving the online selection stage were adopted by the organizing committee.</p>`,
             e4CertLabel: "Ulm University Certificates",
             e4PhotoLabel: "Trip Photo Chronicle (6 photos)",
-            e4Link1: "📄 Letter from Ulm Committee (2027 Invitation)",
-            e4Link2: "📄 Reply from Luca Cermak on Expert Feedback"
+            e4Link1: "✉️ Letter from Ulm Committee (2027 Invitation)",
+            e4Link2: "✉️ Reply from Luca Cermak on Online Stage Feedback"
         }
     };
 
