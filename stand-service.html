@@ -268,34 +268,10 @@
             border-radius: 2px;
         }
 
-        /* Точное выравнивание лёгкого перекоса скана диплома Мустапы Амина (0.85 град.) */
+        /* Выравнивание небольшого перекоса скана диплома Мустапы Амина */
         .straighten-mustapa {
             transform: rotate(0.85deg) scale(1.025);
             transform-origin: center center;
-        }
-
-        .diploma-caption {
-            margin-top: 12px;
-            text-align: center;
-        }
-
-        .diploma-caption .student-name {
-            display: block;
-            font-size: 15.5px;
-            font-weight: 700;
-            color: var(--almau-navy);
-        }
-
-        .diploma-caption .diploma-rank {
-            display: inline-block;
-            margin-top: 4px;
-            font-size: 12.5px;
-            font-weight: 600;
-            color: #8a6408;
-            background: #fef8e6;
-            border: 1px solid #edd48b;
-            padding: 2px 11px;
-            border-radius: 999px;
         }
 
         /* Нижний блок: благодарность руководителя — меньше по размеру и в простой скромной деревянной рамке */
@@ -303,7 +279,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 26px;
+            padding-top: 28px;
             border-top: 1px dashed #cbd5e1;
         }
 
@@ -337,25 +313,6 @@
             height: auto;
             background: #ffffff;
             border: 1px solid #d6c7b2;
-        }
-
-        .mentor-caption {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .mentor-caption .mentor-role {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .mentor-caption .mentor-sub {
-            display: block;
-            font-size: 12px;
-            color: #7b8798;
-            margin-top: 2px;
         }
 
         /* Модальное окно увеличения документа */
@@ -494,7 +451,7 @@
         </div>
     </section>
 
-    <!-- ГАЛЕРЕЯ НАГРАД: сверху 2 диплома студенток в красивых рамках, ниже скромная благодарность руководителя -->
+    <!-- ГАЛЕРЕЯ НАГРАД -->
     <section class="awards-showcase" aria-label="Дипломы и благодарность">
         <div class="showcase-header">
             <span class="showcase-badge" data-i18n="awardsBadge">Подтверждённый результат сопровождения • 2026</span>
@@ -502,42 +459,30 @@
             <p data-i18n="awardsHint">Нажмите на любой документ, чтобы открыть его в полном размере</p>
         </div>
 
-        <!-- Верхний ряд: 2 диплома девчонок в торжественных рамках -->
+        <!-- Верхний ряд: 2 диплома в торжественных рамках -->
         <div class="student-diplomas-row">
-            <div class="diploma-item" onclick="openLightbox('turk-saparova.jpg', 'Диплом I степени — Сапарова Алина', false)">
+            <div class="diploma-item" onclick="openLightbox('img-saparova', false)">
                 <div class="grand-frame">
                     <div class="grand-mat">
-                        <img src="turk-saparova.jpg" alt="Диплом I степени — Сапарова Алина">
+                        <img id="img-saparova" src="turk-saparova.png" alt="Сапарова Алина">
                     </div>
-                </div>
-                <div class="diploma-caption">
-                    <span class="student-name" data-i18n="st1Name">Сапарова Алина</span>
-                    <span class="diploma-rank" data-i18n="st1Rank">Диплом I степени</span>
                 </div>
             </div>
 
-            <div class="diploma-item" onclick="openLightbox('turk-mustapa.jpg', 'Диплом I степени — Мустапа Амина', true)">
+            <div class="diploma-item" onclick="openLightbox('img-mustapa', true)">
                 <div class="grand-frame">
                     <div class="grand-mat">
-                        <img src="turk-mustapa.jpg" alt="Диплом I степени — Мустапа Амина" class="straighten-mustapa">
+                        <img id="img-mustapa" src="turk-mustapa.png" alt="Мустапа Амина" class="straighten-mustapa">
                     </div>
-                </div>
-                <div class="diploma-caption">
-                    <span class="student-name" data-i18n="st2Name">Мустапа Амина</span>
-                    <span class="diploma-rank" data-i18n="st2Rank">Диплом I степени</span>
                 </div>
             </div>
         </div>
 
-        <!-- Нижний блок: благодарность научного руководителя — компактнее и в простой скромной деревянной рамке -->
+        <!-- Нижний блок: скромная деревянная рамка поменьше -->
         <div class="mentor-thanks-row">
-            <div class="mentor-item" onclick="openLightbox('letter-ogay.jpg', 'Благодарность научному руководителю — Огай Д.В.', false)">
+            <div class="mentor-item" onclick="openLightbox('img-ogay', false)">
                 <div class="simple-wood-frame">
-                    <img src="letter-ogay.jpg" alt="Благодарность научному руководителю Огай Д.В.">
-                </div>
-                <div class="mentor-caption">
-                    <span class="mentor-role" data-i18n="mentorDocTitle">Благодарность научному руководителю</span>
-                    <span class="mentor-sub" data-i18n="mentorDocSub">Огай Д.В. • AlmaU</span>
+                    <img id="img-ogay" src="letter-ogay.png" onerror="this.onerror=null; this.src='Letter_ogay.png';" alt="Огай Д.В.">
                 </div>
             </div>
         </div>
@@ -546,7 +491,7 @@
 </div>
 
 <!-- Модальное окно просмотра документа в полный размер -->
-<div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)" aria-hidden="true">
+<div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()" aria-hidden="true">
     <div class="lightbox-content" onclick="event.stopPropagation()">
         <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Закрыть">×</button>
         <img id="lightboxImg" src="" alt="">
@@ -567,13 +512,7 @@
             footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
             awardsBadge: "Подтверждённый результат сопровождения • 2026",
             awardsTitle: "IV Открытая международная интернет-олимпиада по макроэкономике",
-            awardsHint: "Нажмите на любой документ, чтобы открыть его в полном размере",
-            st1Name: "Сапарова Алина",
-            st1Rank: "Диплом I степени",
-            st2Name: "Мустапа Амина",
-            st2Rank: "Диплом I степени",
-            mentorDocTitle: "Благодарность научному руководителю",
-            mentorDocSub: "Огай Д.В. • AlmaU"
+            awardsHint: "Нажмите на любой документ, чтобы открыть его в полном размере"
         },
 
         kz: {
@@ -584,13 +523,7 @@
             footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
             awardsBadge: "Сүйемелдеудің расталған нәтижесі • 2026",
             awardsTitle: "Макроэкономика бойынша IV Ашық халықаралық интернет-олимпиада",
-            awardsHint: "Толық көлемде ашу үшін кез келген құжатты басыңыз",
-            st1Name: "Сапарова Алина",
-            st1Rank: "I дәрежелі диплом",
-            st2Name: "Мұстапа Амина",
-            st2Rank: "I дәрежелі диплом",
-            mentorDocTitle: "Ғылыми жетекшіге алғыс хат",
-            mentorDocSub: "Огай Д.В. • AlmaU"
+            awardsHint: "Толық көлемде ашу үшін кез келген құжатты басыңыз"
         },
 
         en: {
@@ -601,13 +534,7 @@
             footerText: "Ogay D.V. | School of Digital Technologies and Economics | AlmaU 2026",
             awardsBadge: "Verified Mentoring Outcome • 2026",
             awardsTitle: "4th Open International Internet Olympiad in Macroeconomics",
-            awardsHint: "Click any document to view it in full size",
-            st1Name: "Alina Saparova",
-            st1Rank: "1st Degree Diploma",
-            st2Name: "Amina Mustapa",
-            st2Rank: "1st Degree Diploma",
-            mentorDocTitle: "Letter of Appreciation to Academic Advisor",
-            mentorDocSub: "D.V. Ogay • AlmaU"
+            awardsHint: "Click any document to view it in full size"
         }
     };
 
@@ -630,11 +557,12 @@
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 
-    function openLightbox(src, altText, straighten) {
+    function openLightbox(imgId, straighten) {
+        const sourceImg = document.getElementById(imgId);
+        if (!sourceImg || !sourceImg.src) return;
         const modal = document.getElementById('lightboxModal');
         const img = document.getElementById('lightboxImg');
-        img.src = src;
-        img.alt = altText;
+        img.src = sourceImg.src;
         img.className = straighten ? 'straighten-mustapa' : '';
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
