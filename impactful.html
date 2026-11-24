@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impactful — AlmaU Awards 2026 | Огай Д.В.</title>
+    <style>
+        :root {
+            --almau-navy: #001e50;
+            --almau-blue: #00338D;
+            --almau-blue-soft: #f0f4fa;
+            --almau-red: #C8102E;
+            --bg-page: #ffffff;
+            --bg-subtle: #f8fafd;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 12px 28px rgba(0, 30, 80, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Верхняя сплошная красная полоса */
+        .top-red-bar {
+            height: 6px;
+            background-color: var(--almau-red);
+            width: 100%;
+        }
+
+        /* Контейнер расширен до 1360px, чтобы 4 карточки комфортно стояли в 1 ряд */
+        .container {
+            max-width: 1360px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 22px 24px 40px;
+            flex: 1;
+        }
+
+        /* Шапка в едином стиле AlmaU Awards 2026 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 26px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .brand-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-logo {
+            width: 66px;
+            height: 66px;
+            object-fit: contain;
+        }
+
+        .brand-title-tag {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: var(--almau-red);
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--almau-navy);
+            padding: 4px 0 4px 14px;
+            line-height: 1.35;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
+            flex-wrap: wrap;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 13px;
+            border-radius: 8px;
+            background: var(--almau-blue-soft);
+            color: var(--almau-navy);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #d0dcf0;
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--almau-navy);
+            color: #ffffff;
+            border-color: var(--almau-navy);
+        }
+
+        /* Переключатель языков: ҚАЗ | РУС | ENG */
+        .lang-switcher {
+            display: inline-flex;
+            background: #f4f7fb;
+            padding: 3px;
+            border-radius: 9px;
+            border: 1px solid #dce5f2;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #526480;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--almau-navy);
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 30, 80, 0.2);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--almau-navy);
+        }
+
+        /* Заголовок раздела */
+        .hero-section {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 920px;
+            line-height: 1.5;
+        }
+
+        .mission-quote-strip {
+            margin-top: 14px;
+            padding: 10px 16px;
+            background: var(--bg-subtle);
+            border-left: 3px solid var(--almau-red);
+            border-radius: 0 8px 8px 0;
+            font-size: 13.5px;
+            color: var(--almau-navy);
+            font-weight: 500;
+        }
+
+        /* Сетка 4 карточек событий в один ряд */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .event-card {
+            background: #ffffff;
+            border: 2px solid var(--border-light);
+            border-radius: 15px;
+            padding: 18px 16px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--almau-navy);
+            transition: background 0.25s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--almau-navy);
+            box-shadow: var(--shadow-md);
+        }
+
+        .event-card:hover::before {
+            background: var(--almau-red);
+        }
+
+        /* Верхняя строка карточки: номер + дата/локация */
+        .card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .step-badge {
+            width: 30px;
+            height: 30px;
+            min-width: 30px;
+            border-radius: 50%;
+            background: var(--almau-red);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(200, 16, 46, 0.25);
+        }
+
+        .date-pill {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            background: var(--almau-blue-soft);
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid #d0dcf0;
+            text-align: right;
+        }
+
+        .event-card h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--almau-navy);
+            line-height: 1.3;
+        }
+
+        .event-desc {
+            font-size: 13px;
+            color: var(--text-main);
+            line-height: 1.48;
+        }
+
+        .event-desc p + p {
+            margin-top: 6px;
+        }
+
+        .event-desc strong {
+            color: var(--almau-navy);
+        }
+
+        /* Мини-галереи внутри карточек */
+        .media-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .photo-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .photo-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+
+        .photo-grid-1 {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .thumb-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+            background: #f1f5f9;
+            aspect-ratio: 4 / 3;
+            cursor: zoom-in;
+        }
+
+        .thumb-item.cert-ratio {
+            aspect-ratio: 3 / 4;
+        }
+
+        .thumb-item.wide-ratio {
+            aspect-ratio: 16 / 10;
+        }
+
+        .thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.25s ease;
+        }
+
+        .thumb-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .thumb-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 30, 80, 0.78);
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Кнопки-ссылки на посты, реестры и письма внизу карточки */
+        .card-links {
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .doc-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            padding: 7px 10px;
+            border-radius: 8px;
+            background: var(--almau-blue-soft);
+            color: var(--almau-navy);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #d0dcf0;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .doc-link:hover {
+            background: var(--almau-navy);
+            color: #ffffff;
+            border-color: var(--almau-navy);
+        }
+
+        .doc-link span.arrow {
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        footer {
+            margin-top: auto;
+            font-size: 13.5px;
+            color: #8a94a6;
+            padding-top: 26px;
+            padding-bottom: 18px;
+            text-align: center;
+            line-height: 1.6;
+            width: 100%;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* Лайтбокс для просмотра фото и сертификатов в полный размер */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 18, 48, 0.88);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(3px);
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 92vw;
+            max-height: 90vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 82vh;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            background: #ffffff;
+        }
+
+        .lightbox-title {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 18px;
+            right: 24px;
+            background: var(--almau-red);
+            color: #ffffff;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Адаптация под планшеты и смартфоны */
+        @media (max-width: 1180px) {
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 16px 14px 30px;
+            }
+            .brand-logo {
+                width: 54px;
+                height: 54px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-red-bar"></div>
+
+<div class="container">
+    <!-- Шапка в едином стиле с meaningful.html -->
+    <header>
+        <div class="brand-left">
+            <img src="almau.jpg" alt="AlmaU Logo" class="brand-logo">
+            <span class="brand-title-tag">ALMAU AWARDS 2026</span>
+        </div>
+
+        <div class="header-right">
+            <a href="index.html" class="back-btn" data-i18n="backBtn">← К начальной странице</a>
+            <div class="lang-switcher" role="group" aria-label="Language switcher">
+                <button type="button" class="lang-btn" data-lang="kz">ҚАЗ</button>
+                <button type="button" class="lang-btn active" data-lang="ru">РУС</button>
+                <button type="button" class="lang-btn" data-lang="en">ENG</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Заголовок раздела -->
+    <section class="hero-section">
+        <h1 data-i18n="pageTitle">Impactful — Подтверждённое влияние и международное признание</h1>
+        <p class="subtitle" data-i18n="pageSubtitle">
+            Реализованные международные инициативы, партнёрства с глобальными институтами и продвижение бренда AlmaU в академическом и экспертном пространстве (нажмите на любое фото или сертификат для увеличения).
+        </p>
+        <div class="mission-quote-strip" data-i18n="missionQuote">
+            Четыре ключевых международных кейса 2026 года: Словения (CEEMAN) → МВФ (IMF CCAMTAC) → Европейский парламент → Германия (Университет Ульма).
+        </div>
+    </section>
+
+    <!-- 4 карточки событий в один ряд -->
+    <main class="events-grid">
+
+        <!-- ========================================================= -->
+        <!-- КАРТОЧКА 1: CEEMAN (Блед, Словения)                       -->
+        <!-- ========================================================= -->
+        <article class="event-card">
+            <div class="card-meta">
+                <span class="step-badge">1</span>
+                <span class="date-pill" data-i18n="e1Date">15–17 апреля 2026 • Блед, Словения</span>
+            </div>
+
+            <h2 data-i18n="e1Title">Международный семинар CEEMAN (Program Management)</h2>
+
+            <div class="event-desc" data-i18n="e1Desc">
+                <p>Успешное прохождение международного семинара <strong>Program Management Seminar 2026</strong> в ассоциации CEEMAN (IEDC-Bled School of Management).</p>
+                <p>Интеграция европейских стандартов управления программами в курсы Школы цифровых технологий и экономики и представление AlmaU в международной сети бизнес-школ.</p>
+            </div>
+
+            <div class="media-label" data-i18n="e1MediaLabel">Фотоотчёт и сертификат</div>
+            <div class="photo-grid-3">
+                <div class="thumb-item" onclick="openLightbox('pms.jpg', 'Вручение сертификата CEEMAN (Блед, Словения)')">
+                    <img src="pms.jpg" alt="Вручение сертификата CEEMAN">
+                    <span class="thumb-caption">Вручение</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('pms2.jpg', 'Участники Program Management Seminar 2026 (CEEMAN)')">
+                    <img src="pms2.jpg" alt="Общее фото CEEMAN">
+                    <span class="thumb-caption">Участники</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('PMS Bled.jpg', 'Сертификат CEEMAN — Prof. Dr. Danica Purg')">
+                    <img src="PMS Bled.jpg" alt="Сертификат CEEMAN">
+                    <span class="thumb-caption">Сертификат</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========================================================= -->
+        <!-- КАРТОЧКА 2: МВФ / IMF CCAMTAC (Алматы)                    -->
+        <!-- ========================================================= -->
+        <article class="event-card">
+            <div class="card-meta">
+                <span class="step-badge">2</span>
+                <span class="date-pill" data-i18n="e2Date">23 июня и 2 июля 2026 • Алматы</span>
+            </div>
+
+            <h2 data-i18n="e2Title">Партнёрство с МВФ (IMF CCAMTAC) и выездная лекция</h2>
+
+            <div class="event-desc" data-i18n="e2Desc">
+                <p><strong>23 июня:</strong> по моей инициативе организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
+                <p><strong>2 июля:</strong> организована и проведена выездная лекция-экскурсия для студентов AlmaU в региональном офисе IMF CCAMTAC в Алматы по макроэкономической политике и таргетированию инфляции.</p>
+            </div>
+
+            <div class="media-label" data-i18n="e2MediaLabel">Визит в AlmaU и выездная лекция в МВФ</div>
+            <div class="photo-grid-3">
+                <div class="thumb-item" onclick="openLightbox('imf1.jpg', 'Встреча с директором IMF CCAMTAC в AlmaU (23 июня 2026)')">
+                    <img src="imf1.jpg" alt="IMF в AlmaU">
+                    <span class="thumb-caption">Встреча в AlmaU</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('imf2.jpg', 'Студенты AlmaU в региональном офисе IMF CCAMTAC (2 июля 2026)')">
+                    <img src="imf2.jpg" alt="Студенты в IMF CCAMTAC">
+                    <span class="thumb-caption">Офис МВФ</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('imf3.jpg', 'Выездная лекция экспертов IMF CCAMTAC для студентов AlmaU')">
+                    <img src="imf3.jpg" alt="Выездная лекция в МВФ">
+                    <span class="thumb-caption">Лекция в МВФ</span>
+                </div>
+            </div>
+
+            <div class="card-links">
+                <a href="https://lnkd.in/p/dgzPyXhB" target="_blank" rel="noopener noreferrer" class="doc-link">
+                    <span data-i18n="e2Link1">🔗 LinkedIn: Пост директора МВФ о визите в AlmaU</span>
+                    <span class="arrow">↗</span>
+                </a>
+                <a href="https://lnkd.in/p/dM7q37Cx" target="_blank" rel="noopener noreferrer" class="doc-link">
+                    <span data-i18n="e2Link2">🔗 LinkedIn: Пост МВФ о лекции студентов в CCAMTAC</span>
+                    <span class="arrow">↗</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- ========================================================= -->
+        <!-- КАРТОЧКА 3: Визит депутата Европарламента Пьера Пампи     -->
+        <!-- ========================================================= -->
+        <article class="event-card">
+            <div class="card-meta">
+                <span class="step-badge">3</span>
+                <span class="date-pill" data-i18n="e3Date">21 августа 2026 • Алматы / Брюссель</span>
+            </div>
+
+            <h2 data-i18n="e3Title">Визит депутата Европарламента Пьера Пампи в AlmaU</h2>
+
+            <div class="event-desc" data-i18n="e3Desc">
+                <p>Организация и участие во встрече с депутатом Европейского парламента от Франции <strong>Пьером Пампи (Pierre Pimpie)</strong> на площадке AlmaU.</p>
+                <p>Обсуждены студенческие и преподавательские обмены с вузами ЕС, диверсификация экономики и инвестиционный климат Казахстана. Встреча официально задекларирована в реестре Европарламента.</p>
+            </div>
+
+            <div class="media-label" data-i18n="e3MediaLabel">Фото встречи и письмо из Европарламента</div>
+            <div class="photo-grid-2">
+                <div class="thumb-item" onclick="openLightbox('pimpi-vizit.jpg', 'Встреча с депутатом Европарламента от Франции Пьером Пампи в AlmaU')">
+                    <img src="pimpi-vizit.jpg" alt="Визит Пьера Пампи в AlmaU">
+                    <span class="thumb-caption">Визит в AlmaU</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('Pimpi-letter.png', 'Официальное благодарственное письмо от парламентского ассистента MEP Pierre Pimpie')">
+                    <img src="Pimpi-letter.png" alt="Благодарственное письмо из Европарламента">
+                    <span class="thumb-caption">Письмо из ЕС</span>
+                </div>
+            </div>
+
+            <div class="card-links">
+                <a href="https://www.europarl.europa.eu/meps/en/256951/PIERRE_PIMPIE/meetings/past" target="_blank" rel="noopener noreferrer" class="doc-link">
+                    <span data-i18n="e3Link1">🇪🇺 Официальный реестр встреч Европарламента</span>
+                    <span class="arrow">↗</span>
+                </a>
+                <button type="button" class="doc-link" onclick="openLightbox('Pimpi-letter.png', 'Официальное благодарственное письмо от парламентского ассистента MEP Pierre Pimpie (09.09.2026)')">
+                    <span data-i18n="e3Link2">✉️ Открыть благодарственное письмо (Брюссель)</span>
+                    <span class="arrow">🔍</span>
+                </button>
+            </div>
+        </article>
+
+        <!-- ========================================================= -->
+        <!-- КАРТОЧКА 4: Олимпиада в Университете Ульма (Германия)     -->
+        <!-- ========================================================= -->
+        <article class="event-card">
+            <div class="card-meta">
+                <span class="step-badge">4</span>
+                <span class="date-pill" data-i18n="e4Date">4–7 ноября 2026 • Ульм, Германия</span>
+            </div>
+
+            <h2 data-i18n="e4Title">Международная олимпиада в Университете Ульма (ULMA)</h2>
+
+            <div class="event-desc" data-i18n="e4Desc">
+                <p>Подготовка и сопровождение команды студентов AlmaU (<strong>А. Мустапа</strong> и <strong>А. Сапарова</strong>) на 3-ю Международную экономическую олимпиаду в Институте экономики Университета Ульма (Германия).</p>
+                <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации преподавателя по онлайн-этапу приняты оргкомитетом.</p>
+            </div>
+
+            <div class="media-label" data-i18n="e4CertLabel">Сертификаты Университета Ульма</div>
+            <div class="photo-grid-2">
+                <div class="thumb-item cert-ratio" onclick="openLightbox('ulm-mustapa.png', 'Сертификат 3rd ULMA Economic Olympiad — Амина Мустапа')">
+                    <img src="ulm-mustapa.png" alt="Сертификат Амина Мустапа">
+                    <span class="thumb-caption">А. Мустапа</span>
+                </div>
+                <div class="thumb-item cert-ratio" onclick="openLightbox('ulm-saparova.png', 'Сертификат 3rd ULMA Economic Olympiad — Алина Сапарова')">
+                    <img src="ulm-saparova.png" alt="Сертификат Алина Сапарова">
+                    <span class="thumb-caption">А. Сапарова</span>
+                </div>
+            </div>
+
+            <div class="media-label" data-i18n="e4PhotoLabel">Фотохроника поездки (6 кадров)</div>
+            <div class="photo-grid-3">
+                <div class="thumb-item" onclick="openLightbox('ulm01.jpg', 'Ульм, Германия — прибытие команды AlmaU')">
+                    <img src="ulm01.jpg" alt="Ульм 1">
+                </div>
+                <div class="thumb-item" onclick="openLightbox('ulm02.jpg', 'Ульмский собор — путь на олимпиаду')">
+                    <img src="ulm02.jpg" alt="Ульм 2">
+                </div>
+                <div class="thumb-item" onclick="openLightbox('ulm03.jpeg', 'Институт экономики Университета Ульма — открытие')">
+                    <img src="ulm03.jpeg" alt="Ульм 3">
+                </div>
+                <div class="thumb-item" onclick="openLightbox('ulm04.jpeg', 'Соревновательный день в Университете Ульма')">
+                    <img src="ulm04.jpeg" alt="Ульм 4">
+                </div>
+                <div class="thumb-item" onclick="openLightbox('ulm05.jpg', 'Студентки AlmaU с сертификатами Ulm University')">
+                    <img src="ulm05.jpg" alt="Ульм 5">
+                </div>
+                <div class="thumb-item" onclick="openLightbox('ulm06.jpg', 'С организаторами олимпиады (Institute of Economics, Ulm)')">
+                    <img src="ulm06.jpg" alt="Ульм 6">
+                </div>
+            </div>
+
+            <div class="card-links">
+                <a href="letter from Ulm.docx" target="_blank" rel="noopener noreferrer" class="doc-link">
+                    <span data-i18n="e4Link1">📄 Письмо оргкомитета Ульма (приглашение на 2027)</span>
+                    <span class="arrow">↗</span>
+                </a>
+                <a href="letter from Ulm feedbak.docx" target="_blank" rel="noopener noreferrer" class="doc-link">
+                    <span data-i18n="e4Link2">📄 Ответ Луки Чермака на экспертный фидбек</span>
+                    <span class="arrow">↗</span>
+                </a>
+            </div>
+        </article>
+
+    </main>
+</div>
+
+<footer>
+    <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
+</footer>
+
+<!-- Модальное окно увеличения фотографий и сертификатов -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button type="button" class="lightbox-close" onclick="closeLightbox(event)" aria-label="Закрыть">×</button>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <img id="lightboxImg" src="" alt="">
+        <div class="lightbox-title" id="lightboxCaption"></div>
+    </div>
+</div>
+
+<script>
+    function openLightbox(src, caption) {
+        const lb = document.getElementById('lightbox');
+        const img = document.getElementById('lightboxImg');
+        const cap = document.getElementById('lightboxCaption');
+        img.src = src;
+        cap.textContent = caption || '';
+        lb.classList.add('open');
+    }
+
+    function closeLightbox(e) {
+        if (e) e.stopPropagation();
+        document.getElementById('lightbox').classList.remove('open');
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    const translations = {
+        ru: {
+            backBtn: "← К начальной странице",
+            pageTitle: "Impactful — Подтверждённое влияние и международное признание",
+            pageSubtitle: "Реализованные международные инициативы, партнёрства с глобальными институтами и продвижение бренда AlmaU в академическом и экспертном пространстве (нажмите на любое фото или сертификат для увеличения).",
+            missionQuote: "Четыре ключевых международных кейса 2026 года: Словения (CEEMAN) → МВФ (IMF CCAMTAC) → Европейский парламент → Германия (Университет Ульма).",
+            footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
+
+            e1Date: "15–17 апреля 2026 • Блед, Словения",
+            e1Title: "Международный семинар CEEMAN (Program Management)",
+            e1Desc: `<p>Успешное прохождение международного семинара <strong>Program Management Seminar 2026</strong> в ассоциации CEEMAN (IEDC-Bled School of Management).</p>
+                     <p>Интеграция европейских стандартов управления программами в курсы Школы цифровых технологий и экономики и представление AlmaU в международной сети бизнес-школ.</p>`,
+            e1MediaLabel: "Фотоотчёт и сертификат",
+
+            e2Date: "23 июня и 2 июля 2026 • Алматы",
+            e2Title: "Партнёрство с МВФ (IMF CCAMTAC) и выездная лекция",
+            e2Desc: `<p><strong>23 июня:</strong> по моей инициативе организован визит директора Регионального центра МВФ (<strong>IMF CCAMTAC</strong>) Хольгера Флёркемайера в AlmaU для встречи с руководством и ППС.</p>
+                     <p><strong>2 июля:</strong> организована и проведена выездная лекция-экскурсия для студентов AlmaU в региональном офисе IMF CCAMTAC в Алматы по макроэкономической политике и таргетированию инфляции.</p>`,
+            e2MediaLabel: "Визит в AlmaU и выездная лекция в МВФ",
+            e2Link1: "🔗 LinkedIn: Пост директора МВФ о визите в AlmaU",
+            e2Link2: "🔗 LinkedIn: Пост МВФ о лекции студентов в CCAMTAC",
+
+            e3Date: "21 августа 2026 • Алматы / Брюссель",
+            e3Title: "Визит депутата Европарламента Пьера Пампи в AlmaU",
+            e3Desc: `<p>Организация и участие во встрече с депутатом Европейского парламента от Франции <strong>Пьером Пампи (Pierre Pimpie)</strong> на площадке AlmaU.</p>
+                     <p>Обсуждены студенческие и преподавательские обмены с вузами ЕС, диверсификация экономики и инвестиционный климат Казахстана. Встреча официально задекларирована в реестре Европарламента.</p>`,
+            e3MediaLabel: "Фото встречи и письмо из Европарламента",
+            e3Link1: "🇪🇺 Официальный реестр встреч Европарламента",
+            e3Link2: "✉️ Открыть благодарственное письмо (Брюссель)",
+
+            e4Date: "4–7 ноября 2026 • Ульм, Германия",
+            e4Title: "Международная олимпиада в Университете Ульма (ULMA)",
+            e4Desc: `<p>Подготовка и сопровождение команды студентов AlmaU (<strong>А. Мустапа</strong> и <strong>А. Сапарова</strong>) на 3-ю Международную экономическую олимпиаду в Институте экономики Университета Ульма (Германия).</p>
+                     <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации преподавателя по онлайн-этапу приняты оргкомитетом.</p>`,
+            e4CertLabel: "Сертификаты Университета Ульма",
+            e4PhotoLabel: "Фотохроника поездки (6 кадров)",
+            e4Link1: "📄 Письмо оргкомитета Ульма (приглашение на 2027)",
+            e4Link2: "📄 Ответ Луки Чермака на экспертный фидбек"
+        },
+
+        kz: {
+            backBtn: "← Бастапқы бетке",
+            pageTitle: "Impactful — Расталған ықпал және халықаралық мойындау",
+            pageSubtitle: "Іске асырылған халықаралық бастамалар, жаһандық институттармен серіктестік және AlmaU брендін академиялық әрі сараптамалық кеңістікте ілгерілету (үлкейту үшін кез келген фотоны басыңыз).",
+            missionQuote: "2026 жылғы төрт негізгі халықаралық кейс: Словения (CEEMAN) → ХВҚ (IMF CCAMTAC) → Еуропалық парламент → Германия (Ульм университеті).",
+            footerText: "Огай Д.В. | Цифрлық технологиялар және экономика мектебі | AlmaU 2026",
+
+            e1Date: "15–17 сәуір 2026 • Блед, Словения",
+            e1Title: "CEEMAN халықаралық семинары (Program Management)",
+            e1Desc: `<p>CEEMAN қауымдастығында (IEDC-Bled School of Management) <strong>Program Management Seminar 2026</strong> халықаралық семинарынан сәтті өту.</p>
+                     <p>Бағдарламаларды басқарудың еуропалық стандарттарын Цифрлық технологиялар және экономика мектебінің курстарына енгізу және AlmaU-ды бизнес-мектептердің халықаралық желісінде таныту.</p>`,
+            e1MediaLabel: "Фотоесеп және сертификат",
+
+            e2Date: "23 маусым және 2 шілде 2026 • Алматы",
+            e2Title: "ХВҚ (IMF CCAMTAC) серіктестігі және көшпелі дәріс",
+            e2Desc: `<p><strong>23 маусым:</strong> жеке бастамаммен ХВҚ Өңірлік техникалық көмек орталығының (<strong>IMF CCAMTAC</strong>) директоры Хольгер Флёркемайердің AlmaU басшылығымен кездесуі ұйымдастырылды.</p>
+                     <p><strong>2 шілде:</strong> AlmaU студенттері үшін Алматыдағы IMF CCAMTAC кеңсесінде макроэкономикалық саясат бойынша көшпелі дәріс-экскурсия ұйымдастырылып, өткізілді.</p>`,
+            e2MediaLabel: "AlmaU-ға сапар және ХВҚ-дағы көшпелі дәріс",
+            e2Link1: "🔗 LinkedIn: ХВҚ директорының AlmaU сапары туралы жазбасы",
+            e2Link2: "🔗 LinkedIn: Студенттердің CCAMTAC дәрісі туралы жазба",
+
+            e3Date: "21 тамыз 2026 • Алматы / Брюссель",
+            e3Title: "Еуропарламент депутаты Пьер Пампидің AlmaU-ға сапары",
+            e3Desc: `<p>Франциядан сайланған Еуропалық парламент депутаты <strong>Пьер Пампимен (Pierre Pimpie)</strong> AlmaU алаңында кездесу ұйымдастыру және қатысу.</p>
+                     <p>ЕО университеттерімен студенттік және оқытушылық алмасулар, экономиканы әртараптандыру мәселелері талқыланды. Кездесу Еуропарламенттің ресми тізілімінде тіркелген.</p>`,
+            e3MediaLabel: "Кездесу фотосы және Еуропарламент хаты",
+            e3Link1: "🇪🇺 Еуропарламент кездесулерінің ресми тізілімі",
+            e3Link2: "✉️ Алғыс хатты ашу (Брюссель)",
+
+            e4Date: "4–7 қараша 2026 • Ульм, Германия",
+            e4Title: "Ульм университетіндегі халықаралық олимпиада (ULMA)",
+            e4Desc: `<p>AlmaU студенттері командасын (<strong>А. Мұстапа</strong> және <strong>А. Сапарова</strong>) Германияның Ульм университетінің Экономика институтында өткен 3-ші Халықаралық экономикалық олимпиадаға дайындау және алып бару.</p>
+                     <p>AlmaU 2027 жылға ресми шақырту алды, ал оқытушының онлайн-кезең бойынша ұсыныстары ұйымдастыру комитетімен қабылданды.</p>`,
+            e4CertLabel: "Ульм университетінің сертификаттары",
+            e4PhotoLabel: "Сапар фотохроникасы (6 кадр)",
+            e4Link1: "📄 Ульм ұйымдастыру комитетінің хаты (2027 шақырту)",
+            e4Link2: "📄 Лука Чермактың сараптамалық пікірге жауабы"
+        },
+
+        en: {
+            backBtn: "← To Home Page",
+            pageTitle: "Impactful — Verified Impact & International Recognition",
+            pageSubtitle: "Implemented international initiatives, partnerships with global institutions, and promotion of the AlmaU brand across academic and policy circles (click any photo or certificate to enlarge).",
+            missionQuote: "Four milestone international cases in 2026: Slovenia (CEEMAN) → IMF CCAMTAC → European Parliament → Germany (Ulm University).",
+            footerText: "Ogay D.V. | School of Digital Technologies and Economics | AlmaU 2026",
+
+            e1Date: "15–17 April 2026 • Bled, Slovenia",
+            e1Title: "CEEMAN International Seminar (Program Management)",
+            e1Desc: `<p>Successfully completed the international <strong>Program Management Seminar 2026</strong> hosted by CEEMAN (IEDC-Bled School of Management).</p>
+                     <p>Integrated European program management standards into the School of Digital Technologies and Economics and represented AlmaU within the global network of business schools.</p>`,
+            e1MediaLabel: "Photo Report & Certificate",
+
+            e2Date: "23 June & 2 July 2026 • Almaty",
+            e2Title: "IMF CCAMTAC Partnership & Field Lecture for Students",
+            e2Desc: `<p><strong>23 June:</strong> initiated and organized an introductory visit by <strong>IMF CCAMTAC</strong> Director Holger Floerkemeier to AlmaU to meet university leadership and faculty.</p>
+                     <p><strong>2 July:</strong> organized and led an on-site field lecture and study tour for AlmaU students at the IMF CCAMTAC regional office in Almaty on macroeconomic policy and inflation targeting.</p>`,
+            e2MediaLabel: "AlmaU Visit & IMF Field Lecture",
+            e2Link1: "🔗 LinkedIn: IMF Director's post on visiting AlmaU",
+            e2Link2: "🔗 LinkedIn: IMF post on AlmaU students at CCAMTAC",
+
+            e3Date: "21 August 2026 • Almaty / Brussels",
+            e3Title: "Visit of MEP Pierre Pimpie to AlmaU",
+            e3Desc: `<p>Co-organized and participated in an official meeting with Member of the European Parliament from France <strong>Pierre Pimpie</strong> at AlmaU.</p>
+                     <p>Discussed student and faculty exchanges with EU universities, economic diversification, and investment prospects in Kazakhstan. Officially logged in the European Parliament transparency register.</p>`,
+            e3MediaLabel: "Meeting Photo & European Parliament Letter",
+            e3Link1: "🇪🇺 Official European Parliament Meeting Register",
+            e3Link2: "✉️ View Appreciation Letter from Brussels",
+
+            e4Date: "4–7 November 2026 • Ulm, Germany",
+            e4Title: "International Economics Olympiad at Ulm University (ULMA)",
+            e4Desc: `<p>Mentored and accompanied the AlmaU student team (<strong>A. Mustapa</strong> and <strong>A. Saparova</strong>) to the 3rd ULMA Economic Olympiad at the Institute of Economics, Ulm University, Germany.</p>
+                     <p>AlmaU received an official invitation for 2027, and faculty recommendations on improving the online selection stage were adopted by the organizing committee.</p>`,
+            e4CertLabel: "Ulm University Certificates",
+            e4PhotoLabel: "Trip Photo Chronicle (6 photos)",
+            e4Link1: "📄 Letter from Ulm Committee (2027 Invitation)",
+            e4Link2: "📄 Reply from Luca Cermak on Expert Feedback"
+        }
+    };
+
+    function setLanguage(lang) {
+        document.documentElement.lang = lang === 'kz' ? 'kk' : lang;
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+</script>
+
+</body>
+</html>
