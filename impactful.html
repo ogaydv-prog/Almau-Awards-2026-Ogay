@@ -455,6 +455,31 @@
             overflow: hidden;
         }
 
+        /* Увеличенное и более читаемое окно для письма с выделенным фрагментом */
+        .letter-modal-box.enlarged-letter-box {
+            max-width: 940px;
+            max-height: 92vh;
+        }
+
+        .letter-modal-box.enlarged-letter-box .letter-modal-body {
+            font-size: 15.5px;
+            line-height: 1.75;
+            padding: 26px 32px;
+        }
+
+        .highlighted-feedback-block {
+            background: #fff8e6;
+            border-left: 4px solid var(--almau-red);
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 14px 0;
+            color: #0f172a;
+        }
+
+        .highlighted-feedback-block p + p {
+            margin-top: 10px;
+        }
+
         .letter-modal-header {
             padding: 16px 22px;
             background: var(--bg-subtle);
@@ -554,6 +579,10 @@
             }
             .events-grid {
                 grid-template-columns: 1fr;
+            }
+            .letter-modal-box.enlarged-letter-box .letter-modal-body {
+                padding: 18px 18px;
+                font-size: 14.5px;
             }
         }
     </style>
@@ -769,6 +798,10 @@
                     <span data-i18n="e4Link1">✉️ Письмо оргкомитета Ульма </span>
                     <span class="arrow">🔍</span>
                 </button>
+                <button type="button" class="doc-link" onclick="openLetterModal('ulm-my-feedback')">
+                    <span data-i18n="e4LinkFeedback">✉️ Моё письмо Луке по фидбеку (выделено)</span>
+                    <span class="arrow">🔍</span>
+                </button>
                 <button type="button" class="doc-link" onclick="openLetterModal('ulm2')">
                     <span data-i18n="e4Link2">✉️ Письмо по фидбеку онлайн-этапа </span>
                     <span class="arrow">🔍</span>
@@ -830,6 +863,43 @@
                 Phone: +49 731 50-23738<br>
                 E-Mail: luca.cermak@uni-ulm.de
             </p>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно 1.5 (между ними): Письмо Д.В. Огая Луке по фидбеку (10.11.2026) с выделенным фрагментом -->
+<div class="modal-overlay" id="modal-ulm-my-feedback" onclick="closeModal('modal-ulm-my-feedback')">
+    <div class="letter-modal-box enlarged-letter-box" onclick="event.stopPropagation()">
+        <div class="letter-modal-header">
+            <div>
+                <h3>RE: International Economic Olympiad at Ulm University / Greetings from Almaty</h3>
+                <div class="letter-meta-info">
+                    <strong>От:</strong> Dmitriy Ogay &lt;d.ogay@almau.edu.kz&gt;<br>
+                    <strong>Кому:</strong> luca.cermak@uni-ulm.de &lt;luca.cermak@uni-ulm.de&gt;<br>
+                    <strong>Дата:</strong> Tuesday, 10 November 2026 09:17:22 +0000
+                </div>
+            </div>
+            <button type="button" class="modal-close-btn" onclick="closeModal('modal-ulm-my-feedback')" aria-label="Закрыть">×</button>
+        </div>
+        <div class="letter-modal-body">
+            <p>Dear Luca,</p>
+            <p>Thank you very much for your warm letter and for welcoming us so kindly to Ulm University. After a long journey, we are finally back home in Almaty, filled with wonderful memories and impressions from our trip.</p>
+            <p>On behalf of Almaty Management University (AlmaU), as well as Amin and Alina, I would like to express our deepest gratitude to you and the entire organizing committee for the impeccable level of organization, the hospitable atmosphere, and this extraordinary opportunity for in-person participation.</p>
+            <p>Taking part on-site was fundamentally different from an online experience. For both Amin and Alina, this was not only their very first trip abroad, but a true immersion into an international academic community at one of Germany's leading universities — Ulm University. Interacting with peers from around the world, taking in the historical beauty of Ulm, enjoying authentic German cuisine, and feeling the vibrant academic spirit was an absolute highlight for them. The wonderful, warm dinner after the competition was a perfect touch — it seamlessly lifted the tension and turned an intense competition day into a memorable, friendly gathering. This experience has served as a powerful catalyst for their personal growth, hugely motivating them to pursue their studies and master foreign languages, especially German. We will also look forward to reading the report about this year's Olympiad on your website and sharing it with our university community.</p>
+            <p>On a personal note, visiting Germany is always a special event for me, but being immersed in a German university environment made this trip even more valuable. In the moments when I was not inside the competition rooms, I took the opportunity to walk around your campus and visit several buildings. I was particularly fascinated by the transparent classroom walls, which allowed me to quietly observe how lectures and seminars are conducted here. As a professor, watching your teaching dynamics firsthand provided me with very practical insights that I am eager to apply in my own classes at AlmaU. Those two days in Ulm were truly unforgettable for me as well.</p>
+            <p>From my perspective as an observer, I found the event truly insightful. Observing how smoothly everything ran provided valuable ideas that we can adapt for our own academic competitions at AlmaU. I was particularly impressed by the hospitality and the generous budget dedicated to student catering — having continuous access to meals, snacks, and drinks kept the atmosphere remarkably comfortable and relaxed, which stands in pleasant contrast to the high-pressure environment often seen in traditional Asian student competitions.</p>
+
+            <div class="highlighted-feedback-block">
+                <p><strong>Regarding your request for feedback, I would not even call this a criticism, but rather a small professional reflection on the online track, given the large number of participants joining remotely from Eastern and non-European regions.</strong></p>
+                <p><strong>The high level of trust that European universities place in students is truly inspiring. However, knowing the mindset and behavioral patterns of students in our region, we have learned that such open trust can sometimes, unfortunately, be taken advantage of by some participants. To protect those who naturally follow ethical principles and to maintain a true spirit of equity and fair play for everyone, we at AlmaU are forced to place a strong emphasis on technical safeguards. In my own online courses, I even use a custom web application I developed via vibe coding that temporarily restricts browser tab switching, page refreshing, text copying, or opening external windows during exams. A first attempt triggers a warning, while a second attempt resets input data, costing precious time. Incorporating lightweight proctoring mechanisms or similar technical safeguards into future online stages of the Olympiad might simply help ensure a completely level playing field for all participants, regardless of their background.</strong></p>
+                <p><strong>Looking ahead, we are thoroughly committed to expanding our cooperation with Ulm University. Having experienced the Olympiad firsthand, we now have a much clearer understanding of its agenda, spirit, and organization. AlmaU is eager to maintain this connection and participate in future editions — both online and, whenever possible, in person. We would be delighted to discuss preliminary plans for 2027 early on as your planning progresses.</strong></p>
+                <p><strong>Thank you once again for your warmth, hospitality, and dedication to inspiring young economists worldwide. I wish you and the Institute of Economics continued success with all your upcoming initiatives.</strong></p>
+            </div>
+
+            <p>Warm regards,<br>
+            <strong>Dmitriy Ogay</strong><br>
+            Professor of Practice<br>
+            School of Digital Technologies and Economics</p>
         </div>
     </div>
 </div>
@@ -945,6 +1015,7 @@
                      <p>AlmaU получил официальное приглашение на 2027 год, а рекомендации по проведению онлайн-этапа олимпиады приняты оргкомитетом.</p>`,
             e4CertLabel: "Сертификаты Университета Ульма",
             e4Link1: "✉️ Письмо оргкомитета Ульма (оригинал)",
+            e4LinkFeedback: "✉️ Моё письмо Луке по фидбеку (выделено)",
             e4Link2: "✉️ Письмо по фидбеку онлайн-этапа (оригинал)"
         },
 
@@ -984,6 +1055,7 @@
                      <p>AlmaU 2027 жылға ресми шақырту алды, ал олимпиаданың онлайн-кезеңін өткізу жөніндегі ұсыныстар ұйымдастыру комитетімен қабылданды.</p>`,
             e4CertLabel: "Ульм университетінің сертификаттары",
             e4Link1: "✉️ Ульм ұйымдастыру комитетінің хаты (түпнұсқа)",
+            e4LinkFeedback: "✉️ Лукаға жіберген кері байланыс хатым (ерекшеленген)",
             e4Link2: "✉️ Онлайн-кезең пікірі бойынша хат (түпнұсқа)"
         },
 
@@ -1023,6 +1095,7 @@
                      <p>AlmaU received an official invitation for 2027, and recommendations on improving the online selection stage were adopted by the organizing committee.</p>`,
             e4CertLabel: "Ulm University Certificates",
             e4Link1: "✉️ Letter from Ulm Committee (Original)",
+            e4LinkFeedback: "✉️ My Feedback Letter to Luca (Highlighted)",
             e4Link2: "✉️ Online Stage Feedback Letter (Original)"
         }
     };
