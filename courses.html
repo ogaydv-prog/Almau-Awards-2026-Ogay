@@ -19,14 +19,14 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 16px 20px;
+            padding: 12px 20px;
             position: relative;
         }
 
         /* Кнопка возврата в левом верхнем углу */
         .top-left-back {
             position: absolute;
-            top: 20px;
+            top: 16px;
             left: 28px;
             display: inline-flex;
             align-items: center;
@@ -52,7 +52,7 @@
         /* Переключатель языков в правом верхнем углу */
         .top-right-lang {
             position: absolute;
-            top: 20px;
+            top: 16px;
             right: 28px;
             display: inline-flex;
             background: #f4f7fb;
@@ -89,38 +89,38 @@
             width: 100%;
             max-width: 1300px;
             text-align: center;
-            margin-top: 2px;
-            margin-bottom: 20px;
+            margin-top: 0;
+            margin-bottom: 14px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .center-logo {
-            width: 68px;
-            height: 68px;
+            width: 58px;
+            height: 58px;
             object-fit: contain;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         h1 {
-            font-size: 30px;
+            font-size: 25px;
             font-weight: 800;
             color: #C8102E;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             letter-spacing: 0.8px;
             text-transform: uppercase;
         }
 
         .subtitle {
-            font-size: 15px;
+            font-size: 14px;
             color: #555555;
             max-width: 740px;
-            line-height: 1.45;
+            line-height: 1.4;
             margin: 0 auto;
         }
 
-        /* Все 6 курсов всегда в один ряд (уменьшены на 10%: 221px -> 199px) */
+        /* Все 6 курсов всегда в один ряд */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(6, minmax(0, 199px));
@@ -129,7 +129,7 @@
             width: 100%;
             justify-content: center;
             align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .course-card {
@@ -174,8 +174,8 @@
             justify-content: center;
             width: 100%;
             max-width: 1300px;
-            padding-top: 16px;
-            margin-bottom: 10px;
+            padding-top: 12px;
+            margin-bottom: 6px;
             position: relative;
         }
 
@@ -191,15 +191,15 @@
         }
 
         .gsb-logo {
-            height: 62px;
+            height: 54px;
             width: auto;
-            max-width: 260px;
+            max-width: 240px;
             object-fit: contain;
-            margin-bottom: 24px; /* Зазор ~3 мм, чтобы при hover карточка не перекрывала надпись GSB */
+            margin-bottom: 18px;
             display: block;
         }
 
-        /* Ширина карточки MBA строго равна ширине карточки верхнего ряда (-10%, макс. 199px) */
+        /* Ширина карточки MBA строго равна ширине карточки верхнего ряда */
         .mba-section .course-card {
             width: calc((100% - 5 * clamp(10px, 1.1vw, 15px)) / 6);
             max-width: 199px;
@@ -207,12 +207,12 @@
 
         footer {
             margin-top: auto;
-            font-size: 13px;
+            font-size: 12.5px;
             color: #8a94a6;
-            padding-top: 14px;
-            padding-bottom: 8px;
+            padding-top: 10px;
+            padding-bottom: 4px;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.4;
             width: 100%;
             letter-spacing: 0.2px;
         }
@@ -261,7 +261,7 @@
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
-                margin-bottom: 12px;
+                margin-bottom: 10px;
             }
             .top-left-back,
             .top-right-lang {
@@ -275,18 +275,18 @@
             }
 
             .center-logo {
-                width: 60px;
-                height: 60px;
-                margin-bottom: 8px;
+                width: 54px;
+                height: 54px;
+                margin-bottom: 6px;
             }
 
             h1 {
-                font-size: clamp(22px, 6.2vw, 28px);
-                margin-bottom: 8px;
+                font-size: clamp(20px, 5.8vw, 25px);
+                margin-bottom: 6px;
             }
 
             .subtitle {
-                font-size: 13.5px;
+                font-size: 13px;
                 padding: 0 6px;
             }
 
@@ -294,7 +294,7 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 14px;
                 max-width: 414px;
-                margin-bottom: 24px;
+                margin-bottom: 20px;
             }
 
             .course-card {
@@ -305,8 +305,8 @@
             }
 
             .gsb-logo {
-                height: 50px;
-                margin-bottom: 18px;
+                height: 46px;
+                margin-bottom: 16px;
             }
 
             .mba-section .course-card {
@@ -314,7 +314,6 @@
                 max-width: 200px;
             }
 
-            /* На смартфоне герб внутри портала встаёт строго по центру вверху */
             .logo-back-hotspot {
                 top: 10px;
                 left: 50%;
@@ -325,7 +324,7 @@
 
             footer {
                 font-size: 12px;
-                padding-top: 16px;
+                padding-top: 14px;
             }
         }
     </style>
@@ -346,7 +345,7 @@
         <img src="almau.jpg" alt="AlmaU Logo" class="center-logo">
         <h1 data-i18n="pageTitle">КУРСЫ</h1>
         <p class="subtitle" data-i18n="subtitle">
-            Цифровые образовательные платформы  по экономическим дисциплинам
+            Цифровые образовательные платформы по экономическим дисциплинам
         </p>
     </header>
 
@@ -386,7 +385,7 @@
     </section>
 
     <footer>
-        <p data-i18n="footerText">Огай Д. | Школа цифровых технологий и экономики | AlmaU 2026</p>
+        <p data-i18n="footerText">Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026</p>
     </footer>
 
     <!-- Полноэкранный просмотрщик: поверх герба AlmaU лежит полностью прозрачная кнопка возврата -->
@@ -400,7 +399,7 @@
             ru: {
                 backBtn: "← Назад",
                 pageTitle: "КУРСЫ",
-                subtitle: "Цифровые образовательные платформы  по экономическим дисциплинам",
+                subtitle: "Цифровые образовательные платформы по экономическим дисциплинам",
                 footerText: "Огай Д.В. | Школа цифровых технологий и экономики | AlmaU 2026",
                 toCoursesTitle: "← К списку курсов"
             },
@@ -415,7 +414,7 @@
                 backBtn: "← Back",
                 pageTitle: "COURSES",
                 subtitle: "Digital educational platforms for economics courses",
-                footerText: "D.Ogay | School of Digital Technologies and Economics | AlmaU 2026",
+                footerText: "D. Ogay | School of Digital Technologies and Economics | AlmaU 2026",
                 toCoursesTitle: "← Back to courses"
             }
         };
