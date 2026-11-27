@@ -120,11 +120,11 @@
             margin: 0 auto;
         }
 
-        /* Все 6 курсов в один ряд (221 x 293 px) */
+        /* Все 6 курсов всегда в один ряд с адаптивным масштабированием */
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(6, 221px);
-            gap: 15px;
+            grid-template-columns: repeat(6, minmax(0, 221px));
+            gap: clamp(10px, 1.1vw, 15px);
             max-width: 1440px;
             width: 100%;
             justify-content: center;
@@ -134,8 +134,8 @@
 
         .course-card {
             display: block;
-            width: 221px;
-            height: 293px;
+            width: 100%;
+            aspect-ratio: 221 / 293;
             text-decoration: none;
             background: #ffffff;
             border: 2px solid #00338D;
@@ -173,10 +173,26 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 500px;
+            max-width: 1440px;
             padding-top: 22px;
             border-top: 1.5px solid #c3d1e6;
             margin-bottom: 18px;
+            position: relative;
+        }
+
+        .mba-section::before {
+            content: "";
+            position: absolute;
+            top: -1.5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(500px, 90%);
+            height: 1.5px;
+            background: #c3d1e6;
+        }
+
+        .mba-section {
+            border-top: none;
         }
 
         .gsb-logo {
@@ -184,8 +200,13 @@
             width: auto;
             max-width: 280px;
             object-fit: contain;
-            margin-bottom: 14px;
+            margin-bottom: 25px; /* Опустили карточку ниже на ~3 мм, чтобы при hover она не перекрывала надпись */
             display: block;
+        }
+
+        .mba-section .course-card {
+            width: calc((100% - 5 * clamp(10px, 1.1vw, 15px)) / 6);
+            max-width: 221px;
         }
 
         footer {
@@ -238,13 +259,6 @@
         }
 
         /* АДАПТАЦИЯ ПОД ЭКРАНЫ РАЗНОЙ ШИРИНЫ */
-        @media (max-width: 1440px) {
-            .courses-grid {
-                grid-template-columns: repeat(3, 221px);
-                gap: 22px;
-            }
-        }
-
         @media (max-width: 960px) {
             .top-bar-mobile {
                 display: flex;
@@ -296,7 +310,7 @@
 
             .gsb-logo {
                 height: 54px;
-                margin-bottom: 10px;
+                margin-bottom: 18px;
             }
 
             .mba-section .course-card {
